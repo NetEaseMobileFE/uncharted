@@ -1,0 +1,436 @@
+:global {
+
+  .h-main-container{
+    width:100%;
+    margin: 0 auto;
+    background-color: #f21745;
+
+    .title-img{
+      position: relative;
+      box-sizing: border-box;
+      width: 7.5rem;
+      height: 4.65rem;
+      background: url(./../img/mainBanner.png) no-repeat center;
+      background-size: 7.5rem 4.65rem;
+
+      .title-text{
+        position: absolute;
+        top: 2.68rem;
+        left: .79rem;
+        width: 5.93rem;
+        height: 1.05rem;
+        font-size: .24rem;
+        color: white;
+        text-align: center;
+        line-height: 1.05rem;
+        background: url(./../img/bannerTitle.png) no-repeat center left;
+        background-size: contain;
+      }
+
+      .cd{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 0.24rem;
+        top: 0.17rem;
+        box-sizing: border-box;
+        height: .73rem;
+        border: 0.02rem solid #653634;
+
+        .cd-in{
+          display: flex;
+          box-sizing: border-box;
+          height: .59rem;
+          border: 0.03rem dotted #fff21a;
+
+          .cd-l,.cd-r{
+            height:0.53rem;
+            text-align: center;
+            line-height: 0.53rem;
+            color:white;
+          }
+
+          .cd-l{
+            box-sizing: border-box;
+            width: .75rem;
+            border-right: 0.03rem dotted #fff21a;
+            font-size: 0.18rem;
+          }
+
+          .cd-r-daystyle-in{
+            width: .65rem;
+          }
+          .cd-r-hourstyle-in{
+            width: 1.18rem;
+          }
+        }
+
+        .cd-daystyle-in{
+          width: 1.4rem;
+        }
+        .cd-hourstyle-in{
+          width: 1.92rem;
+        }
+
+      }
+
+      .cd-daystyle{
+        width: 1.57rem;
+      }
+      .cd-hourstyle{
+        width: 2.1rem;
+      }
+
+    }
+    .h-carousel{
+      width: 100%;
+      height: 0.4rem;
+      margin: .2rem 0 .2rem 0;
+      color:white;
+      line-height: 0.5rem;
+      text-align: center;
+      font-size: .24rem;
+      overflow: hidden; 
+
+      .carouselbox1, .carouselbox2{
+        width: 100%;
+        margin:0 auto;
+      }
+      .awardInfo{
+        width: 100%;
+        height: .4rem;
+        margin: 0 auto;
+        text-align: center;
+        line-height: .4rem;
+      }
+    }
+
+  }
+
+
+  .winn-li{
+    position: relative;
+    width:100%;
+    height:1.85rem;
+    padding-left: 0.2rem;
+    display: flex;
+    align-items: center;
+    color:white;
+
+
+    .winn-li-l{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width:1.5rem;
+      height:1.27rem;
+      background: white url(./../img/cardBg.png) no-repeat center;
+      background-size: .65rem .65rem;
+      margin-right: 0.39rem;
+
+      .prize-img{
+        width:1.08rem;
+        height:1.05rem;
+      }      
+    }
+
+    .winn-li-cen{
+      width:3rem;
+      margin-right: 0.2rem;
+
+      .prize-name,.prize-date{
+        width: auto;
+        height: .35rem;
+        font-size: 0.28rem;
+      }
+
+      .prize-limit{
+        width: auto;
+        height: .3rem;
+        font-size: 0.24rem;
+      }
+    }
+    .winn-li-r{
+      width:2.04rem;
+      height:0.64rem;
+      background:#ffbf40;
+      border-radius: 3px;
+      text-align: center;
+      line-height: 0.64rem;
+
+    }
+
+    .btn-style-0{
+      background: #ffbf40;
+    }
+    
+    .btn-style-1{
+      background: #ffbf40;
+    }
+
+    .btn-style-2{
+      background: #a62617;
+    }
+    .btn-style-3{
+      background: #b5b5b5;
+    }
+
+  }
+
+  .list-change-style li:nth-child(2n+1){
+    background-color: #f21745;
+  }
+  .list-change-style li:nth-child(2n){
+    background-color: #e50833;
+  }
+
+  .pari-record{
+    width:100%;
+    .pari-recordls{
+
+      .pari-li{
+        width:100%;
+        height:1.85rem;
+        padding-left: 0.27rem;
+        display: flex;
+        align-items: center;
+
+        .pari-li-l{
+          width:5.8rem;
+          height:0.6rem;
+          color:white;
+          display: flex;
+          margin-right: 0.1rem;
+        }
+
+        .pari-logo{
+          width:0.6rem;
+          height:0.6rem;
+          border-radius: 0.6rem;
+          background: url(../img/circleLogo.png) no-repeat center center;
+          background-size: 0.6rem 0.6rem;
+          margin-right: 0.17rem;
+        }
+
+        .pari-prize{
+          width:100%;
+          height:0.4rem;
+          font-size: 14px;
+        }
+
+        .pari-user{
+          width:100%;
+          height:0.3rem;
+          font-size: 12px;
+          line-height: 0.4rem;
+        }
+
+        .pari-li-r{
+          z-index: 1;
+          width:1.08rem;
+          height:1.05rem;
+          background: white url(./../img/cardBg.png) no-repeat center;
+          background-size: .5rem .5rem;
+
+          .past-prizebg{
+            z-index: 10;
+            width: 1.08rem;
+            height: 1.05rem;
+          }
+        }
+
+      }
+
+
+      .pari-li:nth-child(2n){
+        background-color:#e50833;
+      }  
+    }
+  }
+
+  .record-title{
+    width:100%;
+    height:0.81rem;
+    background: url(../img/RecordTitle.png) no-repeat top right;
+    background-size: 7.37rem 0.81rem;
+    color:white;
+    display: flex;
+    justify-content: space-between;
+
+    .record-title-text,.record-title-info{
+      height:0.81rem;
+      line-height: 0.7rem;
+    }
+
+    .record-title-text{
+      margin-left: 1.05rem;
+    }
+
+    .record-title-info{
+      color: white;
+      text-decoration:none;
+      margin-right: 0.12rem;
+    }
+
+  }
+
+  .collect-cards{
+    width:7.15rem;
+    height:1.37rem;
+    margin:0 auto;
+    display:flex;
+    justify-content: space-between;
+    color:white;
+    line-height: 1.37rem;
+  }
+
+  .coll-cardsls{
+    display: flex;
+    margin:0 0 0.2rem 0.43rem;
+  }
+  .coll-cardsli{
+    z-index: 1;
+    position: relative;
+    width:1.06rem;
+    height:1.43rem;
+    background: white url(./../img/cardBg.png) no-repeat center;
+    background-size: .4rem .4rem; 
+    list-style: none;
+    border-radius: 3px;
+    margin-right:0.15rem;
+    text-align: left;
+    line-height: 2.5rem;
+
+    .coll-cardsbg{
+      z-index: 10;
+      position: absolute;
+      width:1.06rem;
+      height:1.43rem;
+    }
+
+    .card-shade{
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: rgba(255,255,255,.9);
+      border-radius: .05rem;
+    }
+  }
+
+  .coll-cardsli > span{
+    position: absolute;
+    z-index: 20;
+    margin-left: 0.05rem;
+  }
+
+  .homeAboutRule>ul{
+    margin:0.43rem 0 0 0.25rem;
+    padding-bottom: 0.5rem;
+    color:white;
+    list-style: none;
+    font-size:13px;
+  }
+  .homeAboutRule>ul>li{
+    margin-bottom: 0.16rem;
+  }
+
+  .h-card-dialog{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 10000;
+    background-color: rgba(102,102,102,.6);
+
+
+    .dialog-inner{
+      box-sizing: border-box;
+      width: 5.46rem;
+      height: 9.02rem;
+      background: url(./../img/dialogBg.png) no-repeat center center;
+      margin: .87rem auto 0;
+      padding-top: .45rem;
+
+      .cover{
+        position: relative;
+        width:4.36rem;
+        height:5.89rem;
+        background: white url(./../img/cardBg.png) no-repeat center;
+        background-size: 2rem 2rem; 
+        margin: 0 auto;
+
+        .cover-card-bg{
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          width:4.36rem;
+          height:5.89rem;
+        }
+
+        .share{
+          position: absolute;
+          top: .17rem;
+          right: .18rem;
+          width: .9rem;
+          height: .4rem;
+          background-color: #df3031;
+          border-radius: .05rem;
+          color:white;
+          text-align: center;
+          line-height: .4rem;
+        }
+      }
+
+      .footer{
+        width: 4.86rem;
+        height: 2rem;
+        margin: 0 auto;
+
+        .info{
+          width: 100%;
+          height: 1.06rem;
+          margin: .35rem auto 0;
+          color: white;
+        }
+
+        .justify-content1{
+          justify-content: space-between;
+        }
+
+        .justify-content2{
+          justify-content: center;
+        }
+        
+        .btn{
+          display: flex;
+          
+          width: 100%;
+          height: .65rem;
+
+          .close,.present{
+            width: 2.35rem;
+            height: .65rem;
+            
+            border-radius: .05rem;
+            color:white;
+            text-align: center;
+            line-height: .65rem;
+          }
+
+          .close{
+            background-color: #b5b5b5;
+          }
+          .present{
+            background-color: #ffbf40;
+          }
+        }
+      }
+    }
+  }
+}

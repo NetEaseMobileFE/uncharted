@@ -1,0 +1,16 @@
+{
+  "ret": true,
+  "errcode": 0,
+  "errmsg": "",
+  "ver": 1,
+  "data": {
+    "valid": false,
+    "card": {
+      "id": 2,
+      "name": "姚明卡",
+      "smallImage": "http://www.baidu.com",
+      "image": "http://www.baidu.com",
+      "mark": "姚明卡比较多"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+:global {
+  .mycards-container{
+    width:100%;
+    background-color: #f7f7f7;
+
+    .mycards-ls{
+      width:100%;
+
+      .mycards-li{
+        background-color: #f7f7f7;
+        list-style: none;
+      }
+
+      .mycards-li:nth-child(2n){
+        background-color: #eaeaea;
+      }
+    }
+  }
+  .OneSubcards{
+    width: 7.1rem;
+    height: 2.43rem;
+    color: #595656;
+    margin: 0 auto;
+    padding-top: .23rem;
+
+    .cards{
+      display: flex;
+      justify-content: space-between;
+      width: 7.1rem;
+      height: .53rem;
+    }
+    .ls{
+      display: flex;
+
+      .li{
+        position: relative;
+        z-index: 1;
+        width: 1.06rem;
+        height: 1.43rem;
+        margin-right: .15rem;
+        background: white url(./../img/cardBg.png) no-repeat center;
+        background-size: .4rem .4rem; 
+        border: 1px solid #cecece;
+        border-radius: 3px;
+        list-style: none;
+
+        .card-bg{
+          position: absolute;
+          z-index: 10;
+          width: 1.06rem;
+          height: 1.43rem;
+        }
+        .number{
+          position: absolute;
+          z-index: 11;
+          margin: 1rem 0 0 .09rem;
+        }
+      }
+    }
+  }
+}
+
+
+
+

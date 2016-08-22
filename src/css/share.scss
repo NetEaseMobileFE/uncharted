@@ -1,0 +1,169 @@
+:global {
+
+
+  .anotherBg{
+    background:url(./../img/bg145.png) no-repeat top center;
+    background-size: 7.5rem 10.9rem;
+  }
+
+  .oneBg{
+    background:url(./../img/shareBg.png) no-repeat center center;
+    background-size: 7.5rem 18.75rem;
+  }
+  .share{
+    position: relative;
+    width: 7.5rem;
+    height: 100%;
+    overflow: hidden;
+    .mb1{
+      margin:0 auto .17rem;
+    }
+    .mb2{
+      margin:0 auto .17rem;
+    }
+    .mb3{
+      margin:0 auto .17rem;
+    }
+    .header{
+      width: 6.8rem;
+      height: 1.5rem;
+
+      color:white;
+
+      .title{
+        width: 100%;
+        height: .57rem;
+        font-size: .36rem;
+        line-height: .8rem;
+        margin-bottom: .1rem;
+      }
+
+      .text{
+        width: 100%;
+        height: .6rem;
+        font-size: .24rem;
+        line-height: .4rem;
+      }
+      .info{
+        width:100%;
+        height:.8rem;
+        padding-top: .5rem;
+      }
+      .userinfo,.introduce{
+        width: 100%;
+        height: .4rem;
+        font-size: .3rem;
+        line-height: .4rem;
+      }
+
+      .winnlogo{
+        position: absolute;
+        top: .18rem;
+        left: 5.88rem;
+        z-index: 10000;
+        width: 2.03rem;
+        height: 2.03rem;
+        background: url(./../img/winningLogo.png) no-repeat center;
+        background-size: 2.03rem 2.03rem;
+      }
+    }
+    .shareCard-img{
+      position: relative;
+      z-index: 1;
+      width: 4.55rem;
+      height: 6.15rem;
+      margin: .34rem auto 0;
+      background: white;
+      border-radius: .1rem;
+      background: white url(./../img/cardBg.png) no-repeat center;
+      background-size: 2rem 1.94rem;
+
+      .sharecard-bg{
+        position: absolute;
+        z-index: 10;
+        width: 4.55rem;
+        height: 6.15rem;
+
+      }
+    }
+    .footer{
+      width: 6.8rem;
+      height: 3.16rem;
+      margin: .26rem auto 0;
+      color:white;
+      font-size: .3rem;
+
+      .info1{
+        margin-top: .45rem;
+      }
+      .card-No{
+        width: 100%;
+        height: .43rem;
+        text-align: center;
+      }
+      .prize{
+        text-align: center;
+      }
+      .prize-title{
+        width: 100%;
+        height: .57rem;
+        font-size: .36rem;
+        line-height: .8rem;
+        margin-bottom: .1rem;
+      }
+
+      .address{
+        width: 100%;
+        height: .6rem;
+        font-size: .24rem;
+        line-height: .4rem;
+      }
+
+      .info3{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .info3-img{
+          position: relative;
+          z-index: 1;
+          width: 1.36rem;
+          height: 1.27rem;
+          background: white url(./../img/cardBg.png) no-repeat center;
+          background-size: .6rem .6rem;
+          
+          .info3prize-bg{
+            position: absolute;
+            z-index: 10;
+            width: 1.36rem;
+            height: 1.27rem;
+          }
+        }
+        .info3-text{
+          width: 5.1rem;
+          height: 1.27rem;
+          text-align: start;
+
+          .info3-prize{
+            text-align: start
+          }
+        }
+      }
+      .btn-margin12{
+        margin-top: .38rem;
+      }
+      .btn-margin3{
+        margin-top: .28rem;
+      }
+      .share-btn{
+        width: 100%;
+        height: .8rem;
+        text-align: center;
+        line-height: .8rem;
+        background-color: #ffbf40;
+        border-radius: .05rem;
+      }
+    }
+  }
+
+}

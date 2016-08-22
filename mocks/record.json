@@ -1,0 +1,230 @@
+{
+  "ret": true,
+  "errcode": 0,
+  "errmsg": "",
+  "ver": 1,
+  "data": {
+    "page": 1,
+    "lotteryPrizes": [
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡1期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "lotteryInfo": {
+          "id": 1,
+          "passport": "apachexiong@163.com",
+          "head": "head image",
+          "status": 0
+        },
+        "prize": {
+          "id": 0,
+          "name": "ipad32g 1",
+          "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+          "prizeKey": "prize_key",
+          "cardIds": [
+            1,
+            2
+          ],
+          "mark": "奖品"
+        }
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡2期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "lotteryInfo": {
+          "id": 1,
+          "passport": "apachexiong@163.com",
+          "head": "head image",
+          "status": 0
+        },
+        "prize": {
+          "id": 0,
+          "name": "ipad32g 2",
+          "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+          "prizeKey": "prize_key",
+          "cardIds": [
+            1,
+            2
+          ],
+          "mark": "奖品"
+        }
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡3期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "lotteryInfo": {
+          "id": 1,
+          "passport": "apachexiong@163.com",
+          "head": "head image",
+          "status": 0
+        },
+        "prize": {
+          "id": 0,
+          "name": "ipad32g 3",
+          "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+          "prizeKey": "prize_key",
+          "cardIds": [
+            1,
+            2
+          ],
+          "mark": "奖品"
+        }
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡4期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "lotteryInfo": {
+          "id": 1,
+          "passport": "apachexiong@163.com",
+          "head": "head image",
+          "status": 0
+        },
+        "prize": {
+          "id": 0,
+          "name": "ipad32g 4",
+          "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+          "prizeKey": "prize_key",
+          "cardIds": [
+            1,
+            2
+          ],
+          "mark": "奖品"
+        }
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡5期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "lotteryInfo": {
+          "id": 1,
+          "passport": "apachexiong@163.com",
+          "head": "head image",
+          "status": 0
+        },
+        "prize": {
+          "id": 0,
+          "name": "ipad32g 5",
+          "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+          "prizeKey": "prize_key",
+          "cardIds": [
+            1,
+            2
+          ],
+          "mark": "奖品"
+        }
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡6期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "lotteryInfo": {
+          "id": 1,
+          "passport": "apachexiong@163.com",
+          "head": "head image",
+          "status": 0
+        },
+        "prize": {
+          "id": 0,
+          "name": "ipad32g 6",
+          "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+          "prizeKey": "prize_key",
+          "cardIds": [
+            1,
+            2
+          ],
+          "mark": "奖品"
+        }
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡7期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "lotteryInfo": {
+          "id": 1,
+          "passport": "apachexiong@163.com",
+          "head": "head",
+          "status": 0
+        },
+        "prize": {
+          "id": 0,
+          "name": "ipad32g 7",
+          "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+          "prizeKey": "prize_key",
+          "cardIds": [
+            1,
+            2
+          ],
+          "mark": "奖品"
+        }
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡7期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "lotteryInfo": {
+          "id": 1,
+          "passport": "apachexiong@163.com",
+          "head": "head",
+          "status": 0
+        },
+        "prize": {
+          "id": 0,
+          "name": "ipad32g 8",
+          "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+          "prizeKey": "prize_key",
+          "cardIds": [
+            1,
+            2
+          ],
+          "mark": "奖品"
+        }
+      }
+    ],
+    "pageSize": 8
+  }
+}
+
+

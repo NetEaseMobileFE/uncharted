@@ -1,0 +1,236 @@
+{
+  "ret": true,
+  "errcode": 0,
+  "errmsg": "",
+  "ver": 1,
+  "data": {
+    "page": 1,
+    "pageSize": 4,
+    "lotteryCards": [
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡1期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "cards": [
+          {
+            "id": 2,
+            "name": "姚明卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "姚明卡比较多"
+          },
+          {
+            "id": 3,
+            "name": "刘翔卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "更多"
+          }
+        ],
+        "myCards": [
+          {
+            "cardId": 2,
+            "amount": 99
+          }
+        ]
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡1期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "cards": [
+          {
+            "id": 2,
+            "name": "姚明卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "姚明卡比较多"
+          },
+          {
+            "id": 3,
+            "name": "刘翔卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "更多"
+          }
+        ],
+        "myCards": [
+          {
+            "cardId": 2,
+            "amount": 99
+          }
+        ]
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡1期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "cards": [
+          {
+            "id": 2,
+            "name": "姚明卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "姚明卡比较多"
+          },
+          {
+            "id": 3,
+            "name": "刘翔卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "更多"
+          }
+        ],
+        "myCards": [
+          {
+            "cardId": 2,
+            "amount": 99
+          }
+        ]
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡1期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "cards": [
+          {
+            "id": 2,
+            "name": "姚明卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "姚明卡比较多"
+          },
+          {
+            "id": 3,
+            "name": "刘翔卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "更多"
+          }
+        ],
+        "myCards": [
+          {
+            "cardId": 2,
+            "amount": 99
+          }
+        ]
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡1期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "cards": [
+          {
+            "id": 2,
+            "name": "姚明卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "姚明卡比较多"
+          },
+          {
+            "id": 3,
+            "name": "刘翔卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "更多"
+          }
+        ],
+        "myCards": [
+          {
+            "cardId": 2,
+            "amount": 99
+          }
+        ]
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡1期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "cards": [
+          {
+            "id": 2,
+            "name": "姚明卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "姚明卡比较多"
+          },
+          {
+            "id": 3,
+            "name": "刘翔卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "更多"
+          }
+        ],
+        "myCards": [
+          {
+            "cardId": 2,
+            "amount": 99
+          }
+        ]
+      },
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡1期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "cards": [
+          {
+            "id": 2,
+            "name": "姚明卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "姚明卡比较多"
+          },
+          {
+            "id": 3,
+            "name": "刘翔卡",
+            "smallImage": "http://www.baidu.com",
+            "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+            "mark": "更多"
+          }
+        ],
+        "myCards": [
+          {
+            "cardId": 2,
+            "amount": 99
+          }
+        ]
+      }
+    ]
+  }
+}

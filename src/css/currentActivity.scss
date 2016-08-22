@@ -1,0 +1,300 @@
+:global {
+
+  @keyframes flash{
+    0% { background-position:  0 0; }
+    49.99% { background-position: 0 0;  }
+    50% { background-position: 0 .28rem;  }
+    99.99% {
+      background-position: 0 .28rem;
+    }
+    100% { background-position: 0 0;  }
+  }
+
+  .cur-prize-container{
+    position: relative;
+    box-sizing: content-box;
+    width: 6.8rem;
+    margin: 0 auto;
+    padding: .2rem;
+    z-index: 1;
+    background-image: url(./../img/light.png);
+    background-size: .57rem .56rem;
+    border-image: url("./../img/light.png") 30 30 repeat;
+    border:1px solid black;
+    animation-duration: 1500ms;
+    animation-name: flash;
+    animation-iteration-count: infinite;
+
+    .inner-imgbg{
+      background: url(./../img/shareInner.png) no-repeat center;
+      background-size: cover;
+    }
+    .inner{
+      width: 6.8rem;
+/*      height: 9.75rem;*/
+      background-color: #f21745;
+      padding-top: .23rem;
+      z-index: 10;
+      margin: 0 auto;
+    }
+
+    .cur-prize{
+      display: flex;
+      align-items: center;
+      width:6.55rem;
+      height:2.92rem;
+      background-color:#e50833;
+      border-radius: 3px; 
+      margin: 0 auto 0.3rem;
+
+      .cur-prize-img{
+        z-index: 1;
+        width:2.77rem;
+        height:2.34rem;
+        background: white url(./../img/cardBg.png) no-repeat center;
+        background-size: 1.3rem 1.3rem;
+        margin: 0 .24rem 0 .3rem ;  
+
+        .prizeImgBg{
+          z-index: 10;
+          width:100%;
+          height:100%; 
+        }
+      }
+      .r-prize-another{
+        width: 3.1rem;
+        height: 1.8rem;
+
+        .prize-label-text{
+          display: block;
+          width: 1.96rem;
+          height: .46rem;
+          background: #003861;
+          color:white;
+          -webkit-transform: skew(-20deg);
+          -moz-transform: skew(-20deg);
+          -o-transform: skew(-20deg);
+          -ms-transform: skew(-20deg);
+          transform: skew(-20deg);
+          text-align: center;
+          line-height: .46rem;
+          margin-top:0.44rem;
+          margin-left: .6rem;
+        }
+
+        .prize-info{
+          display: block;
+          width:3rem;
+          height:.8rem;
+          color:white;
+          line-height: .8rem;
+          text-align: center;
+        }
+
+        .prize-btn{
+          width:3.09rem;
+          height:.64rem;  
+          border-radius: 2.5px;
+          color:#ffffff;
+          text-align: center;
+          line-height: .64rem;
+          border-style: none;
+          -webkit-appearance:none;
+        }
+        .btn-bgc1{
+          background:#b5b5b5;
+        }
+        .btn-bgc2{
+          background:#ffbf40;
+        }
+      }
+      .r-prize{
+        width: 3.1rem;
+        height: 2.36rem;
+
+        .prize-label-text{
+          display: block;
+          width: 1.96rem;
+          height: .46rem;
+          background: #003861;
+          color:white;
+          -webkit-transform: skew(-20deg);
+          -moz-transform: skew(-20deg);
+          -o-transform: skew(-20deg);
+          -ms-transform: skew(-20deg);
+          transform: skew(-20deg);
+          text-align: center;
+          line-height: .46rem;
+          margin-top: .13rem;
+          margin-left: .6rem;
+        }
+
+        .prize-info,.prize-status{
+          display: block;
+          width:3rem;
+          height:.56rem;
+          color:white;
+          line-height: .7rem;
+          text-align: center;
+        }
+        .prize-status{
+          line-height: .3rem;
+        }
+        .prize-btn{
+          width: 3.09rem;
+          height: .64rem;  
+          border-radius: 2.5px;
+          color: #ffffff;
+          text-align: center;
+          line-height: .64rem;
+          border-style: none;
+          -webkit-appearance: none;
+        }
+        .btn-bgc1{
+          background: #b5b5b5;
+        }
+        .btn-bgc2{
+          background: #ffbf40;
+        }
+        .btn-bgc3{
+          background: #a62617;
+        }
+        .btn-bgc4{
+          background: red;
+        }
+      }
+    }
+    .coll-cards-ls{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width:6.55rem;
+      margin: 0 auto;
+
+
+      .morediv1{
+        width: 2rem;
+        height: 2.7rem;
+      }
+
+      .morediv2{
+        display: none;
+      }
+
+      .card-li{
+        position: relative;
+        width:2rem;
+        height:2.7rem;
+        background: white;
+        list-style: none;
+        margin-bottom: 0.56rem;
+        border-radius: .05rem;
+        text-align: start;
+
+        .li-img{
+          position: relative;
+          z-index: 10;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-sizing: border-box;
+          width:100%;
+          height:100%;
+          background: white url(./../img/cardBg.png) no-repeat center;
+          background-size: .74rem .74rem;
+          border: .01rem solid #a5a5a5;
+          border-radius: .05rem;
+
+          .img-bg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 11;
+            width:100%;
+            height:100%;
+          }
+        }
+        .card-shade{
+          position: absolute;
+          z-index: 12;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          background: rgba(255,255,255,.9);
+          border-radius: .05rem;
+        }
+        .img-shade-container{
+          position: absolute;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+
+          .img-shade1{
+            position: absolute;
+            z-index: 9;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: .05rem;
+            right: 0;
+            border: .01rem solid #aaa0a2;
+            border-radius: .05rem;
+          }
+          .img-shade2{
+            position: absolute;
+            z-index: 8;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: .1rem;
+            right: 0;
+            box-sizing: border-box;
+            border: .01rem solid #aaa0a2;
+            border-radius: .05rem;
+          }
+        }
+
+        .card-bg{
+          width:2rem;
+          height:2.7rem;
+          border-radius: .05rem;
+        }
+
+        .card-sum,.card-logo{
+          position: absolute;
+          z-index: 12;
+          display: block;
+        }
+
+        .card-sum{
+          left:.12rem;
+          bottom:.1rem;
+          color:#323232;
+        }
+
+        .card-logo{
+          position: absolute;
+          top: .11rem;
+          right: .1rem;
+          width: .39rem;
+          height: .4rem;
+          border-radius: .05rem;
+          background-color: #fe8501;
+          color:white;
+          text-align: center;
+          line-height: .4rem;
+
+        }
+      }
+
+    }
+  }
+
+}

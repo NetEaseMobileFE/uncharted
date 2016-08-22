@@ -1,0 +1,28 @@
+<!doctype html><html class="no-js" lang="zh"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="format-detection" content="telephone=no"><meta name="description" content=""><meta name="keywords" content=""><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="renderer" content="webkit"><link rel="stylesheet" href="http://f2e.developer.163.com/zhuwei/uncharted/css/app.css"><title>集卡兑奖123</title></head><body><script>(function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        isIOS = navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          var clientHeight = docEl.clientHeight;
+          if (!clientWidth) return;
+          if(clientWidth >= 750 ){
+            clientWidth = 750;
+            doc.body.style.width = 750 + 'px';
+          }else{
+            doc.body.style.width = clientWidth + 'px';
+          }
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          docEl.dataset.percent = 100 * (clientWidth / 750);
+          docEl.dataset.width = clientWidth;
+          docEl.dataset.height = clientHeight;
+        };
+      recalc();
+      if (isIOS) {
+        doc.documentElement.classList.add('iosx' + win.devicePixelRatio);
+      }
+      win.addEventListener(resizeEvt, recalc, false);
+    })(document, window);</script><div id="root"></div><script>!function(e){function n(t){if(r[t])return r[t].exports;var a=r[t]={exports:{},id:t,loaded:!1};return e[t].call(a.exports,a,a.exports,n),a.loaded=!0,a.exports}var t=window.webpackJsonp;window.webpackJsonp=function(o,c){for(var l,p,u=0,i=[];u<o.length;u++)p=o[u],a[p]&&i.push.apply(i,a[p]),a[p]=0;for(l in c)e[l]=c[l];for(t&&t(o,c);i.length;)i.shift().call(null,n);if(c[0])return r[0]=0,n(0)};var r={},a={0:0};return n.e=function(e,t){if(0===a[e])return t.call(null,n);if(void 0!==a[e])a[e].push(t);else{a[e]=[t];var r=document.getElementsByTagName("head")[0],o=document.createElement("script");o.type="text/javascript",o.charset="utf-8",o.async=!0,o.src=n.p+"js/"+e+".bundle.js",r.appendChild(o)}},n.m=e,n.c=r,n.p="/zhuwei/uncharted/",n(0)}([function(e,n){}]);</script><script src="http://f2e.developer.163.com/zhuwei/uncharted/js/vendor.js"></script><script src="http://f2e.developer.163.com/zhuwei/uncharted/js/bundle.js"></script><script src="http://img6.cache.netease.com/utf8/3g/libs/ntes-stat.js" type="text/javascript"></script><script type="text/javascript">setTimeout(function(){
+      _ntes_nacc = "mapp";
+      neteaseTracker();
+    }, 1000)</script></body></html>

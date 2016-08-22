@@ -1,0 +1,110 @@
+{
+  "ret": true,
+  "errcode": 0,
+  "errmsg": "",
+  "ver": 1,
+  "data": {
+    "cycleInfo": {
+      "id": 1,
+      "name": "集卡1期",
+      "theme": "六一儿童节",
+      "beginTime": 1468397918000,
+      "endTime": 1469808000000,
+      "mark": "六一儿童节"
+    },
+    "lotteryPrizes": [
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡1期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "lotteryInfo": {
+          "id": 1,
+          "passport": "apachexiong@163.com",
+          "head": "head image",
+          "status": 0
+        },
+        "prize": {
+          "id": 0,
+          "name": "ipad32g",
+          "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+          "prizeKey": "prize_key",
+          "cardIds": [
+            1,
+            2
+          ],
+          "mark": "奖品"
+        }
+      }
+    ],
+    "now": 1468501865664,
+    "carousel": [
+      {
+        "passport": "apachexiong@163.com",
+        "name": "姚明卡"
+      },
+      {
+        "passport": "apachexiong@163.com",
+        "name": "投胎卡"
+      },
+      {
+        "passport": "apachexiong@163.com",
+        "name": "啥啥卡"
+      }
+    ],
+    "cards": [
+      {
+        "id": 15,
+        "name": "姚明卡",
+        "amount": 0,
+        "smallImage": "http://www.baidu.com",
+        "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+        "mark": "姚明卡比较多"
+      },
+      {
+        "id": 14,
+        "name": "刘翔卡",
+        "amount": 0,
+        "smallImage": "http://www.baidu.com",
+        "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+        "mark": "更多"
+      },
+      {
+        "id": 3,
+        "name": "姚明卡",
+        "amount": 0,
+        "smallImage": "http://www.baidu.com",
+        "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+        "mark": "姚明卡比较多"
+      },
+      {
+        "id": 4,
+        "name": "姚明卡",
+        "amount": 0,
+        "smallImage": "http://www.baidu.com",
+        "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+        "mark": "姚明卡比较多"
+      },
+      {
+        "id": 5,
+        "name": "姚明卡",
+        "amount": 0,
+        "smallImage": "http://www.baidu.com",
+        "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+        "mark": "姚明卡比较多"
+      },
+      {
+        "id": 6,
+        "name": "姚明卡",
+        "amount": 0,
+        "smallImage": "http://www.baidu.com",
+        "image": "http://scimg.jb51.net/allimg/160618/77-16061Q44U6444.jpg",
+        "mark": "姚明卡比较多"
+      }
+    ]
+  }
+}

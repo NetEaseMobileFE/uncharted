@@ -1,0 +1,39 @@
+{
+  "ret": true,
+  "errcode": 0,
+  "errmsg": "",
+  "ver": 1,
+  "data": {
+    "page": 1,
+    "lotteryPrizes": [
+      {
+        "cycleInfo": {
+          "id": 1,
+          "name": "集卡1期",
+          "theme": "六一儿童节",
+          "beginTime": 1468397918000,
+          "endTime": 1469808000000,
+          "mark": "六一儿童节"
+        },
+        "lotteryInfo": {
+          "id": 1,
+          "passport": "apachexiong@163.com",
+          "head": "head image",
+          "status": 0
+        },
+        "prize": {
+          "id": 0,
+          "name": "ipad32g",
+          "image": "http://img5.imgtn.bdimg.com/it/u=1930767517,2509101758&fm=206&gp=0.jpg",
+          "prizeKey": "prize_key",
+          "cardIds": [
+            1,
+            2
+          ],
+          "mark": "奖品"
+        }
+      }
+    ],
+    "pageSize": 10
+  }
+}
