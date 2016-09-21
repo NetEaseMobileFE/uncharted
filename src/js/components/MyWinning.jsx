@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import UniversalTitle from './UniversalTitle'
-import fetch from 'isomorphic-fetch'
 import NEWSAPPAPI from 'newsapp'
-import { sendLotteryId } from './../utils/util'
+import { erilizeText } from './../utils/util.js'
 
 export default class MyWinning extends Component {
   constructor(props) {
@@ -16,7 +15,7 @@ export default class MyWinning extends Component {
     push(`/expiry?prizeId=${prizeId}&cycleId=${cycleId}&lotteryId=${lotteryId}`)
   }
 
-  // 校验
+
   handleShare(prizeId, lotteryId, cycleId) {
     let { push, changeLotteryStatus, data } = this.props
     let imgUrl
@@ -35,39 +34,36 @@ export default class MyWinning extends Component {
       return true
     })
     const shareData = {
-      wbText: '网易新闻,集卡赢大奖',
+      wbText: `网易新闻,集卡赢大奖 http://t.c.m.163.com/uncharted/index.html/share?winnStatus=200&cycleId=${this.props.cycleId}&cardAmount=${allCardsNum}`,
       wbPhoto: `${imgUrl}`,
       wxText: '网易新闻,集卡赢大奖',
       wxTitle: `我中奖啦，获得了${prizeName}你也来参加吧！`,
-      wxUrl: `http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=200&cycleId=${this.props.cycleId}&cardAmount=${allCardsNum}&prizeName=${prizeName}`,
+      wxUrl: `http://t.c.m.163.com/uncharted/index.html?winnStatus=200&cycleId=${this.props.cycleId}&cardAmount=${allCardsNum}#/share`,
       wxPhoto: `${imgUrl}`
     }
     NEWSAPPAPI.share.invoke(shareData, () => {
-      push(`/expiry?prizeId=${prizeId}&cycleId=${cycleId}&lotteryId=${lotteryId}`)
-      sendLotteryId(lotteryId)
-      changeLotteryStatus(lotteryStatusObj)
+      NEWSAPPAPI.login()
+      this.props.sendLotteryId(lotteryId)
+        .then(() => {
+          let errcode = parseInt(this.props.sendLotteryIdErrCode, 10)
+          if (errcode === 0) {
+            changeLotteryStatus(lotteryStatusObj)
+            push(`/expiry?prizeId=${prizeId}&cycleId=${cycleId}&lotteryId=${lotteryId}`)
+          } else if (errcode === 400) {
+            alert('请在登陆后领奖')
+          } else if (errcode === 412) {
+            alert('参数错误')
+          } else if (errcode === 1) {
+            alert('服务器繁忙')
+          }
+        })
     })
   }
-
-  sendLotteryId(id) {
-    fetch(`http://t.c.m.163.com/uc/activity/card/prize/share?lotteryId=${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      credentials: 'same-origin'
-    }).then((res) => {
-      console.log(res)
-    }, () => {
-      alert('Error submitting form!')
-    })
-  }
-
 
   render() {
     const { data } = this.props
     const time = new Date()
-    console.log(data)
+
     return (
       <div className="winn-record">
         <UniversalTitle text="我的获奖记录" />
@@ -126,7 +122,7 @@ export default class MyWinning extends Component {
                 <li className="winn-li" key={index}>
                   <div className="winn-li-l"><div className="prize-img" style={cardBg} /></div>
                   <div className="winn-li-cen">
-                    <div className="prize-name">{record.prize.name}</div>
+                    <div className="prize-name">{erilizeText(record.prize.name, 9)}</div>
                     <div className="prize-date">{'主题: ' + record.cycleInfo.theme}</div>
                     <div className="prize-limit">
                       <span className="limit-time">

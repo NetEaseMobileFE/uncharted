@@ -74,8 +74,8 @@ module.exports = {
 				loadPaths: ['./src/img/'],
 				relative: true
 			}),
-			require("postcss-cssnext")({
-				browsers: ["> 1%", "last 2 version", "Android >= 4.0"]
+			require('postcss-cssnext')({
+				browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'not ie <= 8', 'Android >= 4.0', 'iOS >= 7']
 			}),
 			require('postcss-sprites')({
 				stylesheetPath: './src/css',

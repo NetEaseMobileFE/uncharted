@@ -1,4 +1,5 @@
 :global {
+  @import "common.scss";
   .record-page{
     width:100%;
     .ls{
@@ -29,15 +30,13 @@
           .li-l-r{
 
             .prize{
-              width:4rem;
-              height:0.3rem;
+              width:100%;
               font-size: 14px;
               color:#595656;
             }
 
             .user{
               width:100%;
-              height:0.3rem;
               font-size: 12px;
               line-height: 0.4rem;
               color:#797676;

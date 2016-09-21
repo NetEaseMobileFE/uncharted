@@ -4,24 +4,28 @@ import Prize from './Prize'
 import Subject from './Subject'
 import './../../../css/home.scss'
 import './../../../css/currentActivity.scss'
+import { isAndroid, isIos } from './../../utils/util'
 
 export default class CurrentActivity extends Component {
-  constructor(props) {
-    super(props)
-  }
 
-  componentDidMount(){
+  componentDidMount() {
 
   }
   render() {
     const { data, push, loginStatus, isNotHomePage } = this.props
+    let className = 'cur-prize-container'
+    if (isIos) {
+      className += ' ios-animation'
+    } else if (isAndroid) {
+      className += ' android-animation'
+    }
     if (this.props.isNotHomePage) {
       // 不是主页
       const share = data.share
       return (
         <div className="marquee-outer">
-          <div className="cur-prize-container">
-            <div className="inner inner-imgbg">
+          <div className={className}>
+            <div className="inner">
               <Prize 
                 data={share.prize} 
                 IsNotDisplay={isNotHomePage} 
@@ -40,7 +44,7 @@ export default class CurrentActivity extends Component {
       return (
         <div className="marquee-outer">
           <Subject subject={notlogin.cycleInfo} />
-          <div className="cur-prize-container">
+          <div className={className}>
             <div className="inner">
               <Prize 
                 data={notlogin.prize} 
@@ -55,6 +59,10 @@ export default class CurrentActivity extends Component {
                 collCardStatus={this.props.collCardStatus}
                 loginStatus={this.props.loginStatus}
                 curPrizeStatus={this.props.curPrizeStatus}
+                shareYet={this.props.changeLotteryStatus}
+                lotteryId={this.props.lotteryId}
+                sendLotteryId={this.props.sendLotteryId}
+                sendLotteryIdErrCode={this.props.sendLotteryIdErrCode}
               />
               <Cards 
                 allCards={notlogin.cards} 
@@ -64,14 +72,14 @@ export default class CurrentActivity extends Component {
                 myCards={loginStatus ? basic.myCards : ''} 
                 endTime={notlogin.cycleInfo.endTime}
                 changeCardsNum={this.props.changeCardsNum} 
-                cycleid={notlogin.cycleInfo.cycleid}
+                cycleId={notlogin.cycleInfo.id}
+                prizeId={notlogin.prize.id}
               />
             </div>
           </div>
         </div>
       )
     }
-
   }
 }
 

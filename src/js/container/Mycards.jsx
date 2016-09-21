@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions/mycards'
 import ScrollLoadBtn from '../components/scrollLoadBtn'
+import { erilizeText } from './../utils/util.js'
+import NEWSAPPAPI from 'newsapp'
 
 import '../../css/mycards.scss'
 import '../../css/scrollLoadBtn.scss'
@@ -24,10 +26,17 @@ class Mycards extends Component {
         if (card.id === myCard.cardId) {
           card.amount = myCard.amount
         }
+        return true
       })
+      return true
     })
   }
-
+  componentDidMount() {
+    NEWSAPPAPI.ui.title('我的集卡')
+  }
+  componentWillUnmount() {
+    this.props.clearStore()
+  }
   render() {
     const { data } = this.props
     const mycards = data.mycards
@@ -39,9 +48,9 @@ class Mycards extends Component {
       pageSize: 10,
       dataType: 1,
       whichPage: mycards,
-      getData: this.props.fetchMycardsInfo
+      getData: this.props.fetchMycardsInfo,
+      addData: mycards.noMoreData
     }
-    console.log(data)
     mycards.lotteryCards.map((item) => {
       return this.compareCards(item.cards, item.myCards)
     })
@@ -52,6 +61,9 @@ class Mycards extends Component {
         {
           mycards.lotteryCards.map((item, index) => {
             let cardNum = 0
+            if (item.cards.length === 0) {
+              return null
+            }
             item.cards.map((card) => {
               if (!!card.amount) {
                 cardNum = cardNum + parseInt(card.amount, 10)
@@ -62,27 +74,32 @@ class Mycards extends Component {
               <li className="mycards-li" key={index}>
                 <div className="OneSubcards">
                   <div className="cards">
-                    <div>{item.cycleInfo.theme}</div>
-                    {
-
-                    }
+                    <div>{erilizeText(item.cycleInfo.theme, 8)}</div>
                     <div>共集齐{cardNum}张</div>
                   </div>
                   <ul className="ls">
-                  {
-                    item.cards.map((card, count) => {
-                      const bgStyle = {
-                        background: `url(${card.image}) no-repeat center`,
-                        backgroundSize: '100% 100%'
-                      }
-                      return (
-                        <li className="li" key={count}>
-                          <div style={bgStyle} className="card-bg"></div>
-                          <div className="number">{!!card.amount ? `X${card.amount}` : ''}</div>
-                        </li>
-                      )
-                    }) 
-                  }
+                    {
+                      item.cards.map((card, count) => {
+                        const bgStyle = {
+                          background: `url(${card.smallImage}) no-repeat center`,
+                          backgroundSize: '100% 100%'
+                        }
+                        let cardText
+                        if (!!card.amount) {
+                          cardText = `X${card.amount}`
+                        }
+                        if (card.amount > 99) {
+                          cardText = '99+'
+                        }
+                        return (
+                          <li className="li" key={count}>
+                            {!card.amount && <div className="card-bg shade-img"></div>}
+                            <div style={bgStyle} className="card-bg"></div>
+                            <div className="number">{cardText}</div>
+                          </li>
+                        )
+                      })
+                    }
                   </ul>
                 </div>
               </li>
@@ -90,7 +107,7 @@ class Mycards extends Component {
           })
         }
         </ul>
-        <ScrollLoadBtn data={pageParams}/>
+        <ScrollLoadBtn data={pageParams} />
       </div>
     )
   }

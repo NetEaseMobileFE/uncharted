@@ -1,38 +1,83 @@
 :global {
+  @import "common.scss";
 
-  @keyframes flash{
-    0% { background-position:  0 0; }
-    49.99% { background-position: 0 0;  }
-    50% { background-position: 0 .28rem;  }
-    99.99% {
-      background-position: 0 .28rem;
-    }
-    100% { background-position: 0 0;  }
+  //@keyframes android-flash{
+  //  0% { background-position:  0 0; }
+  //  49.99% { background-position: 0 0;  }
+  //  50% { background-position: 0.29rem 0;  }
+  //  99.99% {
+  //    background-position: 0.29rem 0;
+  //  }
+  //  100% { background-position: 0 0;  }
+  //}
+
+  //@keyframes ios-flash{
+  //  0% { background-position:  0.07rem 0; }
+  //  49.99% { background-position: 0.07rem 0;  }
+  //  50% { background-position: 0.36rem 0;  }
+  //  99.99% {
+  //    background-position: 0.36rem 0;
+  //  }
+  //  100% { background-position: 0.07rem 0;  }
+  //}
+
+  .ios-animation{
+    animation-name: ios-flash;
   }
-
+  .android-animation{
+    animation-name: android-flash;
+  }
   .cur-prize-container{
     position: relative;
     box-sizing: content-box;
     width: 6.8rem;
-    margin: 0 auto;
-    padding: .2rem;
+    margin: 0 auto;    //border:1px solid black;
+    padding: 10px;
     z-index: 1;
-    background-image: url(./../img/light.png);
-    background-size: .57rem .56rem;
-    border-image: url("./../img/light.png") 30 30 repeat;
-    border:1px solid black;
-    animation-duration: 1500ms;
-    animation-name: flash;
-    animation-iteration-count: infinite;
+    //background: url(./../img/light.png) repeat top left;
+    //background-size: .58rem .54rem;
+    //background-position: 0.07rem 0rem;
+    //border-image: url("./../img/light.png") 30 30 repeat;
+    //animation-duration: 1500ms;
+    //animation-name: ios-flash;
+    //animation-iteration-count: infinite;
 
-    .inner-imgbg{
-      background: url(./../img/shareInner.png) no-repeat center;
-      background-size: cover;
-    }
+    //.inner-imgbg{
+    //  background-color: #f21745;
+    //}
+    //.light{
+    //  position: absolute;
+    //}
+    //.top-light, .bottom-light{
+    //  left: 0;
+    //  width: 100%;
+    //  height: 10px;
+    //  background: url('./../img/light-row.png') repeat-x top left;
+    //  background-size: .58rem .16rem;
+    //}
+    //.top-light{
+    //  top: 0;
+    //}
+    //.bottom-light{
+    //  bottom: 0;
+    //}
+    //.left-light, .right-light{
+    //  top: 10px;
+    //  bottom: 10px;
+    //  width: 10px;
+    //  background: url('./../img/light-col.png') repeat-y top left;
+    //  background-size: .15rem .55rem;
+    //}
+    //.left-light{
+    //  left: 0;
+    //}
+    //.right-light{
+    //  right: 0;
+    //}
     .inner{
       width: 6.8rem;
 /*      height: 9.75rem;*/
-      background-color: #f21745;
+      //background-color: #f21745;
       padding-top: .23rem;
       z-index: 10;
       margin: 0 auto;
@@ -168,6 +213,10 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      //display: -webkit-flex;
+      //-webkit-flex-wrap: wrap;
+
+      //-webkit-justify-content: space-between;
       width:6.55rem;
       margin: 0 auto;
 
@@ -202,7 +251,8 @@
           height:100%;
           background: white url(./../img/cardBg.png) no-repeat center;
           background-size: .74rem .74rem;
-          border: .01rem solid #a5a5a5;
+          //border: .01rem solid #a5a5a5;
+          @include border(border, 1px, solid, #a5a5a5);
           border-radius: .05rem;
 
           .img-bg{
@@ -223,7 +273,7 @@
           left: 0;
           bottom: 0;
           right: 0;
-          background: rgba(255,255,255,.9);
+          background: rgba(255,255,255,.75);
           border-radius: .05rem;
         }
         .img-shade-container{
@@ -244,7 +294,7 @@
             left: 0;
             top: .05rem;
             right: 0;
-            border: .01rem solid #aaa0a2;
+            @include border(border, 1px, solid, #aaa0a2);
             border-radius: .05rem;
           }
           .img-shade2{
@@ -256,7 +306,7 @@
             top: .1rem;
             right: 0;
             box-sizing: border-box;
-            border: .01rem solid #aaa0a2;
+            @include border(border, 1px, solid, #aaa0a2);
             border-radius: .05rem;
           }
         }

@@ -1,4 +1,6 @@
 :global {
+  @import "common.scss";
+
   .expiry-container{
     
     .expiry{
@@ -10,7 +12,8 @@
         align-items: center;
         height: .8rem;
         line-height: .8rem;
-        border-top: .01rem solid #eaeaea;
+        @include border(border-top, 1px, solid, #eaeaea);
+        //border-top: .01rem solid #eaeaea;
         background-color: #fff;
 
         .dot{
@@ -128,7 +131,8 @@
           font-size: .36rem;
           color: blue;
           line-height: .95rem;
-          border-top: .01rem solid #979797;
+          @include border(border-top, 1px, solid, #979797);
+          //border-top: .01rem solid #979797;
 
           .cancel, .submit{
             width: 49.9%;
@@ -137,7 +141,8 @@
             line-height: .95rem;
           }
           .cancel{
-            border-right: .01rem solid #979797;
+            @include border(border-right, 1px, solid, #979797);
+            //border-right: .01rem solid #979797;
           }
         }
 
@@ -152,7 +157,8 @@
         width: 7.5rem;
         height: 6.18rem;
         background: #f7f7f7;
-        border-bottom: .01rem solid #d5d3d2; 
+        @include border(border-bottom, 1px, solid, #d5d3d2);
+        //border-bottom: .01rem solid #d5d3d2;
 
         .img{
           position: absolute;
@@ -199,7 +205,8 @@
           width: 7.5rem;
           height: 1.15rem;
           padding: 0 .45rem;
-          border-bottom: .01rem solid #d5d3d2; 
+          @include border(border-bottom, 1px, solid, #d5d3d2);
+          //border-bottom: .01rem solid #d5d3d2;
           line-height: .36rem;
           .logo{
             width: .35rem;

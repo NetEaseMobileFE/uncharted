@@ -1,0 +1,59 @@
+//.px2px(@name, @px){
+//  @media screen{
+//    @media (max-width: 321px){
+//      @{name}: round(@px - 1) * 1px;
+//    }
+//    @media (min-width: 321px){
+//      @media(max-width: 400px){
+//        @{name}: @px * 1px;
+//      }
+//    }
+//    @media(min-width: 400px){
+//      @{name}: round(@px + 0) * 1px;
+//    }
+//  }
+//}
+//.border(@bdv, @w, @s, @c){
+//  @{bdv}: @w @s @c;
+//  .iosx2 &{
+//    @{bdv}: @w/2 @s @c;
+//  }
+//  .iosx3 &{
+//    @{bdv}: @w/2.8 @s @c;
+//  }
+//}
+
+//@mixin border($bdv,$w,$s,$c){
+//  #{$bdv}: $w $s $c;
+//  @at-root [data-dpr="2"] &{
+//    #{$bdv}: $w/2 $s $c;
+//  }
+//  @at-root [data-dpr="3"] &{
+//    #{$bdv}: $w/2.8 $s $c;
+//  }
+//}
+@mixin px2px($name, $px){
+  @media screen{
+    @media (max-width: 321px){
+      #{$name}: round($px - 2) * 1px;
+    }
+    @media (min-width: 321px){
+      @media(max-width: 400px){
+        #{$name}: $px * 1px;
+      }
+    }
+    @media(min-width: 400px){
+      #{$name}: round($px + 1) * 1px;
+    }
+  }
+}
+
+@mixin border($bdv, $w, $s, $c){
+  #{$bdv}: $w $s $c;
+  .iosx2 &{
+    #{$bdv}: $w/2 $s $c;
+  }
+  .iosx3 &{
+    #{$bdv}: $w/2.8 $s $c;
+  }
+}

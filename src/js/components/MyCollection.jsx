@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import UniversalTitle from './UniversalTitle'
+import { erilizeText } from './../utils/util.js'
 
 export default class MyCollection extends Component {
   constructor(props) {
     super(props)
     this.compareCards = this.compareCards.bind(this)
-    this.finalCards
+    this.finalCards = null
   }
-
+  /* eslint-disable */
   compareCards(allCards, myCards) {
     this.finalCards = allCards
     this.finalCards.map((card) => {
@@ -15,7 +16,9 @@ export default class MyCollection extends Component {
         if (card.id === myCard.cardId) {
           card.amount = myCard.amount  
         }
+        return true
       })
+      return true
     })
   }
 
@@ -30,6 +33,7 @@ export default class MyCollection extends Component {
       }
       return true
     })
+
     return (
       <div className="coll-cards-container">
         <UniversalTitle
@@ -38,22 +42,26 @@ export default class MyCollection extends Component {
           link={data.length > 1 ? '/mycards?' : ''} 
         />
         <div className="collect-cards">
-          <div>{data[0].cycleInfo.theme}</div>
-          <div>{`共计${count}张`}</div>
+          <div>{erilizeText(data[0].cycleInfo.theme, 8)}</div>
+          <div>{`共${count}张`}</div>
         </div>
         <ul className="coll-cardsls">
         {
           data[0].cards.map((item, index) => {
             const bgStyle = {
-              background: `url(${item.image}) no-repeat center`,
+              background: `url(${item.smallImage}) no-repeat center`,
               backgroundSize: '100% 100%'
+            }
+            let cardText = 'X' + item.amount
+            if (count > 99) {
+              cardText = '99+'
             }
             if (index <= 5) {
               return (
                 <li className="coll-cardsli" key={index}>
                   <div style={bgStyle} className="coll-cardsbg"></div>
                   {!item.amount && <div className="card-shade"></div>}
-                  {!!item.amount && <span>{'X' + item.amount}</span>}
+                  {!!item.amount && <span>{cardText}</span>}
                 </li>
               )
             } else {

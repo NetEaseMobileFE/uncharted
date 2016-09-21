@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { erilizeText } from './../utils/util.js'
 
 export default class Carousel extends Component {
   constructor(props) {
@@ -41,13 +42,13 @@ export default class Carousel extends Component {
       return true
     })
   }
-
+  /* eslint-disable */
   setInterval() {
     this.intervals.push(setInterval.apply(null, arguments))
   }
 
   handleClick() {
-    window.location = 'http://m.163.com/newsapp/applinks.html?url=newsapp://subject/SJ3699667062136051057'
+    window.location = 'newsapp://subject/SJ3699667062136051057'
   }
 
   scrollUp(area, con1, cliHeight) {
@@ -74,7 +75,7 @@ export default class Carousel extends Component {
         {
           data.map((item, index) => {
             return (
-              <div className="awardInfo" key={index} ref={`cli${index}`}>{`${item.passport}刚刚得到一张${item.name}`}</div>
+              <div className="awardInfo" key={index} ref={`cli${index}`}>{erilizeText(`${item.passport}刚刚得到一张${item.name}`, 40)}</div>
             )
           })
         }

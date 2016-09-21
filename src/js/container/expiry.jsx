@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import fetch from 'isomorphic-fetch'
+import * as actions from '../actions/expiry'
+import { fetchBasicInfo } from '../actions/home'
 import { erilizeUrl } from './../utils/util'
 import NEWSAPPAPI from 'newsapp'
 
@@ -12,8 +13,6 @@ class Expiry extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.cancel = this.cancel.bind(this)
     this.submit = this.submit.bind(this)
-    this.fetchExpiryParams = this.fetchExpiryParams.bind(this)
-    // this.displayInfo = this.displayInfo.bind(this)
     this.state = {
       warnDisplay: false,
       displayInfo: false,
@@ -22,88 +21,116 @@ class Expiry extends Component {
       address: '',
       device: ''
     }
-    this.params = erilizeUrl(window.location.href)
+    this.params = null
+    this.udid = null
   }
 
   componentDidMount() {
-    NEWSAPPAPI.getDeviceInfo((rs) => {
-      // let keys = Object.keys(rs)
-      // rs.u
-      console.log(rs)
+    NEWSAPPAPI.device((rs) => {
+      this.udid = rs.u
     })
+    this.params = erilizeUrl(window.location.href)
+    this.tele.addEventListener('blur', () => {
+      const reg = /^1[3|4|5|7|8][0-9]{9}$/
+      const flag = reg.test(this.tele.value)
+      if (flag === false) {
+        alert('手机号码格式错误')
+      }
+    }, false)
+  }
+
+  componentWillUnmount() {
+    fetchBasicInfo()
   }
 
   handleClick() {
+    if (this.username.value.length === 0 || this.tele.value.length === 0 || this.address.value.length === 0) {
+      alert('请输入完整的个人信息!')
+      return
+    }
     this.setState({
       warnDisplay: true,
-      username: this.refs.username.value,
-      tele: this.refs.tele.value,
-      address: this.refs.address.value
+      username: this.username.value,
+      tele: this.tele.value,
+      address: this.address.value
     })
-    console.log(this.refs.username.value)
   }
 
   cancel() {
     this.setState({
-      warnDisplay: false,
+      warnDisplay: false
     })
   }
 
   submit() {
-    this.setState({
-      warnDisplay: false,
-      displayInfo: true
-    })
-    this.fetchExpiryParams()
-  }
-
-  fetchExpiryParams() {
-    let udid
-    NEWSAPPAPI.device((rs) => {
-      udid = Object.keys(rs)
-    })
-    fetch('http://t.c.m.163.com/uc/activity/card/prize/exchange', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      credentials: 'same-origin',
-      body: `
-              prizeId=${this.params.prizeId}&
-              cycleId=${this.params.cycleId}&
-              lotteryId=${this.params.lotteryId}&
-              address=${this.state.address}&
-              name=${this.state.username}&
-              phone=${this.state.tele}&
-              udid=${udid}
-            `
-    }).then((res) => {
-      let intRes = parseInt(res, 10)
-      switch (intRes) {
-        case 400:
-          alert('未登录')
-          break
-        case 415:
-          alert('奖品已经过期')
-          break
-        case 416:
-          alert('奖品条件不满足')
-          break
-        case 417:
-          alert('奖品库存不足')
-          break
-        case 1:
-          alert('服务器内部错误')
-          break
-        default:
-          return
+    const userInfo = {
+      address: this.state.address,
+      username: this.state.username,
+      tele: this.state.tele,
+      udid: this.udid
+    }
+    const xhr = new XMLHttpRequest()
+    let webState = null
+    xhr.open('post', 'http://t.c.m.163.com/uc/activity/card/prize/exchange', true)
+    xhr.send(null)
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState == 4) {
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+          webState = true
+        } else {
+          alert('当前网络不稳定,请稍后再试')
+          webState = false
+        }
       }
-    }, () => {
-      alert('Error submitting form!')
-    })
+    }
+
+    setTimeout(() => {
+      if (!webState) {
+        this.cancel()
+        return false
+      }
+      this.props.fetchExpiryParams(this.params, userInfo)
+        .then((rs) => {
+          const errcode = this.props.data.expiryParams.errcode
+          switch (errcode) {
+            case 0:
+              this.setState({
+                warnDisplay: false,
+                displayInfo: true
+              })
+              // setTimeout(() => {
+              //   fetchBasicInfo()
+              // }, 300)
+              break
+            case 1:
+              this.cancel()
+              alert('领奖失败，请稍后再试')
+              break
+            case 400:
+              this.cancel()
+              alert('未登陆')
+              break
+            case 415:
+              this.cancel()
+              alert('奖品已过期')
+              break
+            case 416:
+              this.cancel()
+              alert('奖品条件不满足')
+              break
+            case 417:
+              this.cancel()
+              alert('领奖失败，请稍后再试')
+              break
+            default:
+              return
+          }
+        })
+    }, 500)
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="expiry-container">
         {
@@ -117,19 +144,19 @@ class Expiry extends Component {
                 <article className="form-item">
                   <div className="label">姓名：</div>
                   <div className="input">
-                    <input type="text" ref="username" />
+                    <input type="text" ref={(ref) => { this.username = ref }} />
                   </div>
                 </article>
                 <article className="form-item">
                   <div className="label">手机：</div>
                   <div className="input">
-                    <input type="tel" ref="tele" />
+                    <input type="tel" ref={(ref) => { this.tele = ref }} />
                   </div>
                 </article>
                 <article className="form-item">
                   <div className="label">住址：</div>
                   <div className="input">
-                    <input type="text" ref="address" />
+                    <input type="text" ref={(ref) => { this.address = ref }} />
                   </div>
                 </article>
               </section>
@@ -196,5 +223,5 @@ class Expiry extends Component {
     )
   }
 }
-export default connect()(Expiry)
 
+export default connect(state => ({ data: state.expiry }), actions)(Expiry)

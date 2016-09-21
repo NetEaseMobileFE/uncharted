@@ -3,15 +3,21 @@ import { connect } from 'react-redux'
 import * as actions from '../actions/record'
 import ScrollLoadBtn from '../components/scrollLoadBtn'
 import '../../css/record.scss'
+import { erilizeText, limitTime } from './../utils/util.js'
 
-import deepAssign from 'deep-assign'
-
+import NEWSAPPAPI from 'newsapp'
 class Record extends Component {
   constructor(props) {
     super(props)
     this.props.fetchRecordInfo()
   }
 
+  componentDidMount() {
+    NEWSAPPAPI.ui.title('历史获奖记录')
+  }
+  componentWillUnmount() {
+    this.props.clearStore()
+  }
   render() {
     const { data } = this.props
     const record = data.record
@@ -27,24 +33,29 @@ class Record extends Component {
       addData: record.noMoreData
     }
     // console.log(record)
+    console.log(this.props)
     console.log(record.noMoreData)
     return (
       <div className="record-page">
         <ul className="ls">
         {
-          data.record.lotteryPrizes.map((record, index) => {
+          data.record.lotteryPrizes.map((item, index) => {
             // console.log(record)
             const bgStyle = {
-              background: `url(${record.prize.image}) no-repeat center`,
-              backgroundSize: `1.08rem 1.05rem`
+              background: `url(${item.prize.image}) no-repeat center`,
+              backgroundSize: '1.08rem 1.05rem'
             }
+            const cycleTime = limitTime(item.cycleInfo.beginTime, item.cycleInfo.endTime)
+            const cycleTheme = item.cycleInfo.theme
+            const cyclePrize = item.prize.name
+            const cycleDesc = cycleTime + cycleTheme + cyclePrize
             return (
               <li className="li" key={index}>
                 <div className="li-l">
                   <div className="logo"></div>
                   <div className="li-l-r">
-                    <div className="prize">{record.prize.name}</div>
-                    <div className="user">{record.lotteryInfo.passport}</div>
+                    <div className="prize">{erilizeText(cycleDesc, 30)}</div>
+                    <div className="user">{item.lotteryInfo.passport}</div>
                   </div>
                 </div>
                 <div className="li-r">
@@ -55,7 +66,7 @@ class Record extends Component {
           })
         }
         </ul>
-        <ScrollLoadBtn data={pageParams}/>
+        <ScrollLoadBtn data={pageParams} />
       </div>
     )
   }

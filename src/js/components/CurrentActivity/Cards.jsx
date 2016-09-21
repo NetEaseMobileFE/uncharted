@@ -20,14 +20,12 @@ export default class Cards extends Component {
     sendCardDom: false
   }
 
-  changeCardStatus(cardDialogstatus, cardDom, sendCardDom) {
+  changeCardStatus(cardDialogstatus) {
     this.setState({
       boolCardDialog: cardDialogstatus,
-      cardDom: '',
-      boolsendCardDom: sendCardDom
     })
   }
-
+  /* eslint-disable */
   compareCards(allCards, myCards) {
     let finalCards = allCards
     finalCards.map((card) => {
@@ -35,12 +33,14 @@ export default class Cards extends Component {
         if (card.id === myCard.cardId) {
           card.amount = myCard.amount
         }
+        return null
       })
+      return null
     })
     return finalCards
   }
 
-  introCards(amount, image, mark, cname, cId, target) {
+  introCards(amount, image, mark, cname, cId, target, endTime) {
     this.setState({
       boolCardDialog: true,
       cardAmount: amount,
@@ -49,7 +49,8 @@ export default class Cards extends Component {
       cardName: cname,
       cardId: cId,
       sendCardDom: true,
-      cardDom: target
+      cardDom: target,
+      endTime
     })
   }
 
@@ -67,6 +68,7 @@ export default class Cards extends Component {
         { 
           this.state.boolCardDialog && 
             <CardDialog
+              cardType={this.props.myCards.length}
               cardAmount={this.state.cardAmount}
               cardId={this.state.cardId}
               cardLen={allCards.length}
@@ -78,8 +80,9 @@ export default class Cards extends Component {
               changeCardStatus={this.changeCardStatus}
               changeCardsNum={this.props.changeCardsNum}
               cycleId={this.props.cycleId}
+              endTime={this.state.endTime}
+              prizeId={this.props.prizeId}
             />
-            
         }
         {
           (finalCards || allCards).map((card, index) => {
@@ -91,7 +94,7 @@ export default class Cards extends Component {
               curAmount = card.amount
             }
             const bgStyle = {
-              background: `url(${card.image}) no-repeat center`,
+              background: `url(${card.smallImage}) no-repeat center`,
               backgroundSize: 'cover'
             }
 
@@ -101,7 +104,7 @@ export default class Cards extends Component {
                 key={index} 
                 onClick={ 
                   this.props.isNotHomePage ? '' : 
-                  (event) => { this.introCards(card.amount,card.image,card.mark,card.name,card.id,event.target) } 
+                  (event) => { this.introCards(card.amount, card.image, card.mark, card.name, card.id, event.target, this.props.endTime) }
                 }
               >
 
@@ -109,7 +112,7 @@ export default class Cards extends Component {
                   <div className="img-bg" style={bgStyle}></div>
                   {(this.props.loginStatus === true && !card.amount === true) && <div className="card-shade"></div>}
                   {!!card.amount && <span className="card-sum">{'X' + curAmount}</span>}
-                  {!!card.amount && <span className="card-logo" style={{ display: card.amount >= 1 ? '' : 'none' }}>送</span>}
+                  {!!card.amount && <span className="card-logo" style={{ display: card.amount > 1 ? '' : 'none' }}>送</span>}
                 </div>
                 {
                   intAmount === 2 ? 
@@ -128,7 +131,8 @@ export default class Cards extends Component {
           })
         }
         {
-          <div className={ cardLen === 1 ? `morediv2` : cardLen === 2 ? `morediv1` : ''}></div> 
+          cardLen === 1 || cardLen === 2 &&
+            <div className={cardLen === 1 ? 'morediv2' : cardLen === 2 ? 'morediv1' : ''}></div>
         }
       </ul>
     )

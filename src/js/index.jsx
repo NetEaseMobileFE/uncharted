@@ -16,7 +16,7 @@ import expiry from './container/expiry'
 import ShareItem from './container/ShareItem'
 import '../css/main.scss'
 import NEWSAPPAPI from 'newsapp'
-// 这个store有点让我疑惑
+
 const store = compose(
   applyMiddleware(thunk), 
   window.devToolsExtension ? window.devToolsExtension() : f => f

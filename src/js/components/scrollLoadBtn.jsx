@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
-import '../../css/ShareBanner.scss'
-import deepAssign from 'deep-assign'
+import './../../css/ShareBanner.scss'
 
 export default class ScrollLoadBtn extends Component {
   constructor(props) {
     super(props)
     this.handleScroll = this.handleScroll.bind(this)
     this.page = 1
-
   }
 
   state = {
     page: 1,
     scrollBtn: false
+  }
+
+  componentDidMount() {
+    document.addEventListener('scroll', this.handleScroll, false)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.handleScroll, false)
   }
 
   handleScroll() {
@@ -25,7 +31,7 @@ export default class ScrollLoadBtn extends Component {
         page: this.state.page + 1,
         scrollBtn: true
       })
-      data.getData(this.state.page,this.state.pageSize)
+      data.getData(this.state.page, this.state.pageSize)
       // if (data.addData) {
       //   setTimeout(()=>{
       //     this.setState({
@@ -38,15 +44,6 @@ export default class ScrollLoadBtn extends Component {
         scrollBtn: false
       })
     }
-
-  }
-
-  componentDidMount() {
-    document.addEventListener('scroll', this.handleScroll, false);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('scroll',this.handleScroll,false);
   }
 
   render() {

@@ -53,19 +53,19 @@ module.exports = {
         include: path.join(__dirname, 'src/js')
       }, {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!postcss'),
+        loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer&modules&importLoaders=1!postcss'),
         include: path.join(__dirname, 'src/css')
       }, {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!postcss!sass'),
+        loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer&modules&importLoaders=1!postcss!sass'),
         include: path.join(__dirname, 'src/css')
       }, {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!postcss!less'),
+        loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer&modules&importLoaders=1!postcss!less'),
         include: path.join(__dirname, 'src/css')
       }, {
         test: /\.styl$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!postcss!stylus'),
+        loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer&modules&importLoaders=1!postcss!stylus'),
         include: path.join(__dirname, 'src/css')
       }, {
         test: /\.png|jpe?g|gif$/,
@@ -87,7 +87,10 @@ module.exports = {
         loadPaths: ['./src/img/'],
         relative: true
       }),
-      require("postcss-cssnext"),
+      require('postcss-cssnext')({
+        remove: false,
+        browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'not ie <= 8', 'Android >= 4.0', 'iOS >= 7']
+      }),
       require('postcss-sprites')({
         stylesheetPath: './src/css',
         spritePath: './src/img/sprite.png',

@@ -29,7 +29,15 @@ export default function home(state = INIT_STATE, action) {
         }
         return true
       })
-      return newState
+    case 'FETCH_LOTTERY_ID':
+      return deepAssign({}, state, {
+        sendLotteryId: deepAssign({}, state.sendLotteryId, action.data)
+      })
+    case 'FETCH_SHARE_CARD':
+      console.log(action)
+      return deepAssign({}, state, {
+        shareCard: deepAssign({}, state.shareCard, action.data)
+      })
     default: 
       return state
   }

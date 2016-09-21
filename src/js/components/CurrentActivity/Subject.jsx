@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
+import { erilizeText, limitTime } from './../../utils/util'
 
 export default class Subject extends Component {
   constructor(props) {
     super(props)
     this.countDown = this.countDown.bind(this)
-    this.limitTime = this.limitTime.bind(this)
+    // this.limitTime = this.limitTime.bind(this)
     this.intervals = []
     this.setInterval = this.setInterval.bind(this)
+    this.openTime = this.openTime.bind(this)
   }
 
   state = {
@@ -15,24 +17,26 @@ export default class Subject extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      cdTime: this.countDown(this.props.subject.endTime)
-    })
-    this.setInterval(() => {
-      this.setState({
-        cdTime: this.countDown(this.props.subject.endTime)
-      })
-    }, 60 * 1000)
+    // this.setState({
+    //   cdTime: this.countDown(this.props.subject.endTime)
+    // })
+    // this.setInterval(() => {
+    //   this.setState({
+    //     cdTime: this.countDown(this.props.subject.endTime)
+    //   })
+    // }, 60 * 1000)
+    this.openTime()
   }
 
   componentWillUnmount() {
     this.intervals.map((timer) => {
       clearInterval(timer)
+      return null
     })
   }
-
+  /* eslint-disable */
   setInterval() {
-    this.intervals.push(setInterval.apply(null, arguments));
+    this.intervals.push(setInterval.apply(null, arguments))
   }
 
   countDown(endTime) {
@@ -61,13 +65,24 @@ export default class Subject extends Component {
     }
   }
 
-  limitTime(begin, end) {
-    const beginTime = new Date(begin)
-    const endTime = new Date(end)
-    const limit = `${beginTime.getMonth() + 1}.${beginTime.getDate()} - ${endTime.getMonth() + 1}.${endTime.getDate() - 1}`
-    return limit
+  // limitTime(begin, end) {
+  //   const beginTime = new Date(begin)
+  //   const endTime = new Date(end)
+  //   const limit = `${beginTime.getMonth() + 1}.${beginTime.getDate()} - ${endTime.getMonth() + 1}.${endTime.getDate() - 1}`
+  //   return limit
+  // }
+  
+  openTime() {
+    this.setState({
+      cdTime: this.countDown(this.props.subject.endTime)
+    })
+    this.setInterval(() => {
+      this.setState({
+        cdTime: this.countDown(this.props.subject.endTime)
+      })
+    }, 60 * 1000)
   }
-
+  
   render() {
     const subject = this.props.subject
     return (
@@ -81,7 +96,7 @@ export default class Subject extends Component {
             </div>
           </div>
         </div>
-        <div className="title-text">{`${subject.theme}主题 时限 ${this.limitTime(subject.beginTime, subject.endTime)}`}</div>
+        <div className="title-text">{`${erilizeText(subject.theme + '主题', 10)} 时限 ${limitTime(subject.beginTime, subject.endTime)}`}</div>
       </header>
     )
   }

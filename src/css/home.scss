@@ -1,4 +1,5 @@
 :global {
+  @import "common.scss";
 
   .h-main-container{
     width:100%;
@@ -36,14 +37,13 @@
         top: 0.17rem;
         box-sizing: border-box;
         height: .73rem;
-        border: 0.02rem solid #653634;
+        @include border(border, 2px, solid, #653634);
 
         .cd-in{
           display: flex;
           box-sizing: border-box;
           height: .59rem;
-          border: 0.03rem dotted #fff21a;
-
+          @include border(border, 1px, dotted, #fff21a);
           .cd-l,.cd-r{
             height:0.53rem;
             text-align: center;
@@ -54,10 +54,14 @@
           .cd-l{
             box-sizing: border-box;
             width: .75rem;
-            border-right: 0.03rem dotted #fff21a;
-            font-size: 0.18rem;
+            height: .58rem;
+            line-height: .58rem;
+            @include border(border-right, 1px, dotted, #fff21a);
+            @include px2px(font-size, 9)
           }
-
+          .cd-unit{
+            @include px2px(font-size, 9)
+          }
           .cd-r-daystyle-in{
             width: .65rem;
           }
@@ -287,7 +291,9 @@
 
   .coll-cardsls{
     display: flex;
-    margin:0 0 0.2rem 0.43rem;
+    justify-content: space-between;
+    width: 96%;
+    margin: 0 auto .4rem;
   }
   .coll-cardsli{
     z-index: 1;
@@ -298,7 +304,6 @@
     background-size: .4rem .4rem; 
     list-style: none;
     border-radius: 3px;
-    margin-right:0.15rem;
     text-align: left;
     line-height: 2.5rem;
 
@@ -308,8 +313,13 @@
       width:1.06rem;
       height:1.43rem;
     }
+    .shade-img{
+      z-index: 11;
+      background: rgba(255,255,255,.9);
+    }
 
     .card-shade{
+      z-index: 11;
       position: absolute;
       top: 0;
       left: 0;
@@ -326,24 +336,39 @@
     margin-left: 0.05rem;
   }
 
+  .homeAboutRule{
+    @include px2px(font-size, 13);
+  }
   .homeAboutRule>ul{
     margin:0.43rem 0 0 0.25rem;
     padding-bottom: 0.5rem;
     color:white;
     list-style: none;
-    font-size:13px;
   }
   .homeAboutRule>ul>li{
-    margin-bottom: 0.16rem;
+    line-height: .4rem;
   }
-
+  .rules-qa{
+    margin: .4rem .26rem .55rem;
+    line-height: .45rem;
+    color: #fff;
+  }
+  .rules-step-title{
+    width: 1.13rem;
+    margin-bottom: .25rem;
+    text-align: center;
+    line-height: .3rem;
+    @include px2px(font-size, 13);
+    @include border(border-top,1px,solid,white);
+    @include border(border-bottom,1px,solid,white);
+  }
   .h-card-dialog{
+    z-index: 10000;
     position: fixed;
     top:0;
     left:0;
     right:0;
     bottom:0;
-    z-index: 10000;
     background-color: rgba(102,102,102,.6);
 
 
@@ -359,8 +384,8 @@
         position: relative;
         width:4.36rem;
         height:5.89rem;
-        background: white url(./../img/cardBg.png) no-repeat center;
-        background-size: 2rem 2rem; 
+        //background: white url(./../img/cardBg.png) no-repeat center;
+        //background-size: 2rem 2rem;
         margin: 0 auto;
 
         .cover-card-bg{

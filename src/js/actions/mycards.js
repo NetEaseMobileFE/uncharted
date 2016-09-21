@@ -5,7 +5,6 @@ export function fetchMycardsInfo(page = 1, pageSize = 10) {
     return fetch(`http://t.c.m.163.com/uc/activity/card/list?page=${page}&pageSize=${pageSize}`, { credentials: 'same-origin' })
       .then(res => res.json())
       .then((json) => {
-        console.log(json)
         dispatch({
           type: 'FETCH_MYCARDS_INFO',
           data: json.data
@@ -18,3 +17,15 @@ export function fetchMycardsInfo(page = 1, pageSize = 10) {
 *本地测试路径：/mycards.json
 *后台测试路径：http://t.c.m.163.com/uc/activity/card/list
 ***************************/
+
+
+export function clearStore() {
+  return (dispatch) => {
+    return (
+        dispatch({
+          type: 'CLEAR_MYCARDS_INFO',
+          data: null
+        })
+    )
+  }
+}

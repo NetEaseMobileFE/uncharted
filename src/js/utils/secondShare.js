@@ -1,71 +1,78 @@
-// 易信中，要求全局设置shareData这个变量用于分享
-window.shareData = {}
-export function setShareData(title = '网易新闻集卡赢大奖', content, img) {
-  let url = location.href
-  if (url.match(/from=newsapp/)) {
-    url += '&f=newsapp'
+export function secondShareInit(data) {
+  // alert(data)
+  // console.log(data)
+  // alert(`${data.title} - ${data.content} - ${data.img}`)
+  let shareData = {}
+  let imgurl = data.img
+  let shareUrl = window.location.href
+  let summary = data.content
+  let title = data.title
+  // let params = window.location.href
+  // let spsw = params.spsw
+  // let spss = params.spss
+  // document.querySelector('[name="yixin-share-desc"]').setAttribute('content', summary)
+  // if (spss === 'imoney') {
+  //   imgurl = 'http://img4.cache.netease.com/utf8/3g/touch/images/200x200-icon2.png'
+  // }
+  // shareUrl += '&f=wx'
+  // const shareCallbackUrl = 'http://sps.163.com/func/?func=sharedone&spst=4&modelid=' + liveid + '&spsw=' + params.w + '&spss=' + params.spss
+  shareData = {
+    imgurl,
+    shareUrl,
+    summary,
+    title
+    // shareCallbackUrl
   }
-  window.shareData = {
-    imgUrl: img,  
-    tImgUrl: img,
-    fImgUrl: img,
-    wImgUrl: img,
-    href: location.href,
-    timeLineLink: location.href,
-    sendFriendLink: location.href,
-    weiboLink: location.href,
-    tTitle: title,
-    tContent: content,
-    fTitle: title,
-    fContent: content,
-    wContent: title
-  }
-}
-export function init(title, content, img) {
-  setShareData(title, content, img)
+  // const div = document.createElement('div')
+  // div.innerHTML = ''
+
   document.addEventListener('WeixinJSBridgeReady', () => {
     window.WeixinJSBridge.on('menu:share:appmessage', () => {
       window.WeixinJSBridge.invoke('sendAppMessage', {
-        'img_url': window.shareData.imgUrl,
-        'link': window.shareData.href,
-        'desc': window.shareData.fContent,
-        'title': window.shareData.fTitle
+        img_url: shareData.imgurl,
+        link: shareData.shareUrl,
+        desc: shareData.summary,
+        title: shareData.title
       }, () => {
+        // window.neteaseTracker && window.neteaseTracker(false, shareData.shareCallbackUrl + '&spsf=wx', '', 'sps')
       })
     })
 
     window.WeixinJSBridge.on('menu:share:timeline', () => {
       window.WeixinJSBridge.invoke('shareTimeline', {
-        'img_url': window.shareData.imgUrl,
-        'img_width': '80',
-        'img_height': '80',
-        'link': window.shareData.href,
-        'desc': window.shareData.tContent,
-        'title': window.shareData.tTitle
+        img_url: shareData.imgurl,
+        img_width: '200',
+        img_height: '200',
+        link: shareData.shareUrl,
+        desc: shareData.summary,
+        title: shareData.title
       }, () => {
+        // window.neteaseTracker && window.neteaseTracker(false, shareData.shareCallbackUrl + '&spsf=wx', '', 'sps')
       })
     })
   })
   document.addEventListener('YixinJSBridgeReady', () => {
     window.YixinJSBridge.on('menu:share:appmessage', () => {
       window.YixinJSBridge.invoke('sendAppMessage', {
-        'img_url': window.shareData.imgUrl,
-        'link': window.shareData.href,
-        'desc': window.shareData.fContent,
-        'title': window.shareData.fTitle
+        img_url: shareData.imgurl,
+        link: shareData.shareUrl,
+        desc: shareData.summary,
+        title: shareData.title
       }, () => {
+        // window.neteaseTracker && window.neteaseTracker(false, shareData.shareCallbackUrl + '&spsf=yx', '', 'sps')
       })
     })
 
     window.YixinJSBridge.on('menu:share:timeline', () => {
       window.YixinJSBridge.invoke('shareTimeline', {
-        'img_url': window.shareData.imgUrl,
-        'img_width': '80',
-        'img_height': '80',
-        'link': window.shareData.href,
-        'desc': window.shareData.tContent,
-        'title': window.shareData.tTitle
+        img_url: shareData.imgurl,
+        img_width: '200',
+        img_height: '200',
+        link: shareData.shareUrl,
+        desc: shareData.summary,
+        title: shareData.title
       }, () => {
+        // window.neteaseTracker && window.neteaseTracker(false, shareData.shareCallbackUrl + '&spsf=yx', '', 'sps')
       })
     })
   })

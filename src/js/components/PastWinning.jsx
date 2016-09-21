@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import UniversalTitle from './UniversalTitle'
+import { erilizeText } from './../utils/util.js'
 
 export default class PastWinning extends Component {
   render() {
@@ -10,6 +11,9 @@ export default class PastWinning extends Component {
         <ul className="pari-recordls">
         {
           data.lotteryPrizes.map((record, index) => {
+            if (index >= 2) {
+              return true
+            }
             const bgStyle = {
               background: `url(${record.prize.image}) no-repeat center`,
               backgroundSize: '1.08rem 1.05rem'
@@ -20,8 +24,8 @@ export default class PastWinning extends Component {
                   <div className="pari-logo"></div>
                   <div className="pari-li-l-r">
                     <div className="pari-prize">
-                      {record.cycleInfo.theme}
-                      {record.prize.name}
+                      {erilizeText(record.cycleInfo.theme, 8) + '主题 '}
+                      {erilizeText(record.prize.name, 10)}
                     </div>
                     <div className="pari-user">{record.lotteryInfo.passport}</div>
                   </div>
