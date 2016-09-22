@@ -5,17 +5,18 @@
     .ls{
 
       .li{
+        display: flex;
+        align-items: center;
         width:100%;
         height:1.85rem;
         padding-left: 0.27rem;
-        display: flex;
-        align-items: center;
 
         .li-l{
-          width:5rem;
-          height:0.6rem;
-          color:white;
           display: flex;
+          align-items: center;
+          width:5rem;
+          height: 1.85rem;
+          color:white;
           margin-right: 0.58rem;
 
           .logo{
@@ -28,7 +29,8 @@
           }
 
           .li-l-r{
-
+            width: 4.5rem;
+            margin-top: .2rem;
             .prize{
               width:100%;
               font-size: 14px;

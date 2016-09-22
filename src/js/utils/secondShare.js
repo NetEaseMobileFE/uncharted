@@ -1,7 +1,4 @@
 export function secondShareInit(data) {
-  // alert(data)
-  // console.log(data)
-  // alert(`${data.title} - ${data.content} - ${data.img}`)
   let shareData = {}
   let imgurl = data.img
   let shareUrl = window.location.href

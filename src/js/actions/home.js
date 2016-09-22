@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-
+import { changeUrl } from './../utils/util'
 
 /** ************************
  * 本地测试路径：/login.json
@@ -9,7 +9,7 @@ import fetch from 'isomorphic-fetch'
 
 export function fetchBasicInfo() {
   return (dispatch) => {
-    return fetch('http://t.c.m.163.com/uc/activity/card/exchange/userinfo', { credentials: 'same-origin' })
+    return fetch(changeUrl('http://t.c.m.163.com/uc/activity/card/exchange/userinfo', 1), { credentials: 'same-origin' })
       .then(res => res.json())
       .then((json) => {
         dispatch({
@@ -29,7 +29,7 @@ export function fetchBasicInfo() {
 
 export function fetchNotloginInfo() {
   return (dispatch) => {
-    return fetch('http://t.c.m.163.com/uc/activity/card/exchange/info')
+    return fetch(changeUrl('http://t.c.m.163.com/uc/activity/card/exchange/info', 1))
       .then(res => res.json())
       .then((json) => {
         console.log(json)
@@ -71,18 +71,18 @@ export function changeLotteryStatus(lotteryStatus) {
  * 获取历史获奖记录
  ***************************/
 
-export function fetchPastPrizeInfo() {
-  return (dispatch) => {
-    return fetch('/pastprize.json')
-      .then(res => res.json())
-      .then((json) => {
-        dispatch({
-          type: 'FETCH_PASTPRIZE_INFO',
-          data: json.data
-        })
-      })
-  }
-}
+// export function fetchPastPrizeInfo() {
+//   return (dispatch) => {
+//     return fetch('/pastprize.json')
+//       .then(res => res.json())
+//       .then((json) => {
+//         dispatch({
+//           type: 'FETCH_PASTPRIZE_INFO',
+//           data: json.data
+//         })
+//       })
+//   }
+// }
 
 /** ************************
  * 获取我的集卡记录
@@ -90,7 +90,7 @@ export function fetchPastPrizeInfo() {
 
 export function fetchCardInfo(cardId) {
   return (dispatch) => {
-    return fetch(`http://t.c.m.163.com/uc/activity/card/gift/send?cardId=${cardId}`, { credentials: 'same-origin' })
+    return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/gift/send?cardId=${cardId}`, 1), { credentials: 'same-origin' })
       .then(res => res.json())
       .then((json) => {
         dispatch({
@@ -107,7 +107,7 @@ export function fetchCardInfo(cardId) {
 
 export function sendLotteryId(id) {
   return (dispatch) => {
-    return fetch(`http://t.c.m.163.com/uc/activity/card/prize/share?lotteryId=${id}`, {
+    return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/prize/share?lotteryId=${id}`, 1), {
       method: 'GET',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -131,7 +131,7 @@ export function sendLotteryId(id) {
 export function receiveCardId(giftId, cardId) {
   const params = `cardId=${cardId}&giftId=${encodeURIComponent(giftId)}`
   return (dispatch) => {
-    return fetch('http://t.c.m.163.com/uc/activity/card/gift/receive', {
+    return fetch(changeUrl('http://t.c.m.163.com/uc/activity/card/gift/receive', 1), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'

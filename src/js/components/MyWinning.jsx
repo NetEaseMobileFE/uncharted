@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UniversalTitle from './UniversalTitle'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeText } from './../utils/util.js'
+import { erilizeText, changeUrl } from './../utils/util.js'
 
 export default class MyWinning extends Component {
   constructor(props) {
@@ -34,11 +34,11 @@ export default class MyWinning extends Component {
       return true
     })
     const shareData = {
-      wbText: `网易新闻,集卡赢大奖 http://t.c.m.163.com/uncharted/index.html/share?winnStatus=200&cycleId=${this.props.cycleId}&cardAmount=${allCardsNum}`,
+      wbText: '网易新闻,集卡赢大奖' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=200&cycleId=${this.props.cycleId}&cardAmount=${allCardsNum}`, 2),
       wbPhoto: `${imgUrl}`,
       wxText: '网易新闻,集卡赢大奖',
       wxTitle: `我中奖啦，获得了${prizeName}你也来参加吧！`,
-      wxUrl: `http://t.c.m.163.com/uncharted/index.html?winnStatus=200&cycleId=${this.props.cycleId}&cardAmount=${allCardsNum}#/share`,
+      wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=200&cycleId=${this.props.cycleId}&cardAmount=${allCardsNum}`, 2),
       wxPhoto: `${imgUrl}`
     }
     NEWSAPPAPI.share.invoke(shareData, () => {

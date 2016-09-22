@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NEWSAPPAPI from 'newsapp'
 import fetch from 'isomorphic-fetch'
-
+import { changeUrl, erilizeText } from './../utils/util'
 export default class CardDialog extends Component {
   constructor(props) {
     super(props)
@@ -13,19 +13,6 @@ export default class CardDialog extends Component {
     this.giftId = null
   }
 
-  // sendParamToEnd(id) {
-  //   fetch(`http://t.c.m.163.com/uc/activity/card/gift/send?cardId=${id}`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/x-www-form-urlencoded'
-  //     },
-  //     credentials: 'same-origin'
-  //   }).then((res) => {
-  //     // console.log(res)
-  //   }, () => {
-  //     alert('Error submitting form!')
-  //   })
-  // }
 
   close() {
     this.props.changeCardStatus(false)
@@ -44,16 +31,16 @@ export default class CardDialog extends Component {
     // this.props.changeCardsNum(cardNumInfo)
     // this.sendParamToEnd(this.props.cardId)
     let shareData = {}
-    fetch(`http://t.c.m.163.com/uc/activity/card/gift/send?cardId=${this.props.cardId}`, { credentials: 'same-origin' })
+    fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/gift/send?cardId=${this.props.cardId}`, 1), { credentials: 'same-origin' })
       .then(res => res.json())
       .then((json) => {
         this.giftId = json.data.giftId
         shareData = {
-          wbText: '网易新闻，集卡赢大奖 http://t.c.m.163.com/uncharted/index.html#/shareCard?cycleId=' + this.props.cycleId + '&cardId=' + this.props.cardId + '&cardLen=' + this.props.cardLen + '&prizeId=' + this.props.prizeId + '&giftId=' + encodeURIComponent(this.giftId) + '&',
+          wbText: '网易新闻，集卡赢大奖' + changeUrl('http://t.c.m.163.com/uncharted/index.html#/shareCard?cycleId=' + this.props.cycleId + '&cardId=' + this.props.cardId + '&cardLen=' + this.props.cardLen + '&prizeId=' + this.props.prizeId + '&giftId=' + encodeURIComponent(this.giftId) + '&', 2),
           wbPhoto: this.props.cardImg,
           wxText: '网易新闻，集卡赢大奖',
           wxTitle: `我送你一张${this.props.cardName}，集齐${this.props.cardLen}张可获得${this.props.prizeName}`,
-          wxUrl: `http://t.c.m.163.com/uncharted/index.html#/shareCard?cycleId=${this.props.cycleId}&cardId=${this.props.cardId}&cardLen=${this.props.cardLen}&prizeId=${this.props.prizeId}&giftId=${this.giftId}&uName=111&`,
+          wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/shareCard?cycleId=${this.props.cycleId}&cardId=${this.props.cardId}&cardLen=${this.props.cardLen}&prizeId=${this.props.prizeId}&giftId=${this.giftId}&uName=111&`, 2),
           wxPhoto: this.props.cardImg
         }
         NEWSAPPAPI.share.invoke(shareData, () => {
@@ -68,23 +55,21 @@ export default class CardDialog extends Component {
       wxTitle = `我得到了${this.props.cardName}，已经获得了${this.props.prizeName},你也来参加吧!`
     }
     const shareData = {
-      wbText: `网易新闻，集卡赢大奖 http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=300&cycleId=${this.props.cycleId}&cardId=${this.props.cardId}&nowAmount=${this.props.cardType}&cardLen=${this.props.cardLen}`,
+      wbText: '网易新闻，集卡赢大奖' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=300&cycleId=${this.props.cycleId}&cardId=${this.props.cardId}&nowAmount=${this.props.cardType}&cardLen=${this.props.cardLen}`, 2),
       wbPhoto: this.props.cardImg,
       wxText: '网易新闻，集卡赢大奖',
       wxTitle,
-      wxUrl: `http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=300&cycleId=${this.props.cycleId}&cardId=${this.props.cardId}&nowAmount=${this.props.cardType}&cardLen=${this.props.cardLen}`,
+      wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=300&cycleId=${this.props.cycleId}&cardId=${this.props.cardId}&nowAmount=${this.props.cardType}&cardLen=${this.props.cardLen}`, 2),
       wxPhoto: this.props.cardImg
     }
     NEWSAPPAPI.share.invoke(shareData, () => {
     })
   }
   render() {
-    // alert(this.props.cardType)
     const bgImg = {
       background: `url(${this.props.cardImg}) no-repeat center`,
-      backgroundSize: '4.26rem 5.89rem'
+      backgroundSize: '100% 100%'
     }
-    // alert(this.props.cardAmount)
     return (
       <div className="h-card-dialog">
         <div className="dialog-inner">
@@ -96,7 +81,7 @@ export default class CardDialog extends Component {
             </div>
           </div>
           <footer className="footer">
-            <div className="info">{this.props.cardMark}</div>
+            <div className="info">{erilizeText(this.props.cardMark, 28)}</div>
             <div className={parseInt(this.props.cardAmount, 10) > 1 ? 'btn justify-content1' : 'btn justify-content2'}>
               <div className="close" onClick={this.close}>关闭</div>
               {

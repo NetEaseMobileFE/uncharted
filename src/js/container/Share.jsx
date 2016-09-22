@@ -119,8 +119,10 @@ class Share extends Component {
           this.state.winnStatus === '100' ?
             <div className="share oneBg">
               <header className="header mb1">
-                <div className="title">{this.props.prizeTitle}</div>
-                <div className="text">{cycleTheme}</div>
+                <div>
+                  <div className="title">{this.props.prizeTitle}</div>
+                  <div className="text">{cycleTheme}</div>
+                </div>
               </header>
               <CurrentActivity data={data} isNotHomePage={this.props.isNotDisplay} MarqClass={this.props.MarqClass} />
               <footer className="footer">
@@ -171,8 +173,10 @@ class Share extends Component {
               </div> : 
               <div className="share anotherBg">
                 <header className="header mb3">
-                  <div className="title">{this.props.prizeTitle}</div>
-                  <div className="text">{cycleTheme}</div>
+                  <div className="header-inner">
+                    <div className="title">{this.props.prizeTitle}</div>
+                    <div className="text">{cycleTheme}</div>
+                  </div>
                 </header>
                 <div className="shareCard-img">
                   <div className="sharecard-bg" style={bgImg}></div>

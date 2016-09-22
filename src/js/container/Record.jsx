@@ -32,9 +32,6 @@ class Record extends Component {
       getData: this.props.fetchRecordInfo,
       addData: record.noMoreData
     }
-    // console.log(record)
-    console.log(this.props)
-    console.log(record.noMoreData)
     return (
       <div className="record-page">
         <ul className="ls">
@@ -54,7 +51,7 @@ class Record extends Component {
                 <div className="li-l">
                   <div className="logo"></div>
                   <div className="li-l-r">
-                    <div className="prize">{erilizeText(cycleDesc, 30)}</div>
+                    <div className="prize">{erilizeText(cycleDesc, 32)}</div>
                     <div className="user">{item.lotteryInfo.passport}</div>
                   </div>
                 </div>

@@ -95,7 +95,7 @@ export default class Cards extends Component {
             }
             const bgStyle = {
               background: `url(${card.smallImage}) no-repeat center`,
-              backgroundSize: 'cover'
+              backgroundSize: '100% 100%'
             }
 
             return (

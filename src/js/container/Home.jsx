@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import * as actions from '../actions/home'
-import {fetchQueryCard} from '../actions/shareItem'
+import { fetchQueryCard } from '../actions/shareItem'
 import '../../css/home.scss'
 import '../../css/currentActivity.scss'
 
@@ -16,7 +16,7 @@ import Rules from '../components/Rules'
 import CardDialog from '../components/CardDialog'
 import NoCardToGet from '../components/NoCardToGet'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeUrl, writeObj } from './../utils/util'
+import { erilizeUrl } from './../utils/util'
 
 class Home extends Component {
   constructor(props) {
@@ -212,7 +212,7 @@ class Home extends Component {
                 />
             }
             {
-              !!notlogin && notlogin.lotteryPrizes && <PastWinning data={notlogin} />
+              !!notlogin && notlogin.lotteryPrizes.length != 0 && <PastWinning data={notlogin} />
             }
           </div>
           {

@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-
+import { changeUrl } from './../utils/util'
 /** ************************
  *本地测试路径：/notlogin.json
  *后台测试路径：http://t.c.m.163.com/uc/activity/card/exchange/info
@@ -7,7 +7,7 @@ import fetch from 'isomorphic-fetch'
 
 export function fetchShareItemInfo() {
   return (dispatch) => {
-    return fetch('http://t.c.m.163.com/uc/activity/card/exchange/info')
+    return fetch(changeUrl('http://t.c.m.163.com/uc/activity/card/exchange/info', 1))
       .then(res => res.json())
       .then((json) => {
         dispatch({
@@ -20,7 +20,7 @@ export function fetchShareItemInfo() {
 
 export function fetchShareInfo(id) {
   return (dispatch) => {
-    return fetch(`http://t.c.m.163.com/uc/activity/card/exchange/past/info?cycleId=${id}`)
+    return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/exchange/past/info?cycleId=${id}`, 1))
       .then(res => res.json())
       .then((json) => {
         console.log(id)
@@ -36,7 +36,7 @@ export function fetchShareInfo(id) {
 export function fetchQueryCard(giftId, cardId) {
   console.log(giftId, cardId)
   return (dispatch) => {
-    return fetch(`http://t.c.m.163.com/uc/activity/card/gift/find?giftId=${encodeURIComponent(giftId)}&cardId=${cardId}`)
+    return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/gift/find?giftId=${encodeURIComponent(giftId)}&cardId=${cardId}`, 1))
       .then(res => res.json())
       .then((json) => {
         console.log(json)

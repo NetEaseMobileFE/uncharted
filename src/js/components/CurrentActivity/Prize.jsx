@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NEWSAPPAPI from 'newsapp'
-import { sendLotteryId, erilizeText } from './../../utils/util'
+import { erilizeText, changeUrl } from './../../utils/util'
 
 export default class Prize extends Component {
   constructor(props) {
@@ -33,11 +33,11 @@ export default class Prize extends Component {
       }
       NEWSAPPAPI.ui.button('分享', () => {
         const shareData = {
-          wbText: `网易新闻,集卡赢大奖 http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=100&cycleId=${this.props.cycleId}&nowAmount=${this.props.nowAmount}&cardLen=${this.props.sumAmount}`,
+          wbText: '网易新闻,集卡赢大奖' + changeUrl(` http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=100&cycleId=${this.props.cycleId}&nowAmount=${this.props.nowAmount}&cardLen=${this.props.sumAmount}`, 2),
           wbPhoto: `${this.props.data.image}`,
           wxText: '网易新闻,集卡赢大奖',
           wxTitle,
-          wxUrl: `http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=100&cycleId=${this.props.cycleId}&nowAmount=${this.props.nowAmount}&cardLen=${this.props.sumAmount}`,
+          wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=100&cycleId=${this.props.cycleId}&nowAmount=${this.props.nowAmount}&cardLen=${this.props.sumAmount}`, 2),
           wxPhoto: `${this.props.data.image}`
         }
         NEWSAPPAPI.share.invoke(shareData, () => {
@@ -50,11 +50,11 @@ export default class Prize extends Component {
   handleShare() {
     let { push, cycleId, prizeId, lotteryId } = this.props
     const shareData = {
-      wbText: `网易新闻,集卡赢大奖 http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=${this.state.winnStatus}&cardAmount=${this.props.nowAmount}&cycleId=${this.props.cycleId}`,
+      wbText: '网易新闻,集卡赢大奖' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=${this.state.winnStatus}&cardAmount=${this.props.nowAmount}&cycleId=${this.props.cycleId}`, 2),
       wbPhoto: `${this.props.data.image}`,
       wxText: '网易新闻,集卡赢大奖',
       wxTitle: `我中奖啦，获得了${this.props.data.name}你也来参加吧！`,
-      wxUrl: `http://t.c.m.163.com/uncharted/index.html?winnStatus=${this.state.winnStatus}&cardAmount=${this.props.nowAmount}&cycleId=${this.props.cycleId}#/share`,
+      wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=${this.state.winnStatus}&cardAmount=${this.props.nowAmount}&cycleId=${this.props.cycleId}`, 2),
       wxPhoto: `${this.props.data.image}`
     }
     // NEWSAPPAPI.share.setData(shareData)
@@ -73,7 +73,7 @@ export default class Prize extends Component {
             alert('服务器繁忙')
             console.log('服务器内部错误')
           } else {
-            alert('错误101')
+            alert('服务器繁忙')
           }
         })
     })
@@ -81,7 +81,13 @@ export default class Prize extends Component {
 
   handleParticipate() {
     // 需要打开设置
-    window.location.href = 'pushview://settings'
+    NEWSAPPAPI.device((rs) => {
+      if (Math.floor(parseInt(rs.v, 10)) < 16) {
+        alert('升级到最新版才能参加活动')
+      } else {
+        window.location.href = 'pushview://settings'
+      }
+    })
   }
 
   handleLogin() {

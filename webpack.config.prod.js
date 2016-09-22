@@ -21,7 +21,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'js/bundle.[chunkhash].js',
     chunkFilename: 'js/[id].bundle.[chunkhash].js',
-    publicPath: '/static/'
+    publicPath: '/utf8/apps/uncharted/'
   },
   plugins: [
     new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]),

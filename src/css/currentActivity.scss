@@ -31,53 +31,17 @@
     position: relative;
     box-sizing: content-box;
     width: 6.8rem;
-    margin: 0 auto;    //border:1px solid black;
-    padding: 10px;
+    margin: .2rem auto 0;
     z-index: 1;
-    //background: url(./../img/light.png) repeat top left;
-    //background-size: .58rem .54rem;
-    //background-position: 0.07rem 0rem;
-    //border-image: url("./../img/light.png") 30 30 repeat;
-    //animation-duration: 1500ms;
-    //animation-name: ios-flash;
-    //animation-iteration-count: infinite;
+    box-shadow: 0 0 1px 1px #ffc11b,
+                0 0 0 2px #f31745,
+                0 0 0 3px #ffc11b,
+                0 0 0 4px #f31745,
+                0 0 0 5px #ffc11b;
+    border-radius: 5px;
 
-    //.inner-imgbg{
-    //  background-color: #f21745;
-    //}
-    //.light{
-    //  position: absolute;
-    //}
-    //.top-light, .bottom-light{
-    //  left: 0;
-    //  width: 100%;
-    //  height: 10px;
-    //  background: url('./../img/light-row.png') repeat-x top left;
-    //  background-size: .58rem .16rem;
-    //}
-    //.top-light{
-    //  top: 0;
-    //}
-    //.bottom-light{
-    //  bottom: 0;
-    //}
-    //.left-light, .right-light{
-    //  top: 10px;
-    //  bottom: 10px;
-    //  width: 10px;
-    //  background: url('./../img/light-col.png') repeat-y top left;
-    //  background-size: .15rem .55rem;
-    //}
-    //.left-light{
-    //  left: 0;
-    //}
-    //.right-light{
-    //  right: 0;
-    //}
     .inner{
       width: 6.8rem;
-/*      height: 9.75rem;*/
-      //background-color: #f21745;
       padding-top: .23rem;
       z-index: 10;
       margin: 0 auto;
@@ -236,8 +200,8 @@
         height:2.7rem;
         background: white;
         list-style: none;
-        margin-bottom: 0.56rem;
-        border-radius: .05rem;
+        margin-bottom: 0.4rem;
+        border-radius: 5px;
         text-align: start;
 
         .li-img{
@@ -252,8 +216,8 @@
           background: white url(./../img/cardBg.png) no-repeat center;
           background-size: .74rem .74rem;
           //border: .01rem solid #a5a5a5;
-          @include border(border, 1px, solid, #a5a5a5);
-          border-radius: .05rem;
+          //@include border(border, 1px, solid, #a5a5a5);
+          border-radius: 5px;
 
           .img-bg{
             position: absolute;
@@ -264,6 +228,7 @@
             z-index: 11;
             width:100%;
             height:100%;
+            border-radius: 5px;
           }
         }
         .card-shade{
@@ -274,7 +239,7 @@
           bottom: 0;
           right: 0;
           background: rgba(255,255,255,.75);
-          border-radius: .05rem;
+          border-radius: 5px;
         }
         .img-shade-container{
           position: absolute;
@@ -295,7 +260,7 @@
             top: .05rem;
             right: 0;
             @include border(border, 1px, solid, #aaa0a2);
-            border-radius: .05rem;
+            border-radius: 3px;
           }
           .img-shade2{
             position: absolute;
@@ -307,7 +272,7 @@
             right: 0;
             box-sizing: border-box;
             @include border(border, 1px, solid, #aaa0a2);
-            border-radius: .05rem;
+            border-radius: 3px;
           }
         }
 

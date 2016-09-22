@@ -1,8 +1,9 @@
 import fetch from 'isomorphic-fetch'
+import { changeUrl } from './../utils/util'
 
 export function fetchMycardsInfo(page = 1, pageSize = 10) {
   return (dispatch) => {
-    return fetch(`http://t.c.m.163.com/uc/activity/card/list?page=${page}&pageSize=${pageSize}`, { credentials: 'same-origin' })
+    return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/list?page=${page}&pageSize=${pageSize}`, 1), { credentials: 'same-origin' })
       .then(res => res.json())
       .then((json) => {
         dispatch({

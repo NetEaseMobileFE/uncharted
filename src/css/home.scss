@@ -194,27 +194,27 @@
     .pari-recordls{
 
       .pari-li{
+        display: flex;
+        align-items: center;
         width:100%;
         height:1.85rem;
         padding-left: 0.27rem;
-        display: flex;
-        align-items: center;
 
         .pari-li-l{
+          display: flex;
           width:5.8rem;
           height:0.6rem;
-          color:white;
-          display: flex;
           margin-right: 0.1rem;
+          color:white;
         }
 
         .pari-logo{
           width:0.6rem;
           height:0.6rem;
+          margin-right: 0.17rem;
           border-radius: 0.6rem;
           background: url(../img/circleLogo.png) no-repeat center center;
           background-size: 0.6rem 0.6rem;
-          margin-right: 0.17rem;
         }
 
         .pari-prize{
@@ -231,14 +231,14 @@
         }
 
         .pari-li-r{
-          z-index: 1;
+          //z-index: 1;
           width:1.08rem;
           height:1.05rem;
           background: white url(./../img/cardBg.png) no-repeat center;
           background-size: .5rem .5rem;
 
           .past-prizebg{
-            z-index: 10;
+            //z-index: 10;
             width: 1.08rem;
             height: 1.05rem;
           }
@@ -296,7 +296,7 @@
     margin: 0 auto .4rem;
   }
   .coll-cardsli{
-    z-index: 1;
+    //z-index: 1;
     position: relative;
     width:1.06rem;
     height:1.43rem;
@@ -308,31 +308,32 @@
     line-height: 2.5rem;
 
     .coll-cardsbg{
-      z-index: 10;
+      //z-index: 10;
       position: absolute;
       width:1.06rem;
       height:1.43rem;
+      border-radius: 3px;
     }
     .shade-img{
-      z-index: 11;
-      background: rgba(255,255,255,.9);
+      //z-index: 11;
+      background: rgba(255,255,255,.75);
     }
 
     .card-shade{
-      z-index: 11;
+      //z-index: 11;
       position: absolute;
       top: 0;
       left: 0;
       bottom: 0;
       right: 0;
-      background: rgba(255,255,255,.9);
+      background: rgba(255,255,255,.75);
       border-radius: .05rem;
     }
   }
 
   .coll-cardsli > span{
     position: absolute;
-    z-index: 20;
+    //z-index: 20;
     margin-left: 0.05rem;
   }
 
@@ -363,22 +364,25 @@
     @include border(border-bottom,1px,solid,white);
   }
   .h-card-dialog{
-    z-index: 10000;
+    z-index: 100;
     position: fixed;
     top:0;
     left:0;
     right:0;
     bottom:0;
+    overflow: hidden;
     background-color: rgba(102,102,102,.6);
 
 
     .dialog-inner{
+      z-index: 101;
       box-sizing: border-box;
       width: 5.46rem;
       height: 9.02rem;
       background: url(./../img/dialogBg.png) no-repeat center center;
       margin: .87rem auto 0;
       padding-top: .45rem;
+      border-radius: 3px;
 
       .cover{
         position: relative;
@@ -387,6 +391,7 @@
         //background: white url(./../img/cardBg.png) no-repeat center;
         //background-size: 2rem 2rem;
         margin: 0 auto;
+        border-radius: 10px;
 
         .cover-card-bg{
           position: absolute;
@@ -396,6 +401,7 @@
           right: 0;
           width:4.36rem;
           height:5.89rem;
+          border-radius: 10px;
         }
 
         .share{

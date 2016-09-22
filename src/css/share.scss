@@ -15,19 +15,21 @@
     width: 7.5rem;
     //height: 100%;
     overflow: hidden;
-    .mb1{
-      margin:0 auto .17rem;
-    }
-    .mb2{
-      margin:0 auto .17rem;
-    }
-    .mb3{
-      margin:0 auto .17rem;
-    }
+    //.mb1{
+    //  margin:0 auto .17rem;
+    //}
+    //.mb2{
+    //  margin:0 auto .17rem;
+    //}
+    //.mb3{
+    //  margin:0 auto .17rem;
+    //}
     .header{
+      display: flex;
+      align-items: center;
       width: 6.8rem;
-      height: 1.5rem;
-
+      height: 1.7rem;
+      margin-left: .35rem;
       color:white;
 
       .title{
@@ -47,7 +49,6 @@
       .info{
         width:100%;
         height:.8rem;
-        padding-top: .5rem;
       }
       .userinfo,.introduce{
         width: 100%;
@@ -72,7 +73,7 @@
       z-index: 1;
       width: 4.55rem;
       height: 6.15rem;
-      margin: .34rem auto 0;
+      margin: 0 auto;
       background: white;
       border-radius: .1rem;
       background: white url(./../img/cardBg.png) no-repeat center;
@@ -90,8 +91,9 @@
       width: 6.8rem;
       height: 3.16rem;
       margin: .26rem auto 0;
-      color:white;
+      color: white;
       font-size: .3rem;
+      text-align: center;
 
       .info1{
         margin-top: .45rem;
@@ -106,17 +108,13 @@
       }
       .prize-title{
         width: 100%;
-        height: .57rem;
         font-size: .36rem;
-        line-height: .8rem;
-        margin-bottom: .1rem;
+        margin: .35rem 0 .1rem;
       }
 
       .address{
         width: 100%;
-        height: .6rem;
         font-size: .24rem;
-        line-height: .4rem;
       }
 
       .info3{
@@ -140,10 +138,11 @@
           }
         }
         .info3-text{
+          display: flex;
+          align-items: center;
           width: 5.1rem;
           height: 1.27rem;
           text-align: start;
-
           .info3-prize{
             text-align: start
           }
