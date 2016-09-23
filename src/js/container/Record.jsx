@@ -47,10 +47,17 @@ class Record extends Component {
             const cycleTheme = item.cycleInfo.theme
             const cyclePrize = item.prize.name
             const cycleDesc = cycleTime + cycleTheme + cyclePrize
+            const headBg = {
+              background: `url(${item.lotteryInfo.head}) no-repeat center`,
+              backgroundSize: '100% 100%',
+              zIndex: 10
+            }
             return (
               <li className="li" key={index}>
                 <div className="li-l">
-                  <div className="logo"></div>
+                  <div className="logo">
+                    <div className="logo-head" style={headBg}></div>
+                  </div>
                   <div className="li-l-r">
                     <div className="prize">{erilizeText(cycleDesc, 32)}</div>
                     <div className="user">{item.lotteryInfo.passport}</div>

@@ -20,12 +20,20 @@
           margin-right: 0.58rem;
 
           .logo{
+            position: relative;
             width:0.6rem;
             height:0.6rem;
             border-radius: 0.6rem;
             background: url(../img/circleLogo.png) no-repeat center center;
             background-size: 0.6rem 0.6rem;
             margin-right: 0.17rem;
+
+            .logo-head{
+              position: absolute;
+              width:0.6rem;
+              height:0.6rem;
+              border-radius: 0.6rem;
+            }
           }
 
           .li-l-r{
