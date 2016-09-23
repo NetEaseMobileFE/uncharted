@@ -23,8 +23,6 @@ export function fetchShareInfo(id) {
     return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/exchange/past/info?cycleId=${id}`, 1))
       .then(res => res.json())
       .then((json) => {
-        console.log(id)
-        console.log(json)
         dispatch({
           type: 'FETCH_SHARE_INFO',
           data: json.data
@@ -34,17 +32,10 @@ export function fetchShareInfo(id) {
 }
 
 export function fetchQueryCard(giftId, cardId) {
-  console.log(giftId, cardId)
-  return (dispatch) => {
+  return () => {
     return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/gift/find?giftId=${encodeURIComponent(giftId)}&cardId=${cardId}`, 1))
       .then(res => res.json())
       .then((json) => {
-        // console.log(json)
-        // dispatch({
-        //   type: 'FETCH_QUERY_CARD',
-        //   data: json
-        // })
-        console.log(json)
         return json
       })
   }

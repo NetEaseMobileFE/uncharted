@@ -1,5 +1,5 @@
 :global {
-
+  @import "Common";
 
   .anotherBg{
     background:url(./../img/dialogBg.png) no-repeat top center;
@@ -35,7 +35,7 @@
       .title{
         width: 100%;
         height: .57rem;
-        font-size: .36rem;
+        @include px2px(font-size, 18);
         line-height: .8rem;
         margin-bottom: .1rem;
       }
@@ -43,7 +43,7 @@
       .text{
         width: 100%;
         height: .6rem;
-        font-size: .24rem;
+        @include px2px(font-size, 12);
         line-height: .4rem;
       }
       .info{
@@ -51,9 +51,9 @@
         height:.8rem;
       }
       .userinfo,.introduce{
-        width: 100%;
+        width: 80%;
         height: .4rem;
-        font-size: .3rem;
+        @include px2px(font-size, 15);
         line-height: .4rem;
       }
 
@@ -92,7 +92,7 @@
       height: 3.16rem;
       margin: .26rem auto 0;
       color: white;
-      font-size: .3rem;
+      @include px2px(font-size, 15);
       text-align: center;
 
       .info1{
@@ -100,21 +100,21 @@
       }
       .card-No{
         width: 100%;
-        height: .43rem;
         text-align: center;
+        line-height: .4rem;
       }
       .prize{
         text-align: center;
       }
       .prize-title{
         width: 100%;
-        font-size: .36rem;
+        @include px2px(font-size, 18);
         margin: .35rem 0 .1rem;
       }
 
       .address{
         width: 100%;
-        font-size: .24rem;
+        @include px2px(font-size, 12);
       }
 
       .info3{

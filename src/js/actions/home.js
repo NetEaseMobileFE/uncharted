@@ -9,15 +9,10 @@ import {changeUrl, writeObj} from './../utils/util'
 
 export function fetchBasicInfo() {
   return (dispatch) => {
-    // alert(document.cookie)
     return fetch(changeUrl('http://t.c.m.163.com/uc/activity/card/exchange/userinfo', 1), {
       credentials: 'same-origin'
     }).then(res => res.json())
       .then((json) => {
-        if (json.errcode != 0) {
-          writeObj(json)
-          alert(document.cookie)
-        }
         dispatch({
           type: 'FETCH_BASIC_INFO',
           data: json.data
@@ -130,7 +125,6 @@ export function receiveCardId(giftId, cardId) {
     })
       .then(res => res.json())
       .then((json) => {
-        console.log(json)
         dispatch({
           type: 'FETCH_SHARE_CARD',
           data: json.data

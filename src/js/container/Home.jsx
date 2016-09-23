@@ -16,7 +16,7 @@ import Rules from '../components/Rules'
 import CardDialog from '../components/CardDialog'
 import NoCardToGet from '../components/NoCardToGet'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeUrl, writeObj } from './../utils/util'
+import { erilizeUrl } from './../utils/util'
 
 class Home extends Component {
   constructor(props) {
@@ -45,13 +45,10 @@ class Home extends Component {
     NEWSAPPAPI.ui.title('头条集卡兑大奖')
     NEWSAPPAPI.login(true, (rs) => {
       setTimeout(() => {
-        writeObj(rs)
         if (!!rs) {
           if (!!this.params.getCard) {
-            // alert('card打印')
-            this.props.fetchQueryCard(this.params.giftId, this.params.cardId).then(() => {
-              const { queryCard } = this.props.shareItem
-              if (!!queryCard.data.valid) {
+            this.props.fetchQueryCard(this.params.giftId, this.params.cardId).then((json) => {
+              if (!!json.data && !!json.data.valid) {
                 this.setState({
                   cardStatus: !!this.params.getCard
                 })
@@ -64,11 +61,9 @@ class Home extends Component {
               }
             })
           } else {
-            // alert(document.cookie)
             this.getData()
           }
-        } else {
-          // this.getData()
+          this.judgeHlcStatus()
         }
       }, 500)
     })
@@ -78,7 +73,7 @@ class Home extends Component {
     }
     setTimeout(() => {
       if (!!this.params.getCard) {
-        window.history.replaceState([], '', 'index.html#/?_k=7t7ju0')
+        window.history.replaceState([], '', 'index.html')
       }
     }, 500)
   }

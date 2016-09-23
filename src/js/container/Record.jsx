@@ -37,7 +37,6 @@ class Record extends Component {
         <ul className="ls">
         {
           data.record.lotteryPrizes.map((item, index) => {
-            // console.log(record)
             const bgStyle = {
               background: `url(${item.prize.image}) no-repeat center`,
               backgroundSize: '1.08rem 1.05rem'

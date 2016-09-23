@@ -49,8 +49,6 @@ class ShareItem extends Component {
   }
 
   handleClick() {
-    console.log(`http://m.163.com/newsapp/applinks.html?url=${encodeURIComponent(changeUrl('http://t.c.m.163.com/uncharted/index.html?getCard=1&cardId=', 2) + this.params.cardId + '&giftId=' + this.params.giftId + '&')}`)
-    alert(1)
     window.location.href = `http://m.163.com/newsapp/applinks.html?url=${encodeURIComponent(changeUrl('http://t.c.m.163.com/uncharted/index.html?getCard=1&cardId=', 2) + this.params.cardId + '&giftId=' + this.params.giftId + '&')}`
   }
 
@@ -82,7 +80,6 @@ class ShareItem extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { share, queryCard } = this.props.data
     if (!share && !queryCard) {
       return null
@@ -92,7 +89,6 @@ class ShareItem extends Component {
     let cardText = ''
     let cardImg = ''
     let cardName = ''
-
     cards.map((card) => {
       if (parseInt(card.id, 10) === parseInt(this.state.cardId, 10)) {
         cardText = card.mark
@@ -111,7 +107,10 @@ class ShareItem extends Component {
       <div className="sharecard">
         <ShareBanner />
         <div className="title">
-          <div className="user">{`送你的${cardName}卡片,请速领取`}</div>
+          <div>
+            <div className="user">{erilizeText(`${cardName}送给你,集齐可得${share.prize.name}`, 18)}</div>
+            <div className="desc">不用谢我，我只是个传说</div>
+          </div>
         </div>
         <div className="info-outer">
           <div className="inner">

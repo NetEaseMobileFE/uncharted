@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { fetchShareInfo } from '../actions/ShareItem'
 import '../../css/Share.scss'
 import { secondShareInit } from '../utils/secondShare'
-import { erilizeUrl, changeUrl } from '../utils/util'
+import { erilizeUrl, changeUrl, erilizeText } from '../utils/util'
 
 import CurrentActivity from '../components/CurrentActivity'
 import ShareBanner from '../components/ShareBanner'
@@ -36,7 +36,6 @@ class Share extends Component {
     }
     this.cardImg = ''
     this.cardName = ''
-    console.log(this.props)
     this.props.fetchShareInfo(params.cycleId)
   }
 
@@ -83,9 +82,6 @@ class Share extends Component {
   render() {
     const { data } = this.props
     const { share } = data
-    // const prizeImg = data.prize.image
-    // const cardImg = ''
-    console.log(data)
     if (!share) {
       return null
     }
@@ -93,7 +89,6 @@ class Share extends Component {
     const prizeArray = share.prize
     let lackCards = (parseInt(params.cardLen, 10) - parseInt(params.nowAmount, 10))
     lackCards = lackCards <= 0 ? 0 : lackCards
-    console.log(params)
     const cycleTheme = share.cycleInfo.theme
     share.cards.map((card) => {
       if (parseInt(card.id, 10) === parseInt(this.state.cardId, 10)) {
@@ -130,19 +125,21 @@ class Share extends Component {
                   lackCards !== 0 ?
                     <div className="info1">
                       <div className="card-No">
-                        “我已集齐{params.nowAmount}张，再集{lackCards}张
-                      </div>
-                      <div className="prize">
-                        可获得{prizeArray.name}，你也来参加吧”
+                        {
+                          parseInt(params.nowAmount, 10) === 0 ?
+                            erilizeText(`我还差${lackCards}张卡,集齐可得${prizeArray.name}。私聊我，咱们互换吧~`, 30)
+                            :
+                            erilizeText(`我发现了个好玩的活动,集齐${parseInt(params.cardLen, 10)}张可得${prizeArray.name},一般人我不告诉TA`, 35)
+                        }
                       </div>
                     </div>
                     :
                     <div className="info1">
                       <div className="card-No">
-                        我中奖啦,
+                        我参加了网易新闻集卡活动,获得了{prizeArray.name}
                       </div>
                       <div className="prize">
-                        获得了{prizeArray.name}，你也来参加吧!
+                        人品大爆发啊~
                       </div>
                     </div>
                 }
@@ -153,8 +150,8 @@ class Share extends Component {
               <div className="share oneBg">
                 <header className="header mb2">
                   <div className="info">
-                    <div className="userinfo">{`"我获得了${prizeArray.name},人品大爆发啊~`}</div>
-                    <div className="introduce">你也来参加吧"</div>
+                    <div className="userinfo">{`我参加了网易新闻集卡活动,获得了${prizeArray.name}`}</div>
+                    <div className="introduce">人品大爆发啊~</div>
                   </div>
                   <div className="winnlogo"></div>
                 </header>
@@ -190,8 +187,8 @@ class Share extends Component {
                       <div className="info3-card">
                         {
                           lackCards > 0 ?
-                            `我得到了${this.cardName}，再集${lackCards}张可获得${prizeArray.name}，你也来参加吧` :
-                            `我得到了${this.cardName}，已获得${prizeArray.name}大奖,你也来参加吧!`
+                            `我得到了${this.cardName}，集齐可得${prizeArray.name}，一般人我不告诉TA` :
+                            `我得到了${this.cardName}，得到了${prizeArray.name},一般人我不告诉TA`
                         }
                       </div>
                     </div>

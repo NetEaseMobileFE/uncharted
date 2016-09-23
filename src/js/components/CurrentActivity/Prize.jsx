@@ -12,7 +12,6 @@ export default class Prize extends Component {
     this.state = {
       prizeStatus: this.props.collCardStatus, // 是否开启活动
       loginStatus: this.props.loginStatus, // 登陆状态
-      // shareStatus: false,
     }
   }
 
@@ -115,9 +114,9 @@ export default class Prize extends Component {
     let finalBtnText = ''
     let finalClass = 'prize-btn'
     let finalLabelText = ''
+
     if (!this.props.collCardStatus) {
       // 未开启集卡功能
-      // alert(1)
       finalFunc = this.handleParticipate
       finalBtnText = '立即参与'
       finalClass += ' btn-bgc3'

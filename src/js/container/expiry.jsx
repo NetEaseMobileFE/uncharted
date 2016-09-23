@@ -91,7 +91,7 @@ class Expiry extends Component {
       }
       NEWSAPPAPI.login(() => {})
       this.props.fetchExpiryParams(this.params, userInfo)
-        .then((rs) => {
+        .then(() => {
           const errcode = this.props.data.expiryParams.errcode
           switch (errcode) {
             case 0:
@@ -99,9 +99,6 @@ class Expiry extends Component {
                 warnDisplay: false,
                 displayInfo: true
               })
-              // setTimeout(() => {
-              //   fetchBasicInfo()
-              // }, 300)
               break
             case 1:
               this.cancel()
@@ -109,9 +106,7 @@ class Expiry extends Component {
               break
             case 400:
               this.cancel()
-              writeObj(rs)
-              alert(document.cookie)
-              alert('未登陆')
+              alert('服务器繁忙,请稍后再试')
               break
             case 415:
               this.cancel()
@@ -133,7 +128,6 @@ class Expiry extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="expiry-container">
         {
@@ -217,7 +211,7 @@ class Expiry extends Component {
               <footer className="footer">
                 <div className="useforuser">
                   <div className="logo"></div>
-                  <div className="prompt">我们将尽快为您寄出奖品</div>
+                  <div className="prompt">我们将在每期活动结束后的7个工作日内为您寄出奖品，有问题请发邮件至vivojika2016@163.com</div>
                 </div>
               </footer>
             </div>
