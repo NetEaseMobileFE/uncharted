@@ -39,7 +39,7 @@ export default class MyCollection extends Component {
         <UniversalTitle
           text="我的集卡记录" 
           showMore={data.length > 1 ? '查看全部 >' : ''} 
-          link={data.length > 1 ? '/mycards?' : ''} 
+          link={data.length > 1 ? '/mycards?' : ''}
         />
         <div className="collect-cards">
           <div>{erilizeText(data[0].cycleInfo.theme, 8)}</div>
@@ -61,7 +61,7 @@ export default class MyCollection extends Component {
                 <li className="coll-cardsli" key={index}>
                   <div style={bgStyle} className="coll-cardsbg"></div>
                   {!item.amount && <div className="card-shade"></div>}
-                  {!!item.amount && <span>{cardText}</span>}
+                  {!!item.amount && <span className="card-text">{cardText}</span>}
                 </li>
               )
             } else {

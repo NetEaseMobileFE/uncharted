@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeText, changeUrl } from '../../utils/util'
+import { erilizeText, changeUrl, writeObj } from '../../utils/util'
 
 export default class Prize extends Component {
   constructor(props) {
@@ -117,10 +117,16 @@ export default class Prize extends Component {
 
     if (!this.props.collCardStatus) {
       // 未开启集卡功能
+      // 或者
+      // 当前版本过低
       finalFunc = this.handleParticipate
       finalBtnText = '立即参与'
       finalClass += ' btn-bgc3'
       finalLabelText = '您已关闭此功能'
+      const ua = navigator.userAgent
+      if (Math.floor(+(ua.split('NewsApp/', 3)[1])) < 16) {
+        finalLabelText = '当前版本过低'
+      }
     } else if (this.props.curPrizeStatus === 2) {
       // 已经领取
       finalFunc = null

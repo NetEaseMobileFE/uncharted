@@ -62,7 +62,15 @@
         .number{
           position: absolute;
           z-index: 11;
+          height: .3rem;
           margin: 1.1rem 0 0 .09rem;
+          padding: 0 .05rem 0;
+          @include px2px(font-size, 12);
+          color: white;
+          text-align: center;
+          line-height: .3rem;
+          border-radius: 2px;
+          background-color: #01416f;
         }
       }
     }

@@ -209,12 +209,20 @@
         }
 
         .pari-logo{
+          position: relative;
           width:0.6rem;
           height:0.6rem;
           margin-right: 0.17rem;
           border-radius: 0.6rem;
-          background: url(../img/circleLogo.png) no-repeat center center;
+          background: url(./../img/circleLogo.png) no-repeat center center;
           background-size: 0.6rem 0.6rem;
+
+          .logo-header{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: .6rem;
+          }
         }
 
         .pari-prize{
@@ -304,8 +312,6 @@
     background-size: .4rem .4rem; 
     list-style: none;
     border-radius: 3px;
-    text-align: left;
-    line-height: 2.5rem;
 
     .coll-cardsbg{
       //z-index: 10;
@@ -329,13 +335,23 @@
       background: rgba(255,255,255,.75);
       border-radius: .05rem;
     }
+
+    .card-desc{
+      position: absolute;
+      left: .05rem;
+      bottom: .05rem;
+      height: .3rem;
+      padding: 0 .05rem 0;
+      @include px2px(font-size, 12);
+      text-align: center;
+      line-height: .3rem;
+      color: white;
+      border-radius: 2px;
+      background-color: #01416f;
+    }
   }
 
-  .coll-cardsli > span{
-    position: absolute;
-    //z-index: 20;
-    margin-left: 0.05rem;
-  }
+
 
   .homeAboutRule{
     @include px2px(font-size, 13);

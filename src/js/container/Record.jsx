@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions/Record'
+import { fetchBasicInfo } from '../actions/Home'
 import ScrollLoadBtn from '../components/ScrollLoadBtn'
 import '../../css/Record.scss'
 import { erilizeText, limitTime } from '../utils/util.js'
@@ -15,9 +16,12 @@ class Record extends Component {
   componentDidMount() {
     NEWSAPPAPI.ui.title('历史获奖记录')
   }
+
   componentWillUnmount() {
-    this.props.clearStore()
+    fetchBasicInfo()
+    this.props.clearStore() // 该方法是为了防止重复渲染相同数据
   }
+
   render() {
     const { data } = this.props
     const record = data.record

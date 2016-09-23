@@ -18,10 +18,17 @@ export default class PastWinning extends Component {
               background: `url(${record.prize.image}) no-repeat center`,
               backgroundSize: '1.08rem 1.05rem'
             }
+            const headBg = {
+              background: `url(${record.lotteryInfo.head}) no-repeat center`,
+              backgroundSize: '100% 100%',
+              zIndex: 10
+            }
             return (
               <li className="pari-li" key={index}>
                 <div className="pari-li-l">
-                  <div className="pari-logo"></div>
+                  <div className="pari-logo">
+                    <div className= "logo-header" style={headBg}></div>
+                  </div>
                   <div className="pari-li-l-r">
                     <div className="pari-prize">
                       {erilizeText(record.cycleInfo.theme, 8) + '主题 '}

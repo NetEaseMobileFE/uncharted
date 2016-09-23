@@ -262,7 +262,14 @@
         .card-sum{
           left:.12rem;
           bottom:.1rem;
-          color:#323232;
+          height: .3rem;
+          padding: 0 .05rem 0;
+          @include px2px(font-size, 12);
+          color: white;
+          line-height: .3rem;
+          text-align: center;
+          background-color: #01416f;
+          border-radius: 2px;
         }
 
         .card-logo{
