@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions/MyCards'
-import { fetchBasicInfo } from '../actions/Home'
 import ScrollLoadBtn from '../components/ScrollLoadBtn'
 import { erilizeText } from '../utils/util.js'
 import NEWSAPPAPI from 'newsapp'
@@ -37,7 +36,6 @@ class Mycards extends Component {
   }
 
   componentWillUnmount() {
-    fetchBasicInfo()
     this.props.clearStore() // 该方法是为了防止重复渲染相同数据
   }
 
