@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/expiry'
-import { fetchBasicInfo } from '../actions/home'
-import { erilizeUrl } from './../utils/util'
+import * as actions from '../actions/Expiry'
+import { fetchBasicInfo } from '../actions/Home'
+import { erilizeUrl, writeObj } from '../utils/util'
 import NEWSAPPAPI from 'newsapp'
 
-import '../../css/expiry.scss'
+import '../../css/Expiry.scss'
 
 class Expiry extends Component {
   constructor(props) {
@@ -89,6 +89,7 @@ class Expiry extends Component {
         this.cancel()
         return false
       }
+      NEWSAPPAPI.login(() => {})
       this.props.fetchExpiryParams(this.params, userInfo)
         .then((rs) => {
           const errcode = this.props.data.expiryParams.errcode
@@ -108,6 +109,8 @@ class Expiry extends Component {
               break
             case 400:
               this.cancel()
+              writeObj(rs)
+              alert(document.cookie)
               alert('未登陆')
               break
             case 415:
@@ -214,7 +217,7 @@ class Expiry extends Component {
               <footer className="footer">
                 <div className="useforuser">
                   <div className="logo"></div>
-                  <div className="prompt">我们将尽快为您寄出奖品有任何问题请拨打123456联系客服</div>
+                  <div className="prompt">我们将尽快为您寄出奖品</div>
                 </div>
               </footer>
             </div>

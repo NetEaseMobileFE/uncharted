@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UniversalTitle from './UniversalTitle'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeText, changeUrl } from './../utils/util.js'
+import { erilizeText, changeUrl } from '../utils/util.js'
 
 export default class MyWinning extends Component {
   constructor(props) {
@@ -15,18 +15,19 @@ export default class MyWinning extends Component {
     push(`/expiry?prizeId=${prizeId}&cycleId=${cycleId}&lotteryId=${lotteryId}`)
   }
 
-
-  handleShare(prizeId, lotteryId, cycleId) {
-    let { push, changeLotteryStatus, data } = this.props
+// 分享后领奖
+  handleShare(prizeId, lotteryId, liCycleId) {
+    let { push, changeLotteryStatus, data, cycleId } = this.props
     let imgUrl
     let prizeName
     let allCardsNum
     let lotteryStatusObj = {
-      lotteryId: () => lotteryId,
+      lotteryId,
       status: 1
     }
+    // 查找当期的数据
     data.lotteryPrizes.map((item) => {
-      if (item.cycleInfo.id === cycleId) {
+      if (item.cycleInfo.id === liCycleId) {
         imgUrl = item.prize.image
         prizeName = item.prize.name
         allCardsNum = item.prize.cardIds.length
@@ -34,11 +35,11 @@ export default class MyWinning extends Component {
       return true
     })
     const shareData = {
-      wbText: '网易新闻,集卡赢大奖' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=200&cycleId=${this.props.cycleId}&cardAmount=${allCardsNum}`, 2),
+      wbText: '网易新闻,集卡赢大奖啦' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=200&cycleId=${cycleId}&cardAmount=${allCardsNum}`, 2),
       wbPhoto: `${imgUrl}`,
-      wxText: '网易新闻,集卡赢大奖',
-      wxTitle: `我中奖啦，获得了${prizeName}你也来参加吧！`,
-      wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=200&cycleId=${this.props.cycleId}&cardAmount=${allCardsNum}`, 2),
+      wxText: '网易新闻,集卡赢大奖啦',
+      wxTitle: `我参加网易新闻集卡活动，获得了${prizeName}。人品大爆发啊~`,
+      wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=200&cycleId=${cycleId}&cardAmount=${allCardsNum}`, 2),
       wxPhoto: `${imgUrl}`
     }
     NEWSAPPAPI.share.invoke(shareData, () => {
@@ -48,7 +49,7 @@ export default class MyWinning extends Component {
           let errcode = parseInt(this.props.sendLotteryIdErrCode, 10)
           if (errcode === 0) {
             changeLotteryStatus(lotteryStatusObj)
-            push(`/expiry?prizeId=${prizeId}&cycleId=${cycleId}&lotteryId=${lotteryId}`)
+            push(`/expiry?prizeId=${prizeId}&cycleId=${liCycleId}&lotteryId=${lotteryId}`)
           } else if (errcode === 400) {
             alert('请在登陆后领奖')
           } else if (errcode === 412) {
@@ -152,10 +153,3 @@ export default class MyWinning extends Component {
   }
 }
 
-
-// 校验
-// WinningRecordli.propTypes = {
-//   prizeName:React.PropTypes.string.isRequired,
-//   prizeTime:React.PropTypes.string.isRequired,
-//   prizeInfo:React.PropTypes.string.isRequired
-// }

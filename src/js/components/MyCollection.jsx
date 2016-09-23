@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import UniversalTitle from './UniversalTitle'
-import { erilizeText } from './../utils/util.js'
+import { erilizeText } from '../utils/util.js'
 
 export default class MyCollection extends Component {
   constructor(props) {
@@ -65,7 +65,7 @@ export default class MyCollection extends Component {
                 </li>
               )
             } else {
-              return console.log('太多了,显示不过来')
+              // return console.log('太多了,显示不过来')
             }
           }) 
 

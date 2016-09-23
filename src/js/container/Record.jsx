@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/record'
-import ScrollLoadBtn from '../components/scrollLoadBtn'
-import '../../css/record.scss'
-import { erilizeText, limitTime } from './../utils/util.js'
+import * as actions from '../actions/Record'
+import ScrollLoadBtn from '../components/ScrollLoadBtn'
+import '../../css/Record.scss'
+import { erilizeText, limitTime } from '../utils/util.js'
 
 import NEWSAPPAPI from 'newsapp'
 class Record extends Component {

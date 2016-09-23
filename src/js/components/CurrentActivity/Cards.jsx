@@ -1,23 +1,21 @@
 import React, { Component } from 'react'
-import CardDialog from './../CardDialog'
+import CardDialog from '../CardDialog'
 
 export default class Cards extends Component {
   constructor(props) {
     super(props)
-    this.compareCards = this.compareCards.bind(this)
-    this.introCards = this.introCards.bind(this)
-    this.changeCardStatus = this.changeCardStatus.bind(this)
-  }
-
-    
-  state = {
-    boolCardDialog: false,
-    cardAmount: 0,
-    cardImg: '',
-    cardText: '',
-    cardName: '',
-    cardId: '',
-    sendCardDom: false
+    this.compareCards = this.compareCards.bind(this) // 比较未登录信息里面的卡片和我已经收集的卡片id,得到一些卡片的信息
+    this.introCards = this.introCards.bind(this) // 为卡片弹窗加载数据
+    this.changeCardStatus = this.changeCardStatus.bind(this) // 更改卡片状态
+    this.state = {
+      boolCardDialog: false,
+      cardAmount: 0,
+      cardImg: null,
+      cardText: null,
+      cardName: null,
+      cardId: null,
+      sendCardDom: false
+    }
   }
 
   changeCardStatus(cardDialogstatus) {
@@ -82,6 +80,8 @@ export default class Cards extends Component {
               cycleId={this.props.cycleId}
               endTime={this.state.endTime}
               prizeId={this.props.prizeId}
+              sendCard={this.props.sendCard}
+              sendCardInfo={this.props.sendCardInfo}
             />
         }
         {

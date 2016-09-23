@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import UniversalTitle from './UniversalTitle'
-import { erilizeText } from './../utils/util.js'
+import { erilizeText } from '../utils/util.js'
 
 export default class PastWinning extends Component {
   render() {

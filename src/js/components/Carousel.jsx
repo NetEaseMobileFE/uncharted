@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
-import { erilizeText } from './../utils/util.js'
+import { erilizeText } from '../utils/util.js'
 
 export default class Carousel extends Component {
   constructor(props) {
     super(props)
-    this.handleClick = this.handleClick.bind(this)
     this.intervals = []
+    this.handleClick = this.handleClick.bind(this)
     this.setInterval = this.setInterval.bind(this)
     this.scrollUp = this.scrollUp.bind(this)
-  }
-
-  state = {
-    userName: this.props.data[0].passport,
-    cardName: this.props.data[0].name,
-    displayText: '',
+    this.state = {
+      userName: this.props.data[0].passport,
+      cardName: this.props.data[0].name,
+      displayText: '',
+    }
   }
 
   componentDidMount() {
@@ -23,17 +22,6 @@ export default class Carousel extends Component {
     this.setInterval(() => {
       this.scrollUp(area, box1, cliHeight)
     }, 50)
-
-    // area.addEventListener('mouseover',() => {
-    //   console.log('mouseover')
-    //   this.intervals.map((timer,index)=>{
-    //     clearInterval(timer)
-    //   });
-    // },false)
-
-    // area.addEventListener('mouseout',() => {
-    //   this.setInterval(this.scrollUp(area,box1),50);
-    // },false)
   }
 
   componentWillUnmount() {
@@ -48,7 +36,7 @@ export default class Carousel extends Component {
   }
 
   handleClick() {
-    window.location = 'newsapp://subject/SJ3699667062136051057'
+    window.location = 'newsapp://subject/SJ07092985555724594961'
   }
 
   scrollUp(area, con1, cliHeight) {

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/mycards'
-import ScrollLoadBtn from '../components/scrollLoadBtn'
-import { erilizeText } from './../utils/util.js'
+import * as actions from '../actions/MyCards'
+import ScrollLoadBtn from '../components/ScrollLoadBtn'
+import { erilizeText } from '../utils/util.js'
 import NEWSAPPAPI from 'newsapp'
 
-import '../../css/mycards.scss'
-import '../../css/scrollLoadBtn.scss'
+import '../../css/MyCards.scss'
+import '../../css/ScrollLoadBtn.scss'
 
 class Mycards extends Component {
   constructor(props) {

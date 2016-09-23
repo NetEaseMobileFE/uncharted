@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/shareItem'
+import * as actions from '../actions/ShareItem'
 import { secondShareInit } from './../utils/secondShare'
-import { erilizeUrl, erilizeText } from './../utils/util'
+import { erilizeUrl, erilizeText, changeUrl } from '../utils/util'
 
-import '../../css/shareItem.scss'
+import '../../css/ShareItem.scss'
 import ShareBanner from '../components/ShareBanner'
 
 // 送卡页面
@@ -29,36 +29,29 @@ class ShareItem extends Component {
   componentDidMount() {
     this.props.fetchShareInfo(this.params.cycleId)
     this.props.fetchQueryCard(this.params.giftId, this.params.cardId)
-      .then(() => {
-        const { share, queryCard } = this.props.data
-        if (!share || !queryCard) {
+      .then((json) => {
+        const { share } = this.props.data
+        if (!share || !json) {
           return null
         }
         this.compareTimeOut(share.cycleInfo.endTime)
-        this.setState({
-          alreadyGet: !queryCard.data.valid
-        })
+        if (json.data != null && json.data.valid) {
+          this.setState({
+            alreadyGet: false
+          })
+        } else {
+          this.setState({
+            alreadyGet: true
+          })
+        }
         return null
       })
   }
 
-  // getData(uName, cName) {
-  //   this.setState({
-  //     userName: uName,
-  //     cardName: cName
-  //   })
-  // }
-
   handleClick() {
-    // this.props.receiveCardId(this.params.giftId, this.params.cardId).then(
-    //   () => {
-    //     this.setState({
-    //       alreadyGet: true
-    //     })
-    //     window.location.href = `http://m.163.com/newsapp/applinks.html?url=${encodeURIComponent('http://t.c.m.163.com/uncharted/index.html?getCard=1&cardId=' + this.params.cardId + '&')}`
-    //   }
-    // )
-    window.location.href = `http://m.163.com/newsapp/applinks.html?url=${encodeURIComponent('http://t.c.m.163.com/uncharted/index.html?getCard=1&cardId=' + this.params.cardId + '&giftId=' + this.params.giftId + '&')}`
+    console.log(`http://m.163.com/newsapp/applinks.html?url=${encodeURIComponent(changeUrl('http://t.c.m.163.com/uncharted/index.html?getCard=1&cardId=', 2) + this.params.cardId + '&giftId=' + this.params.giftId + '&')}`)
+    alert(1)
+    window.location.href = `http://m.163.com/newsapp/applinks.html?url=${encodeURIComponent(changeUrl('http://t.c.m.163.com/uncharted/index.html?getCard=1&cardId=', 2) + this.params.cardId + '&giftId=' + this.params.giftId + '&')}`
   }
 
   compareTimeOut(endTime) {
@@ -76,19 +69,20 @@ class ShareItem extends Component {
   }
 
   goCollect() {
-    window.location.href = 'http://m.163.com/newsapp/applinks.html?url=http://t.c.m.163.com/uncharted/index.html'
+    window.location.href = 'http://m.163.com/newsapp/applinks.html?url=' + changeUrl('http://t.c.m.163.com/uncharted/index.html', 2)
   }
 
-  secondShare(cardLen, cardName, cardImg, prizeName) {
+  secondShare(cardName, cardImg, prizeName) {
     let secondShareOption = {
-      title: erilizeText(`我送你一张${cardName}，集齐${cardLen}张可获得${prizeName}`, 40),
-      content: '网易新闻,集卡赢大奖',
+      title: erilizeText(`${cardName}送给你，集齐可领取${prizeName},不用谢我，我只是个传说。`, 40),
+      content: '网易新闻,集卡赢大奖啦',
       img: cardImg
     }
     secondShareInit(secondShareOption)
   }
 
   render() {
+    console.log(this.props)
     const { share, queryCard } = this.props.data
     if (!share && !queryCard) {
       return null
@@ -107,7 +101,7 @@ class ShareItem extends Component {
       }
       return true
     })
-    this.secondShare(this.params.cardLen, cardName, cardImg, share.prize.name)
+    this.secondShare(cardName, cardImg, share.prize.name)
 
     const bgImg = {
       background: `url(${cardImg}) no-repeat center`,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './../../css/ShareBanner.scss'
+import '../../css/ShareBanner.scss'
 
 export default class ShareBanner extends Component {
   render() {
@@ -12,5 +12,4 @@ export default class ShareBanner extends Component {
       </a>
     )
   }
-
 }

@@ -1,5 +1,5 @@
 :global {
-  @import "common.scss";
+  @import "Common";
 
   .sharecard{
     width: 100%;
@@ -8,6 +8,8 @@
     background-size: 100% 12.5rem;
 
     .title{
+      display: flex;
+      align-items: center;
       width: 5.92rem;
       height: 1.62rem;
       margin: 0 auto;

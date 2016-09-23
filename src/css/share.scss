@@ -2,7 +2,7 @@
 
 
   .anotherBg{
-    background:url(./../img/bg145.png) no-repeat top center;
+    background:url(./../img/dialogBg.png) no-repeat top center;
     background-size: 7.5rem 12.1rem;
   }
 
@@ -75,7 +75,7 @@
       height: 6.15rem;
       margin: 0 auto;
       background: white;
-      border-radius: .1rem;
+      border-radius: 10px;
       background: white url(./../img/cardBg.png) no-repeat center;
       background-size: 2rem 1.94rem;
 
@@ -84,7 +84,7 @@
         z-index: 10;
         width: 4.55rem;
         height: 6.15rem;
-
+        border-radius: 10px;
       }
     }
     .footer{

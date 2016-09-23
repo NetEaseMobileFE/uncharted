@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchShareInfo } from '../actions/shareItem'
-import '../../css/share.scss'
-import { secondShareInit } from './../utils/secondShare'
-import { erilizeUrl } from './../utils/util'
+import { fetchShareInfo } from '../actions/ShareItem'
+import '../../css/Share.scss'
+import { secondShareInit } from '../utils/secondShare'
+import { erilizeUrl, changeUrl } from '../utils/util'
 
 import CurrentActivity from '../components/CurrentActivity'
 import ShareBanner from '../components/ShareBanner'
@@ -41,7 +41,7 @@ class Share extends Component {
   }
 
   handleClick() {
-    window.location.href = 'http://m.163.com/newsapp/applinks.html?url=http://t.c.m.163.com/uncharted/index.html'
+    window.location.href = changeUrl('http://m.163.com/newsapp/applinks.html?url=http://t.c.m.163.com/uncharted/index.html', 2)
   }
 
   secondShare(cardAmount, lackCards, cardName, cardImg, prizeName, prizeImg) {
@@ -50,29 +50,29 @@ class Share extends Component {
       content: '',
       img: ''
     }
+    const allCards = cardAmount + lackCards
     switch (parseInt(this.state.winnStatus, 10)) {
       case 100:// 没有获奖
-
-        secondShareOption.title = `我集到了${cardAmount}张卡，再集${lackCards}张可获得${prizeName}，你也来参加吧！`
-        secondShareOption.content = '网易新闻,集卡赢大奖'
+        secondShareOption.title = `我还差${lackCards}张卡，集齐可得${prizeName}。私聊我，咱们互换吧~` // 已经有卡,未集齐
+        secondShareOption.content = '网易新闻,集卡赢大奖啦'
         secondShareOption.img = prizeImg
         if (lackCards === 0) {
-          secondShareOption.title = `我中奖啦，获得了${prizeName}你也来参加吧！`
+          // 已经集齐
+          secondShareOption.title = `我参加网易新闻集卡活动，获得了${prizeName}。人品大爆发啊~`
+        } else if (cardAmount === 0) {
+          // 集齐0张
+          secondShareOption.title = `我发现了个好玩的活动，集齐${allCards}张卡可得${prizeName}，一般人我不告诉TA`
         }
         break
       case 200:// 已经获奖
-        secondShareOption.title = `我中奖啦，获得了${prizeName}你也来参加吧！`
-        secondShareOption.content = '网易新闻,集卡赢大奖'
+        secondShareOption.title = `我参加网易新闻集卡活动，获得了${prizeName}。人品大爆发啊~`
+        secondShareOption.content = '网易新闻,集卡赢大奖啦'
         secondShareOption.img = prizeImg
-
         break
       case 300:// 晒卡
-        secondShareOption.title = `我得到了${cardName}，再集${lackCards}张可获得${prizeName}你也来参加吧`
-        secondShareOption.content = '网易新闻,集卡赢大奖'
+        secondShareOption.title = `我得到了${cardName}，集齐可得${prizeName},你也来参加吧`
+        secondShareOption.content = '网易新闻,集卡赢大奖啦'
         secondShareOption.img = cardImg
-        if (lackCards <= 0) {
-          secondShareOption.title = `我得到了${cardName}，获得了${prizeName}你也来参加吧`
-        }
         break
       default:
         return
@@ -153,7 +153,7 @@ class Share extends Component {
               <div className="share oneBg">
                 <header className="header mb2">
                   <div className="info">
-                    <div className="userinfo">{`"我获得了${prizeArray.name}`}</div>
+                    <div className="userinfo">{`"我获得了${prizeArray.name},人品大爆发啊~`}</div>
                     <div className="introduce">你也来参加吧"</div>
                   </div>
                   <div className="winnlogo"></div>

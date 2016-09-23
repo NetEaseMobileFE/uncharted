@@ -39,11 +39,13 @@ export function fetchQueryCard(giftId, cardId) {
     return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/gift/find?giftId=${encodeURIComponent(giftId)}&cardId=${cardId}`, 1))
       .then(res => res.json())
       .then((json) => {
+        // console.log(json)
+        // dispatch({
+        //   type: 'FETCH_QUERY_CARD',
+        //   data: json
+        // })
         console.log(json)
-        dispatch({
-          type: 'FETCH_QUERY_CARD',
-          data: json
-        })
+        return json
       })
   }
 }

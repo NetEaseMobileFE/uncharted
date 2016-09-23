@@ -3,7 +3,7 @@ import { routerReducer } from 'react-router-redux'
 
 import home from './home'
 import record from './record'
-import mycards from './mycards'
+import mycards from './myCards'
 // import share from './share'
 import shareItem from './shareItem'
 import expiry from './expiry'

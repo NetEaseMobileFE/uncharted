@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import mycards, { INIT_STATE } from '../../src/js/reducers/mycards'
+import mycards, { INIT_STATE } from '../../src/js/reducers/myCards'
 describe('Test reducer mycards', () => {
   it('should handle FETCH_MYCARDS_INFO', () => {
     const action1 = {

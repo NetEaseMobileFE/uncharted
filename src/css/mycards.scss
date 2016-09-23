@@ -1,5 +1,5 @@
 :global {
-  @import "common.scss";
+  @import "Common";
   .mycards-container{
     width:100%;
     background-color: #f7f7f7;
@@ -31,11 +31,12 @@
       height: .53rem;
     }
     .ls{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: start;
+      //display: flex;
+      //flex-wrap: wrap;
+      //justify-content: start;
       width: 7.1rem;
       .li{
+        display: inline-block;
         position: relative;
         z-index: 1;
         width: 1.06rem;

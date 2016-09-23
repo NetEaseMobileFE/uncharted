@@ -3,25 +3,10 @@
 export const isAndroid = navigator.userAgent.match(/android/ig)
 export const isIos = navigator.userAgent.match(/iphone|ipod|ipad/ig)
 
-/** *******************
- *线上地址
- *
- **********************/
-
-export const testPastInfo = 'http://t.c.m.163.com/uc/activity/card/exchange/past/info'
-export const testNotloginInfo = 'http://t.c.m.163.com/uc/activity/card/exchange/info'
-export const testBasicInfo = 'http://t.c.m.163.com/uc/activity/card/exchange/userinfo'
-export const testPastCardListInfo = 'http://t.c.m.163.com/uc/activity/card/list'
-export const testPastPrizeListInfo = 'http://t.c.m.163.com/uc/activity/card/prize/list'
-export const testGiftFind = 'http://t.c.m.163.com/uc/activity/card/gift/find'
-export const testGiftSend = 'http://t.c.m.163.com/uc/activity/card/gift/send'
-export const testGiftReceive = 'http://t.c.m.163.com/uc/activity/card/gift/receive'
-export const testPrizeShare = 'http://t.c.m.163.com/uc/activity/card/prize/share'
-export const testPrizeExchange = 'http://t.c.m.163.com/uc/activity/card/prize/exchange'
 
 /** *******************
- *测试是否是线上环境,若是线上环境,则将url进行转换
- *
+ * desc: 测试是否是线上环境,若是线上环境,则将url进行转换
+ * params url: 待转换的url type: 有两个值,1和2,1代表各种后台接口的转换 2代表各种实际页面(类似分享页面的url更改)
  **********************/
 export function changeUrl(url, type) {
   let finalUrl = url
@@ -37,9 +22,10 @@ export function changeUrl(url, type) {
 }
 
 /** *******************
- *转换url参数
- *
+ * desc:将url的search转换成键值对格式
+ * params: url:待解析的url
  **********************/
+
 export function erilizeUrl(url) {
   let result = {}
   let urlArray = url.split('?')
@@ -52,12 +38,22 @@ export function erilizeUrl(url) {
   return result
 }
 
+/** *******************
+ * desc:截取文本
+ * params: text: 待截取的文本 len: 需要限制的长度,多余的字数用...表示
+ **********************/
+
 export function erilizeText(text, len) {
   if (text && text.length > len) {
     return (text.slice(0, len) + '...')
   }
   return text
 }
+
+/** *******************
+ * desc:用于调试,在移动端上可以打印对象
+ * params: obj:待打印的对象
+ **********************/
 
 export function writeObj(obj) {
   let description = ''

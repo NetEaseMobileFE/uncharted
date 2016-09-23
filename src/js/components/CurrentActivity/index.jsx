@@ -2,29 +2,19 @@ import React, { Component } from 'react'
 import Cards from './Cards'
 import Prize from './Prize'
 import Subject from './Subject'
-import './../../../css/home.scss'
-import './../../../css/currentActivity.scss'
-import { isAndroid, isIos } from './../../utils/util'
+import '../../../css/Home.scss'
+import '../../../css/CurrentActivity.scss'
 
 export default class CurrentActivity extends Component {
-
-  componentDidMount() {
-
-  }
+  
   render() {
     const { data, push, loginStatus, isNotHomePage } = this.props
-    let className = 'cur-prize-container'
-    if (isIos) {
-      className += ' ios-animation'
-    } else if (isAndroid) {
-      className += ' android-animation'
-    }
     if (this.props.isNotHomePage) {
-      // 不是主页
+      // 不是主页(即回流页)
       const share = data.share
       return (
         <div className="marquee-outer">
-          <div className={className}>
+          <div className="cur-prize-container">
             <div className="inner">
               <Prize 
                 data={share.prize} 
@@ -43,8 +33,8 @@ export default class CurrentActivity extends Component {
       const notlogin = data.notlogin
       return (
         <div className="marquee-outer">
-          <Subject subject={notlogin.cycleInfo} />
-          <div className={className}>
+          <Subject subject={notlogin.cycleInfo} now={notlogin.now} />
+          <div className="cur-prize-container">
             <div className="inner">
               <Prize 
                 data={notlogin.prize} 
@@ -74,6 +64,8 @@ export default class CurrentActivity extends Component {
                 changeCardsNum={this.props.changeCardsNum} 
                 cycleId={notlogin.cycleInfo.id}
                 prizeId={notlogin.prize.id}
+                sendCard={this.props.sendCard}
+                sendCardInfo={this.props.sendCardInfo}
               />
             </div>
           </div>

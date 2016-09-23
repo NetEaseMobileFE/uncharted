@@ -12,9 +12,9 @@ import Home from './container/Home'
 import MyCards from './container/MyCards'
 import Record from './container/Record'
 import Share from './container/Share'
-import expiry from './container/expiry'
+import expiry from './container/Expiry'
 import ShareItem from './container/ShareItem'
-import '../css/main.scss'
+import '../css/Main.scss'
 import NEWSAPPAPI from 'newsapp'
 
 const store = compose(

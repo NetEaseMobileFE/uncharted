@@ -1,30 +1,20 @@
 import React, { Component } from 'react'
-import { erilizeText, limitTime } from './../../utils/util'
+import { erilizeText, limitTime } from '../../utils/util'
 
 export default class Subject extends Component {
   constructor(props) {
     super(props)
     this.countDown = this.countDown.bind(this)
-    // this.limitTime = this.limitTime.bind(this)
     this.intervals = []
     this.setInterval = this.setInterval.bind(this)
     this.openTime = this.openTime.bind(this)
+    this.state = {
+      timeStyle: false,
+      cdTime: ''
+    }
   }
-
-  state = {
-    timeStyle: false,
-    cdTime: ''
-  }
-
+  
   componentDidMount() {
-    // this.setState({
-    //   cdTime: this.countDown(this.props.subject.endTime)
-    // })
-    // this.setInterval(() => {
-    //   this.setState({
-    //     cdTime: this.countDown(this.props.subject.endTime)
-    //   })
-    // }, 60 * 1000)
     this.openTime()
   }
 
@@ -40,7 +30,7 @@ export default class Subject extends Component {
   }
 
   countDown(endTime) {
-    let currentTime = new Date().getTime()
+    let currentTime = new Date(this.props.now).getTime()
     if (currentTime > endTime) {
       return '00:00'
     }
@@ -52,7 +42,7 @@ export default class Subject extends Component {
     let min = Math.floor(((interval - day * 3600 * 24 - hour * 3600)) / 60)
     hour = hour < 10 ? `0${hour}` : hour
     min = min < 10 ? `0${min}` : min
-    if (day > 1) {
+    if (day >= 1) {
       this.setState({
         timeStyle: true
       })
@@ -65,13 +55,6 @@ export default class Subject extends Component {
     }
   }
 
-  // limitTime(begin, end) {
-  //   const beginTime = new Date(begin)
-  //   const endTime = new Date(end)
-  //   const limit = `${beginTime.getMonth() + 1}.${beginTime.getDate()} - ${endTime.getMonth() + 1}.${endTime.getDate() - 1}`
-  //   return limit
-  // }
-  
   openTime() {
     this.setState({
       cdTime: this.countDown(this.props.subject.endTime)

@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import { changeUrl } from './../utils/util'
+import {changeUrl, writeObj} from './../utils/util'
 
 /** ************************
  * 本地测试路径：/login.json
@@ -9,9 +9,15 @@ import { changeUrl } from './../utils/util'
 
 export function fetchBasicInfo() {
   return (dispatch) => {
-    return fetch(changeUrl('http://t.c.m.163.com/uc/activity/card/exchange/userinfo', 1), { credentials: 'same-origin' })
-      .then(res => res.json())
+    // alert(document.cookie)
+    return fetch(changeUrl('http://t.c.m.163.com/uc/activity/card/exchange/userinfo', 1), {
+      credentials: 'same-origin'
+    }).then(res => res.json())
       .then((json) => {
+        if (json.errcode != 0) {
+          writeObj(json)
+          alert(document.cookie)
+        }
         dispatch({
           type: 'FETCH_BASIC_INFO',
           data: json.data
@@ -32,7 +38,6 @@ export function fetchNotloginInfo() {
     return fetch(changeUrl('http://t.c.m.163.com/uc/activity/card/exchange/info', 1))
       .then(res => res.json())
       .then((json) => {
-        console.log(json)
         dispatch({
           type: 'FETCH_NOTLOGIN_INFO',
           data: json.data
@@ -68,29 +73,12 @@ export function changeLotteryStatus(lotteryStatus) {
 }
 
 /** ************************
- * 获取历史获奖记录
- ***************************/
-
-// export function fetchPastPrizeInfo() {
-//   return (dispatch) => {
-//     return fetch('/pastprize.json')
-//       .then(res => res.json())
-//       .then((json) => {
-//         dispatch({
-//           type: 'FETCH_PASTPRIZE_INFO',
-//           data: json.data
-//         })
-//       })
-//   }
-// }
-
-/** ************************
  * 获取我的集卡记录
  ***************************/
 
 export function fetchCardInfo(cardId) {
   return (dispatch) => {
-    return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/gift/send?cardId=${cardId}`, 1), { credentials: 'same-origin' })
+    return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/gift/send?cardId=${cardId}`, 1), {credentials: 'same-origin'})
       .then(res => res.json())
       .then((json) => {
         dispatch({
@@ -152,20 +140,15 @@ export function receiveCardId(giftId, cardId) {
 }
 
 /** ************************
- * 查询卡片
+ * 赠送卡片(这里需要直接返回数据,因为dispatch之后的新数据属于下一个生命周期)
  ***************************/
 
-// export function fetchQueryCard(giftId, cardId) {
-//   console.log(giftId, cardId)
-//   return (dispatch) => {
-//     return fetch(`http://t.c.m.163.com/uc/activity/card/gift/find?giftId=${encodeURIComponent(giftId)}&cardId=${cardId}`)
-//       .then(res => res.json())
-//       .then((json) => {
-//         console.log(json)
-//         dispatch({
-//           type: 'FETCH_QUERY_CARD',
-//           data: json
-//         })
-//       })
-//   }
-// }
+export function sendCard(cardId) {
+  return () => {
+    return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/gift/send?cardId=${cardId}`, 1), {credentials: 'same-origin'})
+      .then(res => res.json())
+      .then((json) => {
+        return json
+      })
+  }
+}

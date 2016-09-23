@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeText, changeUrl } from './../../utils/util'
+import { erilizeText, changeUrl } from '../../utils/util'
 
 export default class Prize extends Component {
   constructor(props) {
@@ -17,7 +17,8 @@ export default class Prize extends Component {
   }
 
   componentDidMount() {
-    if (!!this.props.nowAmount && this.props.nowAmount === this.props.sumAmount) {
+    const { nowAmount, sumAmount } = this.props
+    if (!!nowAmount && nowAmount === sumAmount) {
       this.setState({
         winnStatus: 200
       })
@@ -27,18 +28,21 @@ export default class Prize extends Component {
       })
     }
     setTimeout(() => {
-      let wxTitle = `我集到了${this.props.nowAmount}张卡，再集${this.props.sumAmount - this.props.nowAmount}张可获得${this.props.data.name}，你也来参加吧！`
-      if (this.props.sumAmount === this.props.nowAmount) {
-        wxTitle = `我中奖啦，获得了${this.props.data.name}你也来参加吧！`
+      const { data, cycleId } = this.props
+      let wxTitle = `我集到了${nowAmount}张卡，再集${sumAmount - nowAmount}张可获得${data.name}，你也来参加吧！`
+      if (sumAmount === nowAmount) {
+        wxTitle = `我参加网易新闻集卡活动，获得了${data.name}。人品大爆发啊~`
+      } else if (nowAmount === 0) {
+        wxTitle = `我发现了个好玩的活动，集齐${sumAmount}张卡可得${data.name}，一般人我不告诉ta`
       }
       NEWSAPPAPI.ui.button('分享', () => {
         const shareData = {
-          wbText: '网易新闻,集卡赢大奖' + changeUrl(` http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=100&cycleId=${this.props.cycleId}&nowAmount=${this.props.nowAmount}&cardLen=${this.props.sumAmount}`, 2),
-          wbPhoto: `${this.props.data.image}`,
-          wxText: '网易新闻,集卡赢大奖',
+          wbText: '网易新闻,集卡赢大奖啦' + changeUrl(` http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=100&cycleId=${cycleId}&nowAmount=${nowAmount}&cardLen=${sumAmount}`, 2),
+          wbPhoto: `${data.image}`,
+          wxText: '网易新闻,集卡赢大奖啦',
           wxTitle,
-          wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=100&cycleId=${this.props.cycleId}&nowAmount=${this.props.nowAmount}&cardLen=${this.props.sumAmount}`, 2),
-          wxPhoto: `${this.props.data.image}`
+          wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=100&cycleId=${cycleId}&nowAmount=${nowAmount}&cardLen=${sumAmount}`, 2),
+          wxPhoto: `${data.image}`
         }
         NEWSAPPAPI.share.invoke(shareData, () => {
           return null
@@ -48,16 +52,16 @@ export default class Prize extends Component {
   }
 
   handleShare() {
-    let { push, cycleId, prizeId, lotteryId } = this.props
+    let { push, cycleId, prizeId, lotteryId, data, nowAmount } = this.props
     const shareData = {
-      wbText: '网易新闻,集卡赢大奖' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=${this.state.winnStatus}&cardAmount=${this.props.nowAmount}&cycleId=${this.props.cycleId}`, 2),
-      wbPhoto: `${this.props.data.image}`,
-      wxText: '网易新闻,集卡赢大奖',
-      wxTitle: `我中奖啦，获得了${this.props.data.name}你也来参加吧！`,
-      wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=${this.state.winnStatus}&cardAmount=${this.props.nowAmount}&cycleId=${this.props.cycleId}`, 2),
-      wxPhoto: `${this.props.data.image}`
+      wbText: '网易新闻,集卡赢大奖啦' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=${this.state.winnStatus}&cardAmount=${nowAmount}&cycleId=${cycleId}`, 2),
+      wbPhoto: `${data.image}`,
+      wxText: '网易新闻,集卡赢大奖啦',
+      wxTitle: `我参加网易新闻集卡活动，获得了${data.name}。人品大爆发啊~`,
+      wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=${this.state.winnStatus}&cardAmount=${nowAmount}&cycleId=${cycleId}`, 2),
+      wxPhoto: `${data.image}`
     }
-    // NEWSAPPAPI.share.setData(shareData)
+
     NEWSAPPAPI.share.invoke(shareData, () => {
       this.props.sendLotteryId(lotteryId)
         .then(() => {
@@ -111,14 +115,9 @@ export default class Prize extends Component {
     let finalBtnText = ''
     let finalClass = 'prize-btn'
     let finalLabelText = ''
-    if (!this.state.loginStatus) {
-      // 未登录
-      finalFunc = this.handleLogin
-      finalBtnText = '立即参与'
-      finalClass += ' btn-bgc4'
-      finalLabelText = '登录参与活动'
-    } else if (!this.props.collCardStatus) {
+    if (!this.props.collCardStatus) {
       // 未开启集卡功能
+      // alert(1)
       finalFunc = this.handleParticipate
       finalBtnText = '立即参与'
       finalClass += ' btn-bgc3'

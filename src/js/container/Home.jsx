@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import * as actions from '../actions/home'
-import { fetchQueryCard } from '../actions/shareItem'
-import '../../css/home.scss'
-import '../../css/currentActivity.scss'
+import * as actions from '../actions/Home'
+import { fetchQueryCard } from '../actions/ShareItem'
+import '../../css/Home.scss'
+import '../../css/CurrentActivity.scss'
 
 import CurrentActivity from '../components/CurrentActivity'
 import Carousel from '../components/Carousel'
@@ -16,7 +16,7 @@ import Rules from '../components/Rules'
 import CardDialog from '../components/CardDialog'
 import NoCardToGet from '../components/NoCardToGet'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeUrl } from './../utils/util'
+import { erilizeUrl, writeObj } from './../utils/util'
 
 class Home extends Component {
   constructor(props) {
@@ -43,31 +43,34 @@ class Home extends Component {
 
   componentDidMount() {
     NEWSAPPAPI.ui.title('头条集卡兑大奖')
-    NEWSAPPAPI.login((rs) => {
-      // writeObj(rs)
-      // alert(document.cookie)
-      if (!!rs) {
-        if (!!this.params.getCard) {
-          this.props.fetchQueryCard(this.params.giftId, this.params.cardId).then(() => {
-            const { queryCard } = this.props.shareItem
-            if (!!queryCard.data.valid) {
-              this.setState({
-                cardStatus: !!this.params.getCard
-              })
-              this.props.actions.receiveCardId(this.params.giftId, this.params.cardId).then(() => {
+    NEWSAPPAPI.login(true, (rs) => {
+      setTimeout(() => {
+        writeObj(rs)
+        if (!!rs) {
+          if (!!this.params.getCard) {
+            // alert('card打印')
+            this.props.fetchQueryCard(this.params.giftId, this.params.cardId).then(() => {
+              const { queryCard } = this.props.shareItem
+              if (!!queryCard.data.valid) {
+                this.setState({
+                  cardStatus: !!this.params.getCard
+                })
+                this.props.actions.receiveCardId(this.params.giftId, this.params.cardId).then(() => {
+                  this.getData()
+                })
+              } else {
+                this.noCardToGet()
                 this.getData()
-              })
-            } else {
-              this.noCardToGet()
-              this.getData()
-            }
-          })
+              }
+            })
+          } else {
+            // alert(document.cookie)
+            this.getData()
+          }
         } else {
-          this.getData()
+          // this.getData()
         }
-      } else {
-        alert('请登录')
-      }
+      }, 500)
     })
     this.judgeEdition()
     window.__headlineCard_open = () => {
@@ -80,12 +83,14 @@ class Home extends Component {
     }, 500)
   }
 
+  // 是否显示卡片详情页
   getCardStatus() {
     this.setState({
       cardStatus: !this.state.cardStatus
     })
   }
 
+  // 获取登陆数据和未登录数据,并将登陆状态置为true
   getData() {
     this.props.actions.fetchNotloginInfo()
     this.props.actions.fetchBasicInfo()
@@ -94,6 +99,7 @@ class Home extends Component {
     })
   }
 
+  // 判断客户端版本是否低于16.0
   judgeEdition() {
     NEWSAPPAPI.device((rs) => {
       if (Math.floor(parseInt(rs.v, 10)) < 16) {
@@ -104,6 +110,7 @@ class Home extends Component {
     })
   }
 
+  // 判断集卡功能是否开启
   judgeHlcStatus() {
     NEWSAPPAPI.settings((rs) => {
       this.setState({
@@ -112,25 +119,22 @@ class Home extends Component {
     })
   }
 
+  // 不是从卡片获取页跳转
   noCardToGet() {
     this.setState({
       noCard: !this.state.noCard,
       cardStatus: false
     })
   }
-  // closeWarnOfNoCard() {
-  //   this.setState({
-  //     noCard: true,
-  //     cardStatus: false
-  //   })
-  // }
+
   render() {
     const { data, history } = this.props
     const { basic, notlogin } = data
-
+    // 判断是否获取到未登录数据
     if (!notlogin) {
       return null
     }
+    // 领卡时获取卡片的具体信息
     if (this.params.getCard) {
       notlogin.cards.map((item) => {
         if (item.id === parseInt(this.params.cardId, 10)) {
@@ -142,6 +146,7 @@ class Home extends Component {
       })
     }
     if (this.state.loginStatus) {
+      // 登陆界面
       if (!basic) {
         return null
       }
@@ -178,6 +183,8 @@ class Home extends Component {
                 changeCardsNum={this.props.actions.changeCardsNum}
                 cycleId={notlogin.cycleInfo.id}
                 endTime={notlogin.cycleInfo.endTime}
+                sendCard={this.props.actions.sendCard}
+                sendCardInfo={data.sendCardInfo}
               />
           }
           {
@@ -196,6 +203,8 @@ class Home extends Component {
             sendLotteryId={this.props.actions.sendLotteryId}
             lotteryId={basic.lotteryPrizes.length != 0 ? basic.lotteryPrizes[0].lotteryInfo.id : null}
             sendLotteryIdErrCode={this.props.data.sendLotteryId ? this.props.data.sendLotteryId.errcode : null}
+            sendCard={this.props.actions.sendCard}
+            sendCardInfo={data.sendCardInfo}
           />
           <Carousel data={notlogin.carousel} />
           <div className="list-change-style">
@@ -222,6 +231,7 @@ class Home extends Component {
         </div>
       )
     } else {
+      // 未登录界面,目前没有开启该功能(如果以后需要开启,可以找我,开启步骤很简单)
       return (
         <div className="h-main-container">
           <CurrentActivity 

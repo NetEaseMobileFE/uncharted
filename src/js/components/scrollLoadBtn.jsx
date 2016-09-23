@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
-import './../../css/ShareBanner.scss'
+import '../../css/ShareBanner.scss'
 
 export default class ScrollLoadBtn extends Component {
   constructor(props) {
     super(props)
     this.handleScroll = this.handleScroll.bind(this)
     this.page = 1
-  }
-
-  state = {
-    page: 1,
-    scrollBtn: false
+    this.state = {
+      page: 1,
+      scrollBtn: false
+    }
   }
 
   componentDidMount() {
@@ -32,13 +31,6 @@ export default class ScrollLoadBtn extends Component {
         scrollBtn: true
       })
       data.getData(this.state.page, this.state.pageSize)
-      // if (data.addData) {
-      //   setTimeout(()=>{
-      //     this.setState({
-      //       scrollBtn: false
-      //     })
-      //   },2000)
-      // }
     } else if (getScrollTop + bodyHeight + 100 < pageHeight) {
       this.setState({
         scrollBtn: false
