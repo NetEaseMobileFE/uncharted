@@ -11,65 +11,78 @@ export default class CurrentActivity extends Component {
   // }
 
   render() {
-    const { data, push, loginStatus, isNotHomePage } = this.props
+    console.log(this.props)
+    const { isNotHomePage } = this.props
     if (isNotHomePage) {
       // 不是主页(即回流页)
+      const { data } = this.props
       const share = data.share
+      const prizeParams = {
+        data: share.prize,
+        IsNotDisplay: isNotHomePage,
+        sumAmount: share.cards.length
+      }
+      const cardsParams = {
+        isNotHomePage,
+        allCards: share.cards,
+        prizeName: share.prize.name,
+        endTime: share.cycleInfo.endTime
+      }
+
       return (
         <div className="marquee-outer">
           <div className="cur-prize-container">
             <div className="inner">
-              <Prize 
-                data={share.prize} 
-                IsNotDisplay={isNotHomePage} 
-                MarqClass={this.props.MarqClass} 
-                sumAmount={share.cards.length}
-              />
-              <Cards allCards={share.cards} isNotHomePage={isNotHomePage} loginStatus={loginStatus} prizeName={share.prize.name} endTime={share.cycleInfo.endTime} />
+              <Prize data={prizeParams} />
+              <Cards data={cardsParams} />
             </div>
           </div>
         </div>
       )
     } else {
       // 是主页
+      const { data, push, loginStatus } = this.props.data
       const basic = data.basic
       const notlogin = data.notlogin
+      const { fetchBasicInfo, collCardStatus, curPrizeStatus, changeLotteryStatus, lotteryId, sendCard, sendCardInfo, sendLotteryId, sendLotteryIdErrCode } = this.props.data
+      const prizeParams = {
+        fetchBasicInfo,
+        push,
+        collCardStatus,
+        loginStatus,
+        curPrizeStatus,
+        lotteryId,
+        sendLotteryId,
+        sendLotteryIdErrCode,
+        data: notlogin.prize,
+        IsNotDisplay: isNotHomePage,
+        nowAmount: loginStatus ? basic.myCards.length : '',
+        sumAmount: notlogin.cards.length,
+        cycleId: notlogin.cycleInfo.id,
+        prizeId: notlogin.prize.id,
+        shareYet: changeLotteryStatus
+      }
+      const cardsParams = {
+        allCards: notlogin.cards,
+        isNotHomePage,
+        loginStatus,
+        prizeName: notlogin.prize.name,
+        myCards: loginStatus ? basic.myCards : '',
+        endTime: notlogin.cycleInfo.endTime,
+        changeCardsNum: this.props.changeCardsNum,
+        cycleId: notlogin.cycleInfo.id,
+        prizeId: notlogin.prize.id,
+        sendCard,
+        sendCardInfo
+      }
+
       return (
         <div className="marquee-outer">
           <Subject subject={notlogin.cycleInfo} now={notlogin.now} />
           <div className="cur-prize-container">
             <div className="inner">
-              <Prize 
-                data={notlogin.prize} 
-                IsNotDisplay={isNotHomePage} 
-                MarqClass={this.props.MarqClass} 
-                fetchBasicInfo={this.props.fetchBasicInfo}
-                nowAmount={loginStatus ? basic.myCards.length : ''}
-                sumAmount={notlogin.cards.length}
-                cycleId={notlogin.cycleInfo.id}
-                prizeId={notlogin.prize.id}
-                push={push}
-                collCardStatus={this.props.collCardStatus}
-                loginStatus={this.props.loginStatus}
-                curPrizeStatus={this.props.curPrizeStatus}
-                shareYet={this.props.changeLotteryStatus}
-                lotteryId={this.props.lotteryId}
-                sendLotteryId={this.props.sendLotteryId}
-                sendLotteryIdErrCode={this.props.sendLotteryIdErrCode}
-              />
-              <Cards 
-                allCards={notlogin.cards} 
-                isNotHomePage={isNotHomePage} 
-                loginStatus={loginStatus} 
-                prizeName={notlogin.prize.name} 
-                myCards={loginStatus ? basic.myCards : ''} 
-                endTime={notlogin.cycleInfo.endTime}
-                changeCardsNum={this.props.changeCardsNum} 
-                cycleId={notlogin.cycleInfo.id}
-                prizeId={notlogin.prize.id}
-                sendCard={this.props.sendCard}
-                sendCardInfo={this.props.sendCardInfo}
-              />
+              <Prize data={prizeParams} />
+              <Cards data={cardsParams}/>
             </div>
           </div>
         </div>

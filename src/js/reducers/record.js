@@ -17,7 +17,6 @@ export default function record(state = INIT_STATE, action) {
       })
     case 'CLEAR_RECORD_INFO':
       state.record = null
-    // return deepAssign({}, state, { mycards: null })
     default: 
       return state
   }

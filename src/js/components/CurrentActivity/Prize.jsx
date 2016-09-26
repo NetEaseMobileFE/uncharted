@@ -12,7 +12,7 @@ export default class Prize extends Component {
   }
 
   componentDidMount() {
-    const { nowAmount, sumAmount } = this.props
+    const { nowAmount, sumAmount } = this.props.data
     if (!!nowAmount && nowAmount === sumAmount) {
       this.setState({
         winnStatus: 200
@@ -23,7 +23,7 @@ export default class Prize extends Component {
       })
     }
     setTimeout(() => {
-      const { data, cycleId } = this.props
+      const { data, cycleId } = this.props.data
       let wxTitle = `我集到了${nowAmount}张卡，再集${sumAmount - nowAmount}张可获得${data.name}，你也来参加吧！`
       if (sumAmount === nowAmount) {
         wxTitle = `我参加网易新闻集卡活动，获得了${data.name}。人品大爆发啊~`
@@ -47,7 +47,7 @@ export default class Prize extends Component {
   }
 
   handleShare() {
-    let { push, cycleId, prizeId, lotteryId, data, nowAmount } = this.props
+    const { push, cycleId, prizeId, lotteryId, data, nowAmount, sendLotteryId, sendLotteryIdErrCode } = this.props.data
     const shareData = {
       wbText: '网易新闻,集卡赢大奖啦' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=${this.state.winnStatus}&cardAmount=${nowAmount}&cycleId=${cycleId}`, 2),
       wbPhoto: `${data.image}`,
@@ -58,9 +58,9 @@ export default class Prize extends Component {
     }
 
     NEWSAPPAPI.share.invoke(shareData, () => {
-      this.props.sendLotteryId(lotteryId)
+      sendLotteryId(lotteryId)
         .then(() => {
-          let errcode = parseInt(this.props.sendLotteryIdErrCode, 10)
+          let errcode = parseInt(sendLotteryIdErrCode, 10)
           if (errcode === 0) {
             push(`/expiry?prizeId=${prizeId}&cycleId=${cycleId}&lotteryId=${lotteryId}`)
           } else if (errcode === 400) {
@@ -90,8 +90,9 @@ export default class Prize extends Component {
   }
 
   handleLogin() {
+    const { fetchBasicInfo } = this.props.data
     NEWSAPPAPI.login(true, (rs) => {
-      this.props.fetchBasicInfo()
+      fetchBasicInfo()
       this.setState({
         loginStatus: !!rs
       })
@@ -99,19 +100,19 @@ export default class Prize extends Component {
   }
 
   handleToGetPrize() {
-    let { push, cycleId, prizeId, lotteryId } = this.props
+    const { push, cycleId, prizeId, lotteryId } = this.props.data
     push(`/expiry?prizeId=${prizeId}&cycleId=${cycleId}&lotteryId=${lotteryId}`)
   }
 
   render() {
-    const { data } = this.props
+    const { data, collCardStatus, curPrizeStatus, nowAmount, sumAmount } = this.props.data
     // 这个按钮,有8种状态 以后用数组判断
     let finalFunc = ''
     let finalBtnText = ''
     let finalClass = 'prize-btn'
     let finalLabelText = ''
 
-    if (!this.props.collCardStatus) {
+    if (!collCardStatus) {
       // 未开启集卡功能
       // 或者
       // 当前版本过低
@@ -123,29 +124,29 @@ export default class Prize extends Component {
       if (Math.floor(+(ua.split('NewsApp/', 3)[1])) < 16) {
         finalLabelText = '当前版本过低'
       }
-    } else if (this.props.curPrizeStatus === 2) {
+    } else if (curPrizeStatus === 2) {
       // 已经领取
       finalFunc = null
       finalBtnText = '已领取'
       finalClass += ' btn-bgc3'
-    } else if (this.props.curPrizeStatus === 1) {
+    } else if (curPrizeStatus === 1) {
       // 已经分享未领取
       finalFunc = this.handleToGetPrize
       finalBtnText = '点击领取'
       finalClass += ' btn-bgc2'
-    } else if (this.props.curPrizeStatus === 0) {
+    } else if (curPrizeStatus === 0) {
       // 未领取
       finalFunc = this.handleShare
-      finalBtnText = `分享后领取(${this.props.nowAmount}/${this.props.sumAmount})`
+      finalBtnText = `分享后领取(${nowAmount}/${sumAmount})`
       finalClass += ' btn-bgc2'
-    } else if (this.props.curPrizeStatus === -1) {
+    } else if (curPrizeStatus === -1) {
       // 已失效
       finalFunc = null
       finalBtnText = '已失效'
       finalClass += ' btn-bgc1'
-    } else if (this.props.nowAmount !== this.props.sumAmount) {
+    } else if (nowAmount !== sumAmount) {
       finalFunc = null
-      finalBtnText = `集齐可领取(${this.props.nowAmount}/${this.props.sumAmount})`
+      finalBtnText = `集齐可领取(${nowAmount}/${sumAmount})`
       finalClass += ' btn-bgc1'
     } else {
       finalFunc = null
@@ -162,7 +163,7 @@ export default class Prize extends Component {
         <div className="cur-prize-img">
           <div className="prizeImgBg" style={bgImgStyle}></div>
         </div>
-        <div className={this.props.MarqClass || 'r-prize'}>
+        <div className="r-prize">
           <label className="prize-label-text">本期奖品</label>
           <span className="prize-info">{erilizeText(data.name, 7)}</span>
           {

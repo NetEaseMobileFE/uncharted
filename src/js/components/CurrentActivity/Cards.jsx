@@ -54,35 +54,36 @@ export default class Cards extends Component {
 
 
   render() {
-    const allCards = this.props.allCards
-    let finalCards
+    const { allCards, myCards, prizeName, changeCardsNum, cycleId, sendCard, sendCardInfo, isNotHomePage, loginStatus } = this.props.data
     let cardLen = allCards.length % 3
-    if (!!this.props.myCards) {
-      finalCards = this.compareCards(this.props.allCards, this.props.myCards)
+    let finalCards
+    if (!!myCards) {
+      finalCards = this.compareCards(allCards, myCards)
     }
-
+    let cardDialogParams = null
+    if (this.state.boolCardDialog) {
+      cardDialogParams = {
+        cardType: myCards.length,
+        cardAmount: this.state.cardAmount,
+        cardId: this.state.cardId,
+        cardLen: allCards.length,
+        cardImg: this.state.cardImg,
+        prizeName: prizeName,
+        cardName: this.state.cardName,
+        cardMark: this.state.cardMark,
+        changeCardStatus: this.changeCardStatus,
+        endTime: this.state.endTime,
+        changeCardsNum,
+        cycleId,
+        sendCard,
+        sendCardInfo
+      }
+    }
     return (
       <ul className="coll-cards-ls">
         { 
           this.state.boolCardDialog && 
-            <CardDialog
-              cardType={this.props.myCards.length}
-              cardAmount={this.state.cardAmount}
-              cardId={this.state.cardId}
-              cardLen={allCards.length}
-              cardImg={this.state.cardImg}
-              prizeName={this.props.prizeName}
-              cardName={this.state.cardName}
-              cardImage={this.state.cardImg}
-              cardMark={this.state.cardMark}
-              changeCardStatus={this.changeCardStatus}
-              changeCardsNum={this.props.changeCardsNum}
-              cycleId={this.props.cycleId}
-              endTime={this.state.endTime}
-              prizeId={this.props.prizeId}
-              sendCard={this.props.sendCard}
-              sendCardInfo={this.props.sendCardInfo}
-            />
+            <CardDialog data={cardDialogParams} />
         }
         {
           (finalCards || allCards).map((card, index) => {
@@ -103,14 +104,14 @@ export default class Cards extends Component {
                 className="card-li"
                 key={index} 
                 onClick={ 
-                  this.props.isNotHomePage ? '' : 
+                  isNotHomePage ? '' :
                   (event) => { this.introCards(card.amount, card.image, card.mark, card.name, card.id, event.target, this.props.endTime) }
                 }
               >
 
                 <div className="li-img">
                   <div className="img-bg" style={bgStyle}></div>
-                  {(this.props.loginStatus === true && !card.amount === true) && <div className="card-shade"></div>}
+                  {(loginStatus === true && !card.amount === true) && <div className="card-shade"></div>}
                   {!!card.amount && <span className="card-sum">{'X' + curAmount}</span>}
                   {!!card.amount && <span className="card-logo" style={{ display: card.amount > 1 ? '' : 'none' }}>送</span>}
                 </div>

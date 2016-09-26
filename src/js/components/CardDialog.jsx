@@ -23,15 +23,18 @@ export default class CardDialog extends Component {
   }
 
   close() {
-    this.props.changeCardStatus(false)
+    const { changeCardStatus } = this.props.data
+    changeCardStatus(false)
   }
 
   // 送卡片
   present() {
-    const { cardId, cycleId, cardLen, cardName, prizeName, cardImg, prizeId } = this.props
-    this.props.changeCardStatus(false)
+    const { cardId, cycleId, cardLen, cardName, prizeName, cardImg, prizeId, changeCardStatus, sendCard } = this.props.data
+    console.log(this.props)
+    console.log(cardId, '  ', cycleId, '  ', cardName)
+    changeCardStatus(false)
     let shareData = {}
-    this.props.sendCard(cardId)
+    sendCard(cardId)
       .then((json) => {
         this.giftId = json.data.giftId
         console.log(changeUrl('http://t.c.m.163.com/uncharted/index.html#/shareCard?cycleId=' + cycleId + '&cardId=' + cardId + '&cardLen=' + cardLen + '&prizeId=' + prizeId + '&giftId=' + encodeURIComponent(this.giftId) + '&', 2))
@@ -50,22 +53,24 @@ export default class CardDialog extends Component {
 
   // 晒卡片
   shareCard() {
-    let wxTitle = `我得到了${this.props.cardName}，集齐可得${this.props.prizeName},一般人我不告诉TA`
+    const { data } = this.props
+    let wxTitle = `我得到了${data.cardName}，集齐可得${data.prizeName},一般人我不告诉TA`
     const shareData = {
-      wbText: '网易新闻，集卡赢大奖' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=300&cycleId=${this.props.cycleId}&cardId=${this.props.cardId}&nowAmount=${this.props.cardType}&cardLen=${this.props.cardLen}`, 2),
-      wbPhoto: this.props.cardImg,
+      wbText: '网易新闻，集卡赢大奖' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=300&cycleId=${data.cycleId}&cardId=${data.cardId}&nowAmount=${data.cardType}&cardLen=${data.cardLen}`, 2),
+      wbPhoto: data.cardImg,
       wxText: '网易新闻，集卡赢大奖',
       wxTitle,
-      wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=300&cycleId=${this.props.cycleId}&cardId=${this.props.cardId}&nowAmount=${this.props.cardType}&cardLen=${this.props.cardLen}`, 2),
-      wxPhoto: this.props.cardImg
+      wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=300&cycleId=${data.cycleId}&cardId=${data.cardId}&nowAmount=${data.cardType}&cardLen=${data.cardLen}`, 2),
+      wxPhoto: data.cardImg
     }
     NEWSAPPAPI.share.invoke(shareData, () => {
     })
   }
 
   render() {
+    const { data } = this.props
     const bgImg = {
-      background: `url(${this.props.cardImg}) no-repeat center`,
+      background: `url(${data.cardImg}) no-repeat center`,
       backgroundSize: '100% 100%'
     }
     return (
@@ -74,16 +79,16 @@ export default class CardDialog extends Component {
           <div className="cover">
             <div className="cover-card-bg" style={bgImg}>
               {
-                !!this.props.cardAmount && <div className="share" onClick={this.shareCard}>晒卡</div>
+                !!data.cardAmount && <div className="share" onClick={this.shareCard}>晒卡</div>
               }
             </div>
           </div>
           <footer className="footer">
-            <div className="info">{erilizeText(this.props.cardMark, 28)}</div>
-            <div className={parseInt(this.props.cardAmount, 10) > 1 ? 'btn justify-content1' : 'btn justify-content2'}>
+            <div className="info">{erilizeText(data.cardMark, 28)}</div>
+            <div className={parseInt(data.cardAmount, 10) > 1 ? 'btn justify-content1' : 'btn justify-content2'}>
               <div className="close" onClick={this.close}>关闭</div>
               {
-                parseInt(this.props.cardAmount, 10) > 1 && <div className="present" onClick={this.present}>送给朋友</div>
+                parseInt(data.cardAmount, 10) > 1 && <div className="present" onClick={this.present}>送给朋友</div>
               }
             </div>
           </footer>

@@ -12,13 +12,13 @@ export default class MyWinning extends Component {
 
   // 已经分享过后,可以直接领奖
   getPrize(prizeId, lotteryId, cycleId) {
-    let { push } = this.props
+    let { push } = this.props.data
     push(`/expiry?prizeId=${prizeId}&cycleId=${cycleId}&lotteryId=${lotteryId}`)
   }
 
   // 分享后领奖
   handleShare(prizeId, lotteryId, liCycleId) {
-    let { push, changeLotteryStatus, data, cycleId } = this.props
+    let { push, changeLotteryStatus, data, cycleId } = this.props.data
     let imgUrl
     let prizeName
     let allCardsNum
@@ -63,7 +63,7 @@ export default class MyWinning extends Component {
   }
 
   render() {
-    const { data } = this.props
+    const { data } = this.props.data
     const time = new Date()
 
     return (

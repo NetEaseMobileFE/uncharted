@@ -2,21 +2,13 @@ import React, { Component } from 'react'
 import UniversalTitle from './UniversalTitle'
 
 export default class AboutRule extends Component {
-  constructor(props) {
-    super(props)
-  }
-  
-  static defaultProps = {
-    dataText: '详细规则',
-    datatInfo: '',
-  }
   render() {
     return (
       <div className="homeAboutRule">
-        <UniversalTitle text={this.props.dataText} />
+        <UniversalTitle text={'详细规则'} />
         <div className="rules-qa">
           <div>Q：怎样才能获取到卡片？</div>
-          <div>A：在头条页面多阅读，多刷新就有机会获取到卡片</div>
+          <div>A：在头条页面多阅读，多刷新就有机会获取到卡片。频繁刷新是没有卡片的哦~</div>
         </div>
         <div className="rules-qa">
           <div>Q：如何领取奖品？</div>
@@ -28,7 +20,7 @@ export default class AboutRule extends Component {
         </div>
         <ul className="rules-step">
           <h3 className="rules-step-title">活动详情</h3>
-          <li>1. 本次活动奖品由vivo智能手机提供，集齐本期卡片可获取一台vivo X7手机；</li>
+          <li>1. 本次活动奖品由vivo智能手机提供，集齐本期卡片可获取一台1600万柔光自拍的vivo X7手机；</li>
           <li>2. 请认真核对姓名、电话和邮寄地址等物流信息。如果填写错误，奖品可能就无法给您寄出了；</li>
           <li>3. 奖品会在每期活动结束后7个工作日内寄出。如有问题，可以发邮件至vivojika2016@163.com；</li>
           <li>4. 港、澳、台、藏区、海外等地区，因快递无法寄送，如领奖请联系客服，需要自付邮费哦；</li>

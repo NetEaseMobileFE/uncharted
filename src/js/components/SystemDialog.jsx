@@ -18,11 +18,6 @@ export default class SystemDialog extends Component {
   
   render() {
     const { closeSD } = this.props
-    // if (!closeSystemDialog) {
-    //   return
-    // }
-    console.log(this.props.closeSD)
-    console.log(closeSD)
     return (
       <div className="system-dialog-container" ref={(e) => { this.systemDialog = e }}>
         <div className="system-dialog">
