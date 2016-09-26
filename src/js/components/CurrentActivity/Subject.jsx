@@ -19,16 +19,19 @@ export default class Subject extends Component {
   }
 
   componentWillUnmount() {
+    // 清除当前组件的所有定时器
     this.intervals.map((timer) => {
       clearInterval(timer)
       return null
     })
   }
   /* eslint-disable */
+  // 将当前组件的定时器token推进数组
   setInterval() {
     this.intervals.push(setInterval.apply(null, arguments))
   }
 
+  // 倒计时函数
   countDown(endTime) {
     let currentTime = new Date(this.props.now).getTime()
     if (currentTime > endTime) {
@@ -55,6 +58,7 @@ export default class Subject extends Component {
     }
   }
 
+  // 每隔一分钟更新一次当前距离活动结束的时间
   openTime() {
     this.setState({
       cdTime: this.countDown(this.props.subject.endTime)

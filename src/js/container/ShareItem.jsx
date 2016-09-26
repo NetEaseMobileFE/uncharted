@@ -18,10 +18,7 @@ class ShareItem extends Component {
     // this.fetchQueryCard = this.fetchQueryCard.bind(this)
     this.params = erilizeUrl(window.location.href)
     this.state = {
-      userName: '',
-      cardName: '',
       alreadyGet: false,
-      cardId: this.params.cardId || 'Can not find the cardId!',
       timeOut: false
     }
   }
@@ -90,7 +87,7 @@ class ShareItem extends Component {
     let cardImg = ''
     let cardName = ''
     cards.map((card) => {
-      if (parseInt(card.id, 10) === parseInt(this.state.cardId, 10)) {
+      if (parseInt(card.id, 10) === parseInt(this.params.cardId, 10)) {
         cardText = card.mark
         cardImg = card.image
         cardName = card.name

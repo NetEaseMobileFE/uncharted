@@ -2,6 +2,7 @@
   @import "Common";
 
   .h-main-container{
+    position: relative;
     width:100%;
     margin: 0 auto;
     background-color: #f21745;
@@ -90,7 +91,7 @@
     .h-carousel{
       width: 100%;
       height: 0.4rem;
-      margin: .2rem 0 .2rem 0;
+      margin: .3rem 0 .2rem 0;
       color:white;
       line-height: 0.5rem;
       text-align: center;
@@ -297,17 +298,22 @@
     line-height: 1.37rem;
   }
 
+
   .coll-cardsls{
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     width: 96%;
     margin: 0 auto .4rem;
+  }
+  .space-between{
+    justify-content: space-between;
   }
   .coll-cardsli{
     //z-index: 1;
     position: relative;
     width:1.06rem;
     height:1.43rem;
+    margin-right: .25rem;
     background: white url(./../img/cardBg.png) no-repeat center;
     background-size: .4rem .4rem; 
     list-style: none;
@@ -351,7 +357,9 @@
     }
   }
 
-
+  .margin0{
+    margin: 0;
+  }
 
   .homeAboutRule{
     @include px2px(font-size, 13);

@@ -60,10 +60,11 @@
           background: rgba(255,255,255,.75);
         }
         .number{
-          position: absolute;
           z-index: 11;
+          position: absolute;
+          left : 3px;
+          bottom: 4px;
           height: .3rem;
-          margin: 1.1rem 0 0 .09rem;
           padding: 0 .05rem 0;
           @include px2px(font-size, 12);
           color: white;

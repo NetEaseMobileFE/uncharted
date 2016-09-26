@@ -11,6 +11,7 @@ export default class CardDialog extends Component {
   }
 
   componentDidMount() {
+    // 显示浮层时候禁止滑动
     this.cardDialog.addEventListener('touchmove', (event) => {
       event.preventDefault()
     }, false)
@@ -20,11 +21,12 @@ export default class CardDialog extends Component {
     this.cardDialog.removeEventListener('touchmove', (event) => {
     }, false)
   }
+
   close() {
     this.props.changeCardStatus(false)
   }
 
-
+  // 送卡片
   present() {
     const { cardId, cycleId, cardLen, cardName, prizeName, cardImg, prizeId } = this.props
     this.props.changeCardStatus(false)

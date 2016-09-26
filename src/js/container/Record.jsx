@@ -7,13 +7,10 @@ import { erilizeText, limitTime } from '../utils/util.js'
 
 import NEWSAPPAPI from 'newsapp'
 class Record extends Component {
-  constructor(props) {
-    super(props)
-    this.props.fetchRecordInfo()
-  }
-
+  
   componentDidMount() {
     NEWSAPPAPI.ui.title('历史获奖记录')
+    this.props.fetchRecordInfo()
   }
 
   componentWillUnmount() {

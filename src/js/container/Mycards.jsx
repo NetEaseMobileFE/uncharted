@@ -12,7 +12,6 @@ class Mycards extends Component {
   constructor(props) {
     super(props)
     this.compareCards = this.compareCards.bind(this)
-    this.props.fetchMycardsInfo()
   }
 
   state = {
@@ -33,6 +32,7 @@ class Mycards extends Component {
   }
   componentDidMount() {
     NEWSAPPAPI.ui.title('我的集卡')
+    this.props.fetchMycardsInfo()
   }
 
   componentWillUnmount() {

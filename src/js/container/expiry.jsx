@@ -62,6 +62,7 @@ class Expiry extends Component {
     })
   }
 
+  // 发送兑奖信息
   submit() {
     const userInfo = {
       address: this.state.address,
@@ -124,13 +125,14 @@ class Expiry extends Component {
               return
           }
         })
+      return null
     }, 500)
   }
 
   render() {
     return (
       <div className="expiry-container">
-        {
+        { // 兑奖信息填写页面
           !this.state.displayInfo && 
             <div className="expiry">
               <header className="exp-header">
@@ -162,7 +164,7 @@ class Expiry extends Component {
               </footer>
             </div>
         }
-        {
+        { // 信息确认页面
           this.state.warnDisplay &&
             <div className="exp-warnInfo">
               <div className="inner">
@@ -188,7 +190,7 @@ class Expiry extends Component {
               </div>
             </div>
         }
-        {
+        { // 兑奖详情信息展示页面
           this.state.displayInfo &&
             <div className="exp-displayInfo">
               <header className="header">

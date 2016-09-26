@@ -9,6 +9,7 @@ export default class MyCollection extends Component {
     this.finalCards = null
   }
   /* eslint-disable */
+  // 将未登录后台接口中的所有卡片与我拥有的卡片Id进行对比,进行组合,得出一个同时拥有卡片id,卡片数据,以及卡片其他详情信息的对象,以方便遍历
   compareCards(allCards, myCards) {
     this.finalCards = allCards
     this.finalCards.map((card) => {
@@ -33,7 +34,12 @@ export default class MyCollection extends Component {
       }
       return true
     })
-
+    let classNameLs = 'coll-cardsls'
+    let classNameLi = 'coll-cardsli'
+    if (data[0].cards.length >= 6) {
+      classNameLs += ' space-between'
+      classNameLi += ' margin0'
+    }
     return (
       <div className="coll-cards-container">
         <UniversalTitle
@@ -45,7 +51,7 @@ export default class MyCollection extends Component {
           <div>{erilizeText(data[0].cycleInfo.theme, 8)}</div>
           <div>{`共${count}张`}</div>
         </div>
-        <ul className="coll-cardsls">
+        <ul className={classNameLs}>
         {
           data[0].cards.map((item, index) => {
             const bgStyle = {
@@ -58,10 +64,10 @@ export default class MyCollection extends Component {
             }
             if (index <= 5) {
               return (
-                <li className="coll-cardsli" key={index}>
+                <li className={classNameLi} key={index}>
                   <div style={bgStyle} className="coll-cardsbg"></div>
                   {!item.amount && <div className="card-shade"></div>}
-                  {!!item.amount && <span className="card-text">{cardText}</span>}
+                  {!!item.amount && <span className="card-desc">{cardText}</span>}
                 </li>
               )
             } else {

@@ -8,11 +8,6 @@ export default class Carousel extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.setInterval = this.setInterval.bind(this)
     this.scrollUp = this.scrollUp.bind(this)
-    this.state = {
-      userName: this.props.data[0].passport,
-      cardName: this.props.data[0].name,
-      displayText: '',
-    }
   }
 
   componentDidMount() {

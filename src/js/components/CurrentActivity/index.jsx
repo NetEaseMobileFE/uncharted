@@ -6,10 +6,13 @@ import '../../../css/Home.scss'
 import '../../../css/CurrentActivity.scss'
 
 export default class CurrentActivity extends Component {
-  
+  // constructor(props) {
+  //   super(props)
+  // }
+
   render() {
     const { data, push, loginStatus, isNotHomePage } = this.props
-    if (this.props.isNotHomePage) {
+    if (isNotHomePage) {
       // 不是主页(即回流页)
       const share = data.share
       return (

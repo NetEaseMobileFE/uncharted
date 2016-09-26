@@ -9,10 +9,6 @@ export default class Prize extends Component {
     this.handleLogin = this.handleLogin.bind(this)
     this.handleParticipate = this.handleParticipate.bind(this)
     this.handleToGetPrize = this.handleToGetPrize.bind(this)
-    this.state = {
-      prizeStatus: this.props.collCardStatus, // 是否开启活动
-      loginStatus: this.props.loginStatus, // 登陆状态
-    }
   }
 
   componentDidMount() {

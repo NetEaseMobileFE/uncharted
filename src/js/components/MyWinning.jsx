@@ -10,12 +10,13 @@ export default class MyWinning extends Component {
     this.getPrize = this.getPrize.bind(this)
   }
 
+  // 已经分享过后,可以直接领奖
   getPrize(prizeId, lotteryId, cycleId) {
     let { push } = this.props
     push(`/expiry?prizeId=${prizeId}&cycleId=${cycleId}&lotteryId=${lotteryId}`)
   }
 
-// 分享后领奖
+  // 分享后领奖
   handleShare(prizeId, lotteryId, liCycleId) {
     let { push, changeLotteryStatus, data, cycleId } = this.props
     let imgUrl

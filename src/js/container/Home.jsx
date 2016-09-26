@@ -15,6 +15,7 @@ import MyCollection from '../components/MyCollection'
 import Rules from '../components/Rules'
 import CardDialog from '../components/CardDialog'
 import NoCardToGet from '../components/NoCardToGet'
+import SystemDialog from '../components/SystemDialog'
 import NEWSAPPAPI from 'newsapp'
 import { erilizeUrl } from './../utils/util'
 
@@ -27,6 +28,7 @@ class Home extends Component {
     this.getCardStatus = this.getCardStatus.bind(this)
     this.getData = this.getData.bind(this)
     this.noCardToGet = this.noCardToGet.bind(this)
+    this.closeSD = this.closeSD.bind(this)
     this.params = erilizeUrl(location.href)
     this.cardImg = null
     this.cardName = null
@@ -37,41 +39,54 @@ class Home extends Component {
       collCardStatus: false,
       needToUpdate: false,
       cardStatus: false,
-      noCard: false
+      noCard: false,
+      lowEdition: false
     }
   }
 
   componentDidMount() {
+    // 更改title
     NEWSAPPAPI.ui.title('头条集卡兑大奖')
+    // 判断是否是登陆状态
     NEWSAPPAPI.login(true, (rs) => {
       setTimeout(() => {
+        // 登陆状态
         if (!!rs) {
+          // 判断跳转的url中是否存在getCard参数,存在说明是从领卡页面进行跳转,需弹出卡片
           if (!!this.params.getCard) {
+            // 验证卡片是否满足可领取状态
             this.props.fetchQueryCard(this.params.giftId, this.params.cardId).then((json) => {
               if (!!json.data && !!json.data.valid) {
                 this.setState({
                   cardStatus: !!this.params.getCard
                 })
+                // 领取卡片
                 this.props.actions.receiveCardId(this.params.giftId, this.params.cardId).then(() => {
                   this.getData()
                 })
               } else {
+                // 卡片不满足领卡状态, 弹出领卡失败页面
                 this.noCardToGet()
                 this.getData()
               }
             })
           } else {
+            // 非领卡页跳转, 直接获取数据
             this.getData()
           }
+          // 判断版本号和集卡功能开启状态
           this.judgeEdition()
           this.judgeHlcStatus()
         }
       }, 500)
     })
-    // this.judgeEdition()
+
+    // 从集卡页面跳转到设置页面并开启集卡功能时候,客户端会回调该函数
     window.__headlineCard_open = () => {
       this.judgeHlcStatus()
     }
+
+    // 如果是从领卡页面跳转的,需要更改url,防止再次显示领卡
     setTimeout(() => {
       if (!!this.params.getCard) {
         window.history.replaceState([], '', 'index.html')
@@ -99,7 +114,10 @@ class Home extends Component {
   judgeEdition() {
     NEWSAPPAPI.device((rs) => {
       if (Math.floor(parseInt(rs.v, 10)) < 16) {
-        alert('升级到最新版才能参加活动')
+        this.setState({
+          lowEdition: true
+        })
+        // alert('请升级到最新版网易新闻参与活动')
       } else {
         this.judgeHlcStatus()
       }
@@ -120,6 +138,12 @@ class Home extends Component {
     this.setState({
       noCard: !this.state.noCard,
       cardStatus: false
+    })
+  }
+
+  closeSD(bool) {
+    this.setState({
+      lowEdition: bool
     })
   }
 
@@ -161,8 +185,12 @@ class Home extends Component {
       }
       return true
     })
+    console.log(this.closeSystemDialog)
     return (
       <div className="h-main-container">
+        {
+          this.state.lowEdition && <SystemDialog closeSD={this.closeSD} />
+        }
         {
           !!this.state.cardStatus &&
             <CardDialog
@@ -225,7 +253,8 @@ class Home extends Component {
         <Rules />
       </div>
     )
-    // 注释的代码是根据登陆状态不同来切换界面,但是在别的页面回退到home页面的时候,可能会出现重置state的问题,会导致明明是登陆状态,结果显示的是未登录界面,这点要注意
+    // 注释的代码是根据登陆状态不同来切换界面,但是在别的页面回退到home页面的时候,可能会出现重置state的问题,因为现在不需要做未登录页面,
+    // 所以暂时不存在该问题,以后如果需要更改,需要将登陆状态的state抛入顶层store中进行存储
     // if (this.state.loginStatus) {
     //   // 登陆界面
     //   if (!basic) {
