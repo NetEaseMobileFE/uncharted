@@ -105,7 +105,7 @@ export default class Prize extends Component {
   }
 
   render() {
-    const { data, collCardStatus, curPrizeStatus, nowAmount, sumAmount } = this.props.data
+    const { data, collCardStatus, curPrizeStatus, nowAmount, sumAmount, push } = this.props.data
     // 这个按钮,有8种状态 以后用数组判断
     let finalFunc = ''
     let finalBtnText = ''

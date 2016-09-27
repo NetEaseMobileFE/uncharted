@@ -38,7 +38,7 @@
         top: 0.17rem;
         box-sizing: border-box;
         height: .73rem;
-        @include border(border, 2px, solid, #653634);
+        @include border(border, 1px, solid, #653634);
 
         .cd-in{
           display: flex;
@@ -365,7 +365,7 @@
     @include px2px(font-size, 13);
   }
   .homeAboutRule>ul{
-    margin:0.43rem 0 0 0.25rem;
+    margin: .43rem .25rem 0 .25rem;
     padding-bottom: 0.5rem;
     color:white;
     list-style: none;

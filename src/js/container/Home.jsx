@@ -17,7 +17,7 @@ import CardDialog from '../components/CardDialog'
 import NoCardToGet from '../components/NoCardToGet'
 import SystemDialog from '../components/SystemDialog'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeUrl } from './../utils/util'
+import { erilizeUrl, writeObj } from './../utils/util'
 
 
 class Home extends Component {
@@ -51,34 +51,34 @@ class Home extends Component {
     NEWSAPPAPI.ui.title('头条集卡兑大奖')
     // 判断是否是登陆状态
     NEWSAPPAPI.login(true, (rs) => {
-        // 登陆状态
-        if (!!rs) {
-          // 判断跳转的url中是否存在getCard参数,存在说明是从领卡页面进行跳转,需弹出卡片
-          if (!!this.params.getCard) {
-            // 验证卡片是否满足可领取状态
-            this.props.fetchQueryCard(this.params.giftId, this.params.cardId).then((json) => {
-              if (!!json.data && !!json.data.valid) {
-                this.setState({
-                  cardStatus: !!this.params.getCard
-                })
-                // 领取卡片
-                this.props.actions.receiveCardId(this.params.giftId, this.params.cardId).then(() => {
-                  this.getData()
-                })
-              } else {
-                // 卡片不满足领卡状态, 弹出领卡失败页面
-                this.noCardToGet()
+      // 登陆状态
+      if (!!rs) {
+        // 判断跳转的url中是否存在getCard参数,存在说明是从领卡页面进行跳转,需弹出卡片
+        if (!!this.params.getCard) {
+          // 验证卡片是否满足可领取状态
+          this.props.fetchQueryCard(this.params.giftId, this.params.cardId).then((json) => {
+            if (!!json.data && !!json.data.valid) {
+              this.setState({
+                cardStatus: !!this.params.getCard
+              })
+              // 领取卡片
+              this.props.actions.receiveCardId(this.params.giftId, this.params.cardId).then(() => {
                 this.getData()
-              }
-            })
-          } else {
-            // 非领卡页跳转, 直接获取数据
-            this.getData()
-          }
-          // 判断版本号和集卡功能开启状态
-          this.judgeEdition()
-          // this.judgeHlcStatus()
+              })
+            } else {
+              // 卡片不满足领卡状态, 弹出领卡失败页面
+              this.noCardToGet()
+              this.getData()
+            }
+          })
+        } else {
+          // 非领卡页跳转, 直接获取数据
+          this.getData()
         }
+        // 判断版本号和集卡功能开启状态
+        this.judgeEdition()
+        // this.judgeHlcStatus()
+      }
     })
 
     // 从集卡页面跳转到设置页面并开启集卡功能时候,客户端会回调该函数
@@ -86,11 +86,12 @@ class Home extends Component {
       this.judgeHlcStatus()
     }
 
-    // 如果是从领卡页面跳转的,需要更改url,防止再次显示领卡
+    // 两个作用,一个是防止从领卡页面跳转的url导致重复领卡.另外是为了判断是否是第一次访问该url
     setTimeout(() => {
-      if (!!this.params.getCard) {
-        window.history.replaceState([], '', 'index.html')
-      }
+      // if (!!this.params.getCard) {
+      //   window.history.replaceState([], '', 'index.html?visit=1&')
+      // }
+      window.history.replaceState([], '', 'index.html?visit=1&')
     }, 500)
   }
 
@@ -114,7 +115,9 @@ class Home extends Component {
   judgeEdition() {
     NEWSAPPAPI.device((rs) => {
       if (Math.floor(parseInt(rs.v, 10)) < 16) {
-        this.openSD('请升级到最新版网易新闻参与活动')
+        if (+(this.params.visit) !== 1) {
+          this.openSD('请升级到最新版网易新闻参与活动')
+        }
       } else {
         this.judgeHlcStatus()
       }
@@ -174,6 +177,12 @@ class Home extends Component {
     if (!basic) {
       return null
     }
+    
+    if (!!basic && !basic.lotteryCards) {
+      this.props.actions.fetchBasicInfo()
+      return null
+    }
+
     let cycleId = notlogin.cycleInfo.id
     let curPrizeStatus
     for (let index = 0; index < basic.lotteryPrizes.length; index++) {

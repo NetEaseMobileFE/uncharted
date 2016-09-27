@@ -2,24 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c91d121-a7f3-4eba-9ffe-88659e9d5e99" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/css/app.7b8f1bc10b5042d85ffb.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/css/app.7b8f1bc10b5042d85ffb.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/bundle.7b8f1bc10b5042d85ffb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/bundle.7b8f1bc10b5042d85ffb.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/webpackBootstrap.44cc6709318e635f682c.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/webpackBootstrap.44cc6709318e635f682c.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/css/app.915667b7457236f67f36.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/css/app.915667b7457236f67f36.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/bundle.915667b7457236f67f36.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/bundle.915667b7457236f67f36.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/webpackBootstrap.287c4b6b48ab01a47bb6.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/webpackBootstrap.287c4b6b48ab01a47bb6.js.map" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/actions/home.js" afterPath="$PROJECT_DIR$/src/js/actions/home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/home.scss" afterPath="$PROJECT_DIR$/src/css/home.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/components/CardDialog.jsx" afterPath="$PROJECT_DIR$/src/js/components/CardDialog.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/components/CurrentActivity/Cards.jsx" afterPath="$PROJECT_DIR$/src/js/components/CurrentActivity/Cards.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/components/CurrentActivity/index.jsx" afterPath="$PROJECT_DIR$/src/js/components/CurrentActivity/index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/components/MyWinning.jsx" afterPath="$PROJECT_DIR$/src/js/components/MyWinning.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/components/PastWinning.jsx" afterPath="$PROJECT_DIR$/src/js/components/PastWinning.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/components/Rules.jsx" afterPath="$PROJECT_DIR$/src/js/components/Rules.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/components/SystemDialog.jsx" afterPath="$PROJECT_DIR$/src/js/components/SystemDialog.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/components/CurrentActivity/Prize.jsx" afterPath="$PROJECT_DIR$/src/js/components/CurrentActivity/Prize.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/container/Home.jsx" afterPath="$PROJECT_DIR$/src/js/container/Home.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/container/expiry.jsx" afterPath="$PROJECT_DIR$/src/js/container/expiry.jsx" />
     </list>
     <ignored path="uncharted.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MyWinning.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/components/MyWinning.jsx">
+      <file leaf-file-name="Home.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/container/Home.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="56" column="17" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="17" />
+            <state relative-caret-position="-402">
+              <caret line="179" column="4" selection-start-line="179" selection-start-column="4" selection-end-line="179" selection-end-column="4" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -52,28 +46,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PastWinning.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/components/PastWinning.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScrollLoadBtn.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/components/ScrollLoadBtn.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShareBanner.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/components/ShareBanner.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dist/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -82,54 +56,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SystemDialog.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/components/SystemDialog.jsx">
+      <file leaf-file-name="Mycards.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/container/Mycards.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+            <state relative-caret-position="210">
+              <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UniversalTitle.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/components/UniversalTitle.jsx">
+      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="10" column="66" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Home.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/container/Home.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
+            <state relative-caret-position="375">
+              <caret line="37" column="3" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
-                <element signature="e#1903#2534#0" expanded="false" />
+                <element signature="e#0#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Carousel.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/components/Carousel.jsx">
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/reducers/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12">
-              <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+            <state relative-caret-position="570">
+              <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CardDialog.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/js/components/CardDialog.jsx">
+      <file leaf-file-name="Expiry.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/container/Expiry.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+            <state relative-caret-position="-1095">
+              <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -137,11 +100,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Rules.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/components/Rules.jsx">
+      <file leaf-file-name="Prize.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/components/CurrentActivity/Prize.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+            <state relative-caret-position="450">
+              <caret line="107" column="96" selection-start-line="107" selection-start-column="96" selection-end-line="107" selection-end-column="96" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="open.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/newsapp/lib/open.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/newsapp/lib/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="newsapp.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/newsapp/dist/newsapp.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="338" column="12" selection-start-line="338" selection-start-column="12" selection-end-line="338" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -155,7 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/js/actions/shareItem.js" />
         <option value="$PROJECT_DIR$/src/css/home.scss" />
         <option value="$PROJECT_DIR$/src/css/share.scss" />
         <option value="$PROJECT_DIR$/src/css/currentActivity.scss" />
@@ -172,10 +170,8 @@
         <option value="$PROJECT_DIR$/src/js/components/ScrollLoadBtn.jsx" />
         <option value="$PROJECT_DIR$/src/js/utils/util.js" />
         <option value="$PROJECT_DIR$/src/css/Expiry.scss" />
-        <option value="$PROJECT_DIR$/node_modules/newsapp/dist/newsapp.js" />
         <option value="$PROJECT_DIR$/src/css/Share.scss" />
         <option value="$PROJECT_DIR$/src/js/container/Share.jsx" />
-        <option value="$PROJECT_DIR$/src/js/index.jsx" />
         <option value="$PROJECT_DIR$/src/js/actions/ShareItem.js" />
         <option value="$PROJECT_DIR$/dist/index.html" />
         <option value="$PROJECT_DIR$/src/css/CurrentActivity.scss" />
@@ -189,23 +185,26 @@
         <option value="$PROJECT_DIR$/src/css/MyCards.scss" />
         <option value="$PROJECT_DIR$/src/js/container/Record.jsx" />
         <option value="$PROJECT_DIR$/src/js/container/ShareItem.jsx" />
-        <option value="$PROJECT_DIR$/src/css/Home.scss" />
         <option value="$PROJECT_DIR$/src/css/SystemDialog.scss" />
         <option value="$PROJECT_DIR$/src/js/reducers/record.js" />
         <option value="$PROJECT_DIR$/src/js/reducers/myCards.js" />
         <option value="$PROJECT_DIR$/src/css/ShareItem.scss" />
-        <option value="$PROJECT_DIR$/src/js/components/CurrentActivity/Prize.jsx" />
         <option value="$PROJECT_DIR$/src/js/components/MyWinning.jsx" />
         <option value="$PROJECT_DIR$/src/js/container/Expiry.jsx" />
         <option value="$PROJECT_DIR$/src/js/components/CurrentActivity/Index.jsx" />
         <option value="$PROJECT_DIR$/src/js/components/CurrentActivity/Cards.jsx" />
         <option value="$PROJECT_DIR$/src/js/components/SystemDialog.jsx" />
-        <option value="$PROJECT_DIR$/src/js/container/Home.jsx" />
         <option value="$PROJECT_DIR$/src/js/actions/Home.js" />
         <option value="$PROJECT_DIR$/src/js/reducers/home.js" />
         <option value="$PROJECT_DIR$/src/js/components/PastWinning.jsx" />
         <option value="$PROJECT_DIR$/src/js/components/Rules.jsx" />
+        <option value="$PROJECT_DIR$/src/css/Home.scss" />
         <option value="$PROJECT_DIR$/src/js/components/CardDialog.jsx" />
+        <option value="$PROJECT_DIR$/node_modules/newsapp/lib/login.js" />
+        <option value="$PROJECT_DIR$/node_modules/newsapp/dist/newsapp.js" />
+        <option value="$PROJECT_DIR$/src/js/index.jsx" />
+        <option value="$PROJECT_DIR$/src/js/components/CurrentActivity/Prize.jsx" />
+        <option value="$PROJECT_DIR$/src/js/container/Home.jsx" />
       </list>
     </option>
   </component>
@@ -362,82 +361,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uncharted" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uncharted" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uncharted" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uncharted" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="container" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uncharted" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uncharted" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uncharted" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uncharted" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="dist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -572,12 +495,12 @@
       <workItem from="1474537363886" duration="57461000" />
       <workItem from="1474675551106" duration="1198000" />
       <workItem from="1474882499121" duration="19149000" />
-      <workItem from="1474969634820" duration="9424000" />
+      <workItem from="1474969634820" duration="17433000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="366486000" />
+    <option name="totallyTimeSpent" value="374495000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -645,13 +568,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dist/img/be0e295cdadc77ab898f27dd0576732c.png" />
-    <entry file="file://$PROJECT_DIR$/dist/img/ecd4b735216336833808f9714c0af716.png" />
     <entry file="file://$PROJECT_DIR$/dist/img/ef85ed1d402f1871dafff750d657bf09.png" />
     <entry file="file://$PROJECT_DIR$/dist/img/e6978487dc7cfececba7b1a54cbf5780.png" />
     <entry file="file://$PROJECT_DIR$/webpack.config.prod.js">
@@ -669,7 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/index.html" />
     <entry file="file://$PROJECT_DIR$/src/js/actions/Record.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -732,13 +652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/CurrentActivity.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="272" column="9" selection-start-line="272" selection-start-column="9" selection-end-line="272" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -747,14 +660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/Home.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -796,16 +701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/container/Mycards.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-599">
-          <caret line="42" column="8" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="8" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
           </folding>
@@ -863,46 +758,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/newsapp/dist/newsapp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="15" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/newsapp/lib/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/container/Expiry.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/utils/util.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/components/CurrentActivity/Prize.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="67" />
           <folding />
         </state>
       </provider>
@@ -912,7 +771,7 @@
         <state relative-caret-position="375">
           <caret line="72" column="16" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -922,24 +781,8 @@
         <state relative-caret-position="15">
           <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/actions/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/reducers/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1025,24 +868,129 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/container/Home.jsx">
+    <entry file="file://$PROJECT_DIR$/src/js/actions/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-            <element signature="e#1903#2534#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="435">
+          <caret line="140" column="24" selection-start-line="140" selection-start-column="16" selection-end-line="140" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/CurrentActivity.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="255" column="10" selection-start-line="255" selection-start-column="9" selection-end-line="255" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/components/CardDialog.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+        <state relative-caret-position="705">
+          <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/Home.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="398" column="0" selection-start-line="398" selection-start-column="0" selection-end-line="398" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/newsapp/lib/open.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/newsapp/lib/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/newsapp/dist/newsapp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="338" column="12" selection-start-line="338" selection-start-column="12" selection-end-line="338" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/container/Expiry.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1095">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="37" column="3" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/reducers/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/components/CurrentActivity/Prize.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="107" column="96" selection-start-line="107" selection-start-column="96" selection-end-line="107" selection-end-column="96" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/container/Mycards.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/container/Home.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-402">
+          <caret line="179" column="4" selection-start-line="179" selection-start-column="4" selection-end-line="179" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
