@@ -27,7 +27,7 @@ export default class PastWinning extends Component {
               <li className="pari-li" key={index}>
                 <div className="pari-li-l">
                   <div className="pari-logo">
-                    <div className= "logo-header" style={headBg}></div>
+                    <div className="logo-header" style={headBg}></div>
                   </div>
                   <div className="pari-li-l-r">
                     <div className="pari-prize">

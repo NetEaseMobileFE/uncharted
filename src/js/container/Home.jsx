@@ -7,7 +7,7 @@ import { fetchQueryCard } from '../actions/ShareItem'
 import '../../css/Home.scss'
 import '../../css/CurrentActivity.scss'
 
-import CurrentActivity from '../components/CurrentActivity'
+import CurrentActivity from '../components/CurrentActivity/index'
 import Carousel from '../components/Carousel'
 import MyWinning from '../components/MyWinning'
 import PastWinning from '../components/PastWinning'
@@ -19,6 +19,7 @@ import SystemDialog from '../components/SystemDialog'
 import NEWSAPPAPI from 'newsapp'
 import { erilizeUrl } from './../utils/util'
 
+
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -29,6 +30,7 @@ class Home extends Component {
     this.getData = this.getData.bind(this)
     this.noCardToGet = this.noCardToGet.bind(this)
     this.closeSD = this.closeSD.bind(this)
+    this.openSD = this.openSD.bind(this)
     this.params = erilizeUrl(location.href)
     this.cardImg = null
     this.cardName = null
@@ -40,7 +42,7 @@ class Home extends Component {
       needToUpdate: false,
       cardStatus: false,
       noCard: false,
-      lowEdition: false
+      openSystemDialog: false
     }
   }
 
@@ -49,7 +51,6 @@ class Home extends Component {
     NEWSAPPAPI.ui.title('头条集卡兑大奖')
     // 判断是否是登陆状态
     NEWSAPPAPI.login(true, (rs) => {
-      setTimeout(() => {
         // 登陆状态
         if (!!rs) {
           // 判断跳转的url中是否存在getCard参数,存在说明是从领卡页面进行跳转,需弹出卡片
@@ -76,9 +77,8 @@ class Home extends Component {
           }
           // 判断版本号和集卡功能开启状态
           this.judgeEdition()
-          this.judgeHlcStatus()
+          // this.judgeHlcStatus()
         }
-      }, 500)
     })
 
     // 从集卡页面跳转到设置页面并开启集卡功能时候,客户端会回调该函数
@@ -114,10 +114,7 @@ class Home extends Component {
   judgeEdition() {
     NEWSAPPAPI.device((rs) => {
       if (Math.floor(parseInt(rs.v, 10)) < 16) {
-        this.setState({
-          lowEdition: true
-        })
-        // alert('请升级到最新版网易新闻参与活动')
+        this.openSD('请升级到最新版网易新闻参与活动')
       } else {
         this.judgeHlcStatus()
       }
@@ -141,9 +138,16 @@ class Home extends Component {
     })
   }
 
-  closeSD(bool) {
+  openSD(desc) {
     this.setState({
-      lowEdition: bool
+      openSystemDialog: true,
+      systemDialogDesc: desc
+    })
+  }
+
+  closeSD() {
+    this.setState({
+      openSystemDialog: false
     })
   }
 
@@ -181,12 +185,19 @@ class Home extends Component {
     }
     let cardDialogLen = 0
     basic.myCards.map((item) => {
-      if (item.cardId === this.params.cardId) {
+      if (item.cardId === +(this.params.cardId)) {
         cardDialogLen = item.amount
       }
       return true
     })
 
+    // 系统弹窗参数
+    const systemDialogParams = {
+      onCloseSD: this.closeSD,
+      desc: this.state.systemDialogDesc
+    }
+
+      // 从领卡回流页跳转回主页的弹窗组件参数
     const cardDialogParams = {
       cardType: basic.myCards.length,
       cardAmount: cardDialogLen,
@@ -201,9 +212,11 @@ class Home extends Component {
       cycleId: notlogin.cycleInfo.id,
       endTime: notlogin.cycleInfo.endTime,
       sendCard: this.props.actions.sendCard,
-      sendCardInfo: data.sendCardInfo
+      sendCardInfo: data.sendCardInfo,
+      onOpenSD: this.openSD
     }
 
+    // CurrentActivity组件参数
     const currentActivityParams = {
       data,
       curPrizeStatus,
@@ -216,9 +229,11 @@ class Home extends Component {
       lotteryId: basic.lotteryPrizes.length !== 0 ? basic.lotteryPrizes[0].lotteryInfo.id : null,
       sendLotteryIdErrCode: this.props.data.sendLotteryId ? this.props.data.sendLotteryId.errcode : null,
       sendCard: this.props.actions.sendCard,
-      sendCardInfo: data.sendCardInfo
+      sendCardInfo: data.sendCardInfo,
+      onOpenSD: this.openSD
     }
-    
+
+    // 我的获奖记录组件参数
     const myWinningParams = {
       data: basic,
       push: history.push,
@@ -228,16 +243,17 @@ class Home extends Component {
       sendLotteryIdErrCode: this.props.data.sendLotteryId ? this.props.data.sendLotteryId.errcode : null
     }
 
+
     return (
       <div className="h-main-container">
-        {this.state.lowEdition && <SystemDialog closeSD={this.closeSD} />}
+        {this.state.openSystemDialog && <SystemDialog data={systemDialogParams} />}
         {!!this.state.cardStatus && <CardDialog data={cardDialogParams} />}
         {this.state.noCard && <NoCardToGet noCardToGet={this.noCardToGet} />}
         <CurrentActivity data={currentActivityParams} />
         <Carousel data={notlogin.carousel} />
         <div className="list-change-style">
           {!!basic.lotteryPrizes && basic.lotteryPrizes.length !== 0 && <MyWinning data={myWinningParams} />}
-          {!!notlogin && notlogin.lotteryPrizes.length != 0 && <PastWinning data={notlogin} />}
+          {!!notlogin && notlogin.lotteryPrizes.length !== 0 && <PastWinning data={notlogin} />}
         </div>
         {!!basic.lotteryCards[0] && basic.lotteryCards.length > 0 && <MyCollection data={basic.lotteryCards} />}
         <Rules />

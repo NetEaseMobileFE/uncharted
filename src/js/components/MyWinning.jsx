@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UniversalTitle from './UniversalTitle'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeText, changeUrl } from '../utils/util.js'
+import { erilizeText, changeUrl, writeObj } from '../utils/util.js'
 
 export default class MyWinning extends Component {
   constructor(props) {
@@ -45,9 +45,9 @@ export default class MyWinning extends Component {
     }
     NEWSAPPAPI.share.invoke(shareData, () => {
       NEWSAPPAPI.login()
-      this.props.sendLotteryId(lotteryId)
-        .then(() => {
-          let errcode = parseInt(this.props.sendLotteryIdErrCode, 10)
+      this.props.data.sendLotteryId(lotteryId)
+        .then((json) => {
+          let errcode = parseInt(json.errcode, 10)
           if (errcode === 0) {
             changeLotteryStatus(lotteryStatusObj)
             push(`/expiry?prizeId=${prizeId}&cycleId=${liCycleId}&lotteryId=${lotteryId}`)

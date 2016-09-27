@@ -6,12 +6,8 @@ import '../../../css/Home.scss'
 import '../../../css/CurrentActivity.scss'
 
 export default class CurrentActivity extends Component {
-  // constructor(props) {
-  //   super(props)
-  // }
 
   render() {
-    console.log(this.props)
     const { isNotHomePage } = this.props
     if (isNotHomePage) {
       // 不是主页(即回流页)
@@ -44,7 +40,7 @@ export default class CurrentActivity extends Component {
       const { data, push, loginStatus } = this.props.data
       const basic = data.basic
       const notlogin = data.notlogin
-      const { fetchBasicInfo, collCardStatus, curPrizeStatus, changeLotteryStatus, lotteryId, sendCard, sendCardInfo, sendLotteryId, sendLotteryIdErrCode } = this.props.data
+      const { fetchBasicInfo, collCardStatus, curPrizeStatus, changeLotteryStatus, lotteryId, sendCard, sendCardInfo, sendLotteryId, sendLotteryIdErrCode, onOpenSD } = this.props.data
       const prizeParams = {
         fetchBasicInfo,
         push,
@@ -73,7 +69,8 @@ export default class CurrentActivity extends Component {
         cycleId: notlogin.cycleInfo.id,
         prizeId: notlogin.prize.id,
         sendCard,
-        sendCardInfo
+        sendCardInfo,
+        onOpenSD
       }
 
       return (

@@ -17,12 +17,12 @@ export default class SystemDialog extends Component {
   }
   
   render() {
-    const { closeSD } = this.props
+    const { onCloseSD, desc } = this.props.data
     return (
       <div className="system-dialog-container" ref={(e) => { this.systemDialog = e }}>
         <div className="system-dialog">
-          <div className="sd-top">请升级到最新版网易新闻参与活动!</div>
-          <div className="sd-bottom" onClick={() => closeSD(false)}>确定</div>
+          <div className="sd-top">{desc}</div>
+          <div className="sd-bottom" onClick={onCloseSD}>确定</div>
         </div>
       </div>
     )

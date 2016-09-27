@@ -29,15 +29,12 @@ export default class CardDialog extends Component {
 
   // 送卡片
   present() {
-    const { cardId, cycleId, cardLen, cardName, prizeName, cardImg, prizeId, changeCardStatus, sendCard } = this.props.data
-    console.log(this.props)
-    console.log(cardId, '  ', cycleId, '  ', cardName)
+    const { cardId, cycleId, cardLen, cardName, prizeName, cardImg, prizeId, changeCardStatus, sendCard, onOpenSD } = this.props.data
     changeCardStatus(false)
     let shareData = {}
     sendCard(cardId)
       .then((json) => {
         this.giftId = json.data.giftId
-        console.log(changeUrl('http://t.c.m.163.com/uncharted/index.html#/shareCard?cycleId=' + cycleId + '&cardId=' + cardId + '&cardLen=' + cardLen + '&prizeId=' + prizeId + '&giftId=' + encodeURIComponent(this.giftId) + '&', 2))
         shareData = {
           wbText: '网易新闻，集卡赢大奖' + changeUrl('http://t.c.m.163.com/uncharted/index.html?cycleId=' + cycleId + '&cardId=' + cardId + '&cardLen=' + cardLen + '&prizeId=' + prizeId + '&giftId=' + encodeURIComponent(this.giftId) + '#/shareCard', 2),
           wbPhoto: cardImg,
@@ -47,6 +44,7 @@ export default class CardDialog extends Component {
           wxPhoto: cardImg
         }
         NEWSAPPAPI.share.invoke(shareData, () => {
+          onOpenSD('好友领取后，卡片-1')
         })
       })
   }

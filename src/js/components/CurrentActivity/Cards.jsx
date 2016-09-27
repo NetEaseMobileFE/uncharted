@@ -54,7 +54,7 @@ export default class Cards extends Component {
 
 
   render() {
-    const { allCards, myCards, prizeName, changeCardsNum, cycleId, sendCard, sendCardInfo, isNotHomePage, loginStatus } = this.props.data
+    const { allCards, myCards, prizeName, changeCardsNum, cycleId, sendCard, sendCardInfo, isNotHomePage, loginStatus, onOpenSD } = this.props.data
     let cardLen = allCards.length % 3
     let finalCards
     if (!!myCards) {
@@ -76,9 +76,11 @@ export default class Cards extends Component {
         changeCardsNum,
         cycleId,
         sendCard,
-        sendCardInfo
+        sendCardInfo,
+        onOpenSD
       }
     }
+
     return (
       <ul className="coll-cards-ls">
         { 

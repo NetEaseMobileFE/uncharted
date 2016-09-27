@@ -99,10 +99,11 @@ export function sendLotteryId(id) {
     })
       .then(res => res.json())
       .then((json) => {
-        dispatch({
-          type: 'FETCH_LOTTERY_ID',
-          data: json
-        })
+        // dispatch({
+        //   type: 'FETCH_LOTTERY_ID',
+        //   data: json
+        // })
+        return json
       })
   }
 }

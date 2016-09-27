@@ -32,7 +32,3 @@ export default class AboutRule extends Component {
   }
 }
 
-
-
-
-

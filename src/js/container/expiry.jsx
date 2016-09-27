@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions/Expiry'
 import { fetchBasicInfo } from '../actions/Home'
-import { erilizeUrl, writeObj } from '../utils/util'
+import { erilizeUrl } from '../utils/util'
 import NEWSAPPAPI from 'newsapp'
 
 import '../../css/Expiry.scss'
@@ -75,8 +75,8 @@ class Expiry extends Component {
     xhr.open('post', 'http://t.c.m.163.com/uc/activity/card/prize/exchange', true)
     xhr.send(null)
     xhr.onreadystatechange = () => {
-      if (xhr.readyState == 4) {
-        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+      if (+(xhr.readyState) === 4) {
+        if ((xhr.status >= 200 && xhr.status < 300) || +(xhr.status) === 304) {
           webState = true
         } else {
           alert('当前网络不稳定,请稍后再试')
@@ -90,7 +90,6 @@ class Expiry extends Component {
         this.cancel()
         return false
       }
-      NEWSAPPAPI.login(() => {})
       this.props.fetchExpiryParams(this.params, userInfo)
         .then(() => {
           const errcode = this.props.data.expiryParams.errcode
