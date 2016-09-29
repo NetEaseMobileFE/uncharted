@@ -105,7 +105,7 @@ export default class Prize extends Component {
   }
 
   render() {
-    const { data, collCardStatus, curPrizeStatus, nowAmount, sumAmount, push } = this.props.data
+    const { data, collCardStatus, curPrizeStatus, nowAmount, sumAmount, push, isNotDisplay } = this.props.data
     // 这个按钮,有8种状态 以后用数组判断
     let finalFunc = ''
     let finalBtnText = ''
@@ -167,11 +167,11 @@ export default class Prize extends Component {
           <label className="prize-label-text">本期奖品</label>
           <span className="prize-info">{erilizeText(data.name, 7)}</span>
           {
-            !this.props.IsNotDisplay && 
+            !isNotDisplay &&
               <span className="prize-status">{finalLabelText}</span>
           }
           {
-            !this.props.IsNotDisplay && 
+            !isNotDisplay &&
               <div className={finalClass} onClick={finalFunc}>{finalBtnText}</div>
           }
         </div>

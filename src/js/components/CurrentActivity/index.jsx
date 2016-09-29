@@ -15,7 +15,7 @@ export default class CurrentActivity extends Component {
       const share = data.share
       const prizeParams = {
         data: share.prize,
-        IsNotDisplay: isNotHomePage,
+        isNotDisplay: isNotHomePage,
         sumAmount: share.cards.length
       }
       const cardsParams = {
@@ -80,7 +80,7 @@ export default class CurrentActivity extends Component {
           <div className="cur-prize-container">
             <div className="inner">
               <Prize data={prizeParams} />
-              <Cards data={cardsParams}/>
+              <Cards data={cardsParams} />
             </div>
           </div>
         </div>

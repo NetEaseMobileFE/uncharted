@@ -85,7 +85,7 @@ export function writeObj(obj) {
 
 export function limitTime(begin, end) {
   const beginTime = new Date(begin)
-  const endTime = new Date(end)
-  const limit = `${beginTime.getMonth() + 1}.${beginTime.getDate()} - ${endTime.getMonth() + 1}.${endTime.getDate() - 1}`
+  const endTime = new Date(end - 1000 * 60 * 60 * 24)
+  const limit = `${beginTime.getMonth() + 1}.${beginTime.getDate()} - ${endTime.getMonth() + 1}.${endTime.getDate()}`
   return limit
 }

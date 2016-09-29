@@ -3,27 +3,19 @@
 
   .anotherBg{
     background: url(./../img/dialogBg.png) no-repeat top left;
-    background-size: 7.5rem 13.3rem;
+    background-size: 100% 100%;
   }
 
   .oneBg{
     background: url(./../img/shareBg.png) no-repeat center center;
-    background-size: 7.5rem 18.75rem;
+    background-size: 100% 100%;
   }
   .share{
     position: relative;
     width: 7.5rem;
     //height: 100%;
     overflow: hidden;
-    //.mb1{
-    //  margin:0 auto .17rem;
-    //}
-    //.mb2{
-    //  margin:0 auto .17rem;
-    //}
-    //.mb3{
-    //  margin:0 auto .17rem;
-    //}
+
     .header{
       display: flex;
       align-items: center;
