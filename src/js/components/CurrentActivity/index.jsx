@@ -60,6 +60,7 @@ export default class CurrentActivity extends Component {
       }
       const cardsParams = {
         allCards: notlogin.cards,
+        now: notlogin.now,
         isNotHomePage,
         loginStatus,
         prizeName: notlogin.prize.name,

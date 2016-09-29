@@ -177,7 +177,7 @@ class Home extends Component {
     if (!basic) {
       return null
     }
-    
+    // 判断客户端是否注入cookie失败
     if (!!basic && !basic.lotteryCards) {
       this.props.actions.fetchBasicInfo()
       return null
@@ -192,6 +192,7 @@ class Home extends Component {
         break
       }
     }
+    
     let cardDialogLen = 0
     basic.myCards.map((item) => {
       if (item.cardId === +(this.params.cardId)) {

@@ -130,8 +130,9 @@
       align-items: center;
       width:1.5rem;
       height:1.27rem;
-      background: white url(./../img/cardBg.png) no-repeat center;
-      background-size: .65rem .65rem;
+      background-color: white;
+      //background: white url(./../img/cardBg.png) no-repeat center;
+      //background-size: .65rem .65rem;
       margin-right: 0.39rem;
 
       .prize-img{
@@ -243,8 +244,9 @@
           //z-index: 1;
           width:1.08rem;
           height:1.05rem;
-          background: white url(./../img/cardBg.png) no-repeat center;
-          background-size: .5rem .5rem;
+          background-color: white;
+          //background: white url(./../img/cardBg.png) no-repeat center;
+          //background-size: .5rem .5rem;
 
           .past-prizebg{
             //z-index: 10;

@@ -40,7 +40,7 @@ class Expiry extends Component {
   }
 
   componentWillUnmount() {
-    fetchBasicInfo()
+    // fetchBasicInfo()
   }
 
   handleClick() {
@@ -99,6 +99,7 @@ class Expiry extends Component {
                 warnDisplay: false,
                 displayInfo: true
               })
+              fetchBasicInfo()
               break
             case 1:
               this.cancel()

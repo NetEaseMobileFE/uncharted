@@ -29,7 +29,12 @@ export default class CardDialog extends Component {
 
   // 送卡片
   present() {
-    const { cardId, cycleId, cardLen, cardName, prizeName, cardImg, prizeId, changeCardStatus, sendCard, onOpenSD } = this.props.data
+    const { cardId, cycleId, cardLen, cardName, prizeName, cardImg, prizeId, changeCardStatus, sendCard, onOpenSD, now, endTime } = this.props.data
+    console.log('now: ', now,'endTime: ', endTime)
+    if (now > endTime) {
+      onOpenSD('本期活动已结束')
+      return null
+    }
     changeCardStatus(false)
     let shareData = {}
     sendCard(cardId)
@@ -47,6 +52,7 @@ export default class CardDialog extends Component {
           onOpenSD('好友领取后，卡片-1')
         })
       })
+    return null
   }
 
   // 晒卡片
@@ -67,6 +73,7 @@ export default class CardDialog extends Component {
 
   render() {
     const { data } = this.props
+    console.log(this.props)
     const bgImg = {
       background: `url(${data.cardImg}) no-repeat center`,
       backgroundSize: '100% 100%'

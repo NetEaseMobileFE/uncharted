@@ -105,8 +105,7 @@ class ShareItem extends Component {
         <ShareBanner />
         <div className="title">
           <div>
-            <div className="user">{erilizeText(`${cardName}送给你,集齐可得${share.prize.name}`, 18)}</div>
-            <div className="desc">不用谢我，我只是个传说</div>
+            <div className="user">{erilizeText(`${cardName}送给你,集齐可得${share.prize.name},不用谢我，我只是个传说`, 36)}</div>
           </div>
         </div>
         <div className="info-outer">

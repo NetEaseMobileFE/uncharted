@@ -2,12 +2,12 @@
   @import "Common";
 
   .anotherBg{
-    background:url(./../img/dialogBg.png) no-repeat top center;
-    background-size: 7.5rem 12.1rem;
+    background: url(./../img/dialogBg.png) no-repeat top left;
+    background-size: 7.5rem 13.3rem;
   }
 
   .oneBg{
-    background:url(./../img/shareBg.png) no-repeat center center;
+    background: url(./../img/shareBg.png) no-repeat center center;
     background-size: 7.5rem 18.75rem;
   }
   .share{
@@ -27,15 +27,18 @@
     .header{
       display: flex;
       align-items: center;
+      justify-content: center;
       width: 6.8rem;
       height: 1.7rem;
       margin-left: .35rem;
       color:white;
+      text-align: center;
 
       .title{
         width: 100%;
         height: .57rem;
-        @include px2px(font-size, 18);
+        font-weight: bold;
+        @include px2px(font-size, 20);
         line-height: .8rem;
         margin-bottom: .1rem;
       }
@@ -43,7 +46,7 @@
       .text{
         width: 100%;
         height: .6rem;
-        @include px2px(font-size, 12);
+        @include px2px(font-size, 16);
         line-height: .4rem;
       }
       .info{
@@ -76,7 +79,7 @@
       margin: 0 auto;
       background: white;
       border-radius: 10px;
-      background: white url(./../img/cardBg.png) no-repeat center;
+      background: url(./../img/cardBg.png) no-repeat center;
       background-size: 2rem 1.94rem;
 
       .sharecard-bg{
@@ -89,7 +92,7 @@
     }
     .footer{
       width: 6.8rem;
-      height: 3.16rem;
+      height: 3rem;
       margin: .26rem auto 0;
       color: white;
       @include px2px(font-size, 15);
@@ -127,8 +130,9 @@
           z-index: 1;
           width: 1.36rem;
           height: 1.27rem;
-          background: white url(./../img/cardBg.png) no-repeat center;
-          background-size: .6rem .6rem;
+          background-color: white;
+          //background: white url(./../img/cardBg.png) no-repeat center;
+          //background-size: .6rem .6rem;
           
           .info3prize-bg{
             position: absolute;

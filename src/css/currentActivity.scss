@@ -34,7 +34,7 @@
         z-index: 1;
         width:2.77rem;
         height:2.34rem;
-        background: white url(./../img/cardBg.png) no-repeat center;
+        background-color: white;
         background-size: 1.3rem 1.3rem;
         margin: 0 .24rem 0 .3rem ;  
 
@@ -260,22 +260,22 @@
         }
 
         .card-sum{
-          left:.12rem;
-          bottom:.1rem;
+          left:.1rem;
+          bottom:.13rem;
           height: .3rem;
           padding: 0 .05rem 0;
           @include px2px(font-size, 12);
-          color: white;
+          color: #004782;
           line-height: .3rem;
           text-align: center;
-          background-color: #01416f;
+          //background-color: #01416f;
           border-radius: 2px;
         }
 
         .card-logo{
           position: absolute;
-          top: .11rem;
-          right: .1rem;
+          top: .15rem;
+          right: .15rem;
           width: .39rem;
           height: .4rem;
           border-radius: .05rem;

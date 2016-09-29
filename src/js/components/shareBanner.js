@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import '../../css/ShareBanner.scss'
+import { changeUrl } from '../utils/util'
 
 export default class ShareBanner extends Component {
   render() {
+    const url = `http://m.163.com/newsapp/applinks.html?url=${changeUrl('http://t.c.m.163.com/uncharted/index.html', 2)}`
     return (
-      <a className="share-banner" href="http://m.163.com/newsapp/applinks.html?url=http://t.c.m.163.com/uncharted/index.html">
+      <a className="share-banner" href={url}>
         <div className="banner-inner">
           <div className="banner-l"></div>
           <div className="banner-r">立即打开 ></div>

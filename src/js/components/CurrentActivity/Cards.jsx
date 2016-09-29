@@ -54,7 +54,7 @@ export default class Cards extends Component {
 
 
   render() {
-    const { allCards, myCards, prizeName, changeCardsNum, cycleId, sendCard, sendCardInfo, isNotHomePage, loginStatus, onOpenSD } = this.props.data
+    const { allCards, now, myCards, prizeName, changeCardsNum, cycleId, sendCard, sendCardInfo, isNotHomePage, loginStatus, onOpenSD, endTime } = this.props.data
     let cardLen = allCards.length % 3
     let finalCards
     if (!!myCards) {
@@ -72,7 +72,8 @@ export default class Cards extends Component {
         cardName: this.state.cardName,
         cardMark: this.state.cardMark,
         changeCardStatus: this.changeCardStatus,
-        endTime: this.state.endTime,
+        endTime,
+        now,
         changeCardsNum,
         cycleId,
         sendCard,

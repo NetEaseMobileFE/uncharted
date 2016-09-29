@@ -15,7 +15,7 @@ class Share extends Component {
   static defaultProps = {
     isNotDisplay: true,
     MarqClass: 'r-prize-another',
-    prizeTitle: '头条集卡得大奖！',
+    prizeTitle: '头条集卡得大奖',
     address: '11111',
     cardName: '',
     prizeName: '',
@@ -51,7 +51,7 @@ class Share extends Component {
     }
     const allCards = cardAmount + lackCards
     switch (parseInt(this.state.winnStatus, 10)) {
-      case 100:// 没有获奖
+      case 100:// 分享集卡活动
         secondShareOption.title = `我还差${lackCards}张卡，集齐可得${prizeName}。私聊我，咱们互换吧~` // 已经有卡,未集齐
         secondShareOption.content = '网易新闻,集卡赢大奖啦'
         secondShareOption.img = prizeImg
