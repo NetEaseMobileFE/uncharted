@@ -24,7 +24,7 @@
       height: 1.7rem;
       margin-left: .35rem;
       color:white;
-      text-align: center;
+      //text-align: center;
 
       .title{
         width: 100%;
@@ -40,6 +40,7 @@
         height: .6rem;
         @include px2px(font-size, 16);
         line-height: .4rem;
+        text-align: center;
       }
       .info{
         width:100%;
@@ -95,7 +96,7 @@
       }
       .card-No{
         width: 100%;
-        text-align: center;
+        //text-align: center;
         line-height: .4rem;
       }
       .prize{

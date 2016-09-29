@@ -136,10 +136,7 @@ class Share extends Component {
                     :
                     <div className="info1">
                       <div className="card-No">
-                        我参加了网易新闻集卡活动,获得了{prizeArray.name}
-                      </div>
-                      <div className="prize">
-                        人品大爆发啊~
+                        {erilizeText(`我参加了网易新闻集卡活动,获得了${prizeArray.name}, 人品大爆发啊~`, 36)}
                       </div>
                     </div>
                 }
@@ -150,8 +147,8 @@ class Share extends Component {
               <div className="share oneBg">
                 <header className="header mb2">
                   <div className="info">
-                    <div className="userinfo">{`我参加了网易新闻集卡活动,获得了${prizeArray.name}`}</div>
-                    <div className="introduce">人品大爆发啊~</div>
+                    <div className="userinfo">{erilizeText(`我参加了网易新闻集卡活动,获得了${prizeArray.name}, 人品大爆发啊~`, 36)}</div>
+                    <div className="introduce"></div>
                   </div>
                   <div className="winnlogo"></div>
                 </header>

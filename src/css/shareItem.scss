@@ -61,6 +61,7 @@
         }
         .text{
           width: 5.25rem;
+          height: .9rem;
           margin: .25rem auto 0;
           @include px2px(font-size, 14);
           line-height: .4rem
@@ -95,6 +96,14 @@
         background: url('./../img/outDate.png') no-repeat left top;
         background-size: 2.46rem 1.62rem;
       }
+    }
+
+    .warn-update{
+      width: 100%;
+      margin-top: .3rem;
+      color: #fff;
+      text-align: center;
+      @include px2px(font-size, 12);
     }
   }
 }

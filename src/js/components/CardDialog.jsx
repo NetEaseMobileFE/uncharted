@@ -73,7 +73,6 @@ export default class CardDialog extends Component {
 
   render() {
     const { data } = this.props
-    console.log(this.props)
     const bgImg = {
       background: `url(${data.cardImg}) no-repeat center`,
       backgroundSize: '100% 100%'
