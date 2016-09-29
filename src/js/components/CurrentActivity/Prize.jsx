@@ -24,7 +24,7 @@ export default class Prize extends Component {
     }
     setTimeout(() => {
       const { data, cycleId } = this.props.data
-      let wxTitle = `我集到了${nowAmount}张卡，再集${sumAmount - nowAmount}张可获得${data.name}，你也来参加吧！`
+      let wxTitle = `我还差${sumAmount - nowAmount}张卡,集齐可得${data.name}，私聊我,咱俩互换吧！`
       if (sumAmount === nowAmount) {
         wxTitle = `我参加网易新闻集卡活动，获得了${data.name}。人品大爆发啊~`
       } else if (nowAmount === 0) {

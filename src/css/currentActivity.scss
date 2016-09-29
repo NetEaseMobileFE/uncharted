@@ -21,6 +21,10 @@
       margin: 0 auto;
     }
 
+    .not-homepage {
+      display: flex;
+      align-items: center;
+    }
     .cur-prize{
       display: flex;
       align-items: center;
@@ -92,6 +96,9 @@
         }
       }
       .r-prize{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         width: 3.1rem;
         height: 2.36rem;
 
