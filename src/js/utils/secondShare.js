@@ -1,27 +1,16 @@
+import { writeObj } from './util'
 export function secondShareInit(data) {
   let shareData = {}
   let imgurl = data.img
   let shareUrl = window.location.href
   let summary = data.content
   let title = data.title
-  // let params = window.location.href
-  // let spsw = params.spsw
-  // let spss = params.spss
-  // document.querySelector('[name="yixin-share-desc"]').setAttribute('content', summary)
-  // if (spss === 'imoney') {
-  //   imgurl = 'http://img4.cache.netease.com/utf8/3g/touch/images/200x200-icon2.png'
-  // }
-  // shareUrl += '&f=wx'
-  // const shareCallbackUrl = 'http://sps.163.com/func/?func=sharedone&spst=4&modelid=' + liveid + '&spsw=' + params.w + '&spss=' + params.spss
   shareData = {
     imgurl,
     shareUrl,
     summary,
     title
-    // shareCallbackUrl
   }
-  // const div = document.createElement('div')
-  // div.innerHTML = ''
 
   document.addEventListener('WeixinJSBridgeReady', () => {
     window.WeixinJSBridge.on('menu:share:appmessage', () => {

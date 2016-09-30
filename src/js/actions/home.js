@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import {changeUrl, writeObj} from './../utils/util'
+import { changeUrl } from './../utils/util'
 
 /** ************************
  * 本地测试路径：/login.json
@@ -13,10 +13,12 @@ export function fetchBasicInfo() {
       credentials: 'same-origin'
     }).then(res => res.json())
       .then((json) => {
-        dispatch({
-          type: 'FETCH_BASIC_INFO',
-          data: json.data
-        })
+        if (json.errcode === 0) {
+          dispatch({
+            type: 'FETCH_BASIC_INFO',
+            data: json.data
+          })
+        }
       })
   }
 }

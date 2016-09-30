@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { fetchShareInfo } from '../actions/ShareItem'
 import '../../css/Share.scss'
 import { secondShareInit } from '../utils/secondShare'
-import { erilizeUrl, changeUrl, erilizeText } from '../utils/util'
+import { erilizeUrl, changeUrl, erilizeText, writeObj } from '../utils/util'
 
 import CurrentActivity from '../components/CurrentActivity'
 import ShareBanner from '../components/ShareBanner'

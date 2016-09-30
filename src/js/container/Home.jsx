@@ -17,7 +17,7 @@ import CardDialog from '../components/CardDialog'
 import NoCardToGet from '../components/NoCardToGet'
 import SystemDialog from '../components/SystemDialog'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeUrl, writeObj } from './../utils/util'
+import { erilizeUrl } from './../utils/util'
 
 
 class Home extends Component {

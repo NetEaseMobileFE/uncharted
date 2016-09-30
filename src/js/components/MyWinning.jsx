@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UniversalTitle from './UniversalTitle'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeText, changeUrl, writeObj } from '../utils/util.js'
+import { erilizeText, changeUrl } from '../utils/util.js'
 
 export default class MyWinning extends Component {
   constructor(props) {

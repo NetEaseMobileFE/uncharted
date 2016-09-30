@@ -7,6 +7,7 @@ export const isIos = navigator.userAgent.match(/iphone|ipod|ipad/ig)
 /** *******************
  * desc: 测试是否是线上环境,若是线上环境,则将url进行转换
  * params url: 待转换的url type: 有两个值,1和2,1代表各种后台接口的转换 2代表各种实际页面(类似分享页面的url更改)
+ * return 经过转换的url
  **********************/
 export function changeUrl(url, type) {
   let finalUrl = url
@@ -24,6 +25,7 @@ export function changeUrl(url, type) {
 /** *******************
  * desc:将url的search转换成键值对格式
  * params: url:待解析的url
+ * return search的键值对
  **********************/
 
 export function erilizeUrl(url) {
@@ -41,6 +43,7 @@ export function erilizeUrl(url) {
 /** *******************
  * desc:截取文本
  * params: text: 待截取的文本 len: 需要限制的长度,多余的字数用...表示
+ * return 处理好的文本
  **********************/
 
 export function erilizeText(text, len) {
@@ -83,6 +86,10 @@ export function writeObj(obj) {
 //   }
 // }
 
+/** *******************
+ * desc: 将开始时间与结束时间转换成字符串
+ * params: begin 开始时间,单位为毫秒数 end 结束时间,单位为毫秒数
+ **********************/
 export function limitTime(begin, end) {
   const beginTime = new Date(begin)
   const endTime = new Date(end - 1000 * 60 * 60 * 24)

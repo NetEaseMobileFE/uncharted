@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeText, changeUrl, writeObj } from '../../utils/util'
+import { erilizeText, changeUrl } from '../../utils/util'
 
 export default class Prize extends Component {
   constructor(props) {
