@@ -91,7 +91,7 @@ export function fetchCardInfo(cardId) {
  ***************************/
 
 export function sendLotteryId(id) {
-  return (dispatch) => {
+  return () => {
     return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/prize/share?lotteryId=${id}`, 1), {
       method: 'GET',
       headers: {
@@ -101,10 +101,6 @@ export function sendLotteryId(id) {
     })
       .then(res => res.json())
       .then((json) => {
-        // dispatch({
-        //   type: 'FETCH_LOTTERY_ID',
-        //   data: json
-        // })
         return json
       })
   }

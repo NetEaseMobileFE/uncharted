@@ -5,13 +5,14 @@ export const isIos = navigator.userAgent.match(/iphone|ipod|ipad/ig)
 
 
 /** *******************
- * desc: 测试是否是线上环境,若是线上环境,则将url进行转换
+ * desc: 判断是否是线上环境,若是线上环境,则将url进行转换,同时支持c.m和c.3g两种线上地址
  * params url: 待转换的url type: 有两个值,1和2,1代表各种后台接口的转换 2代表各种实际页面(类似分享页面的url更改)
  * return 经过转换的url
  **********************/
+
 export function changeUrl(url, type) {
   let finalUrl = url
-  const onLineBool = window.location.href.match(/t.c.m/ig)
+  const onLineBool = window.location.href.match(/t.c.m/i)
   if (!onLineBool) {
     if (type === 1) {
       finalUrl = url.replace(/t.c.m/, 'c.m')
@@ -19,8 +20,12 @@ export function changeUrl(url, type) {
       finalUrl = url.replace(/t.c.m.163.com/, 'c.m.163.com/nc/qa')
     }
   }
+  if (window.location.href.match(/c.3g/i)) {
+    finalUrl = finalUrl.replace(/c.m/i, 'c.3g')
+  }
   return finalUrl
 }
+
 
 /** *******************
  * desc:将url的search转换成键值对格式
@@ -40,6 +45,7 @@ export function erilizeUrl(url) {
   return result
 }
 
+
 /** *******************
  * desc:截取文本
  * params: text: 待截取的文本 len: 需要限制的长度,多余的字数用...表示
@@ -52,6 +58,7 @@ export function erilizeText(text, len) {
   }
   return text
 }
+
 
 /** *******************
  * desc:用于调试,在移动端上可以打印对象
@@ -90,6 +97,7 @@ export function writeObj(obj) {
  * desc: 将开始时间与结束时间转换成字符串
  * params: begin 开始时间,单位为毫秒数 end 结束时间,单位为毫秒数
  **********************/
+
 export function limitTime(begin, end) {
   const beginTime = new Date(begin)
   const endTime = new Date(end - 1000 * 60 * 60 * 24)
