@@ -75,7 +75,7 @@ export function changeLotteryStatus(lotteryStatus) {
 
 export function fetchCardInfo(cardId) {
   return (dispatch) => {
-    return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/gift/send?cardId=${cardId}`, 1), {credentials: 'same-origin'})
+    return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/gift/send?cardId=${cardId}`, 1), { credentials: 'same-origin' })
       .then(res => res.json())
       .then((json) => {
         dispatch({
@@ -138,7 +138,7 @@ export function receiveCardId(giftId, cardId) {
 
 export function sendCard(cardId) {
   return () => {
-    return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/gift/send?cardId=${cardId}`, 1), {credentials: 'same-origin'})
+    return fetch(changeUrl(`http://t.c.m.163.com/uc/activity/card/gift/send?cardId=${cardId}`, 1), { credentials: 'same-origin' })
       .then(res => res.json())
       .then((json) => {
         return json
