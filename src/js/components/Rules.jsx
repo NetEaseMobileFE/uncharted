@@ -8,7 +8,7 @@ export default class AboutRule extends Component {
         <UniversalTitle text={'详细规则'} />
         <div className="rules-qa">
           <div>Q：怎样才能获取到卡片？</div>
-          <div>A：在头条页面多阅读，多刷新就有机会获取到卡片。频繁刷新是没有卡片的哦~</div>
+          <div>A：在「头条」栏目阅读新闻然后刷新，就有机会获取到卡片。下拉刷新、点击左下角“新闻”刷新、点击“点击刷新 有机会集卡赢奖哦”都可以的。只是频繁刷新就没有卡片了哦~ </div>
         </div>
         <div className="rules-qa">
           <div>Q：如何领取奖品？</div>
