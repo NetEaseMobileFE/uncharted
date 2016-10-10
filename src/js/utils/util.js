@@ -106,21 +106,15 @@ export function limitTime(begin, end) {
 }
 
 
-/* eslint-disable no-param-reassign */
 export function compareCards(allCards, myCards) {
-  let finalCards = allCards
-  finalCards.forEach((finalCardItem) => {
-    for (let i = 0, len = myCards.length; i < len; i++) {
-      if (finalCardItem.id === myCards[i].cardId) {
-        finalCardItem.amount = myCards[i].amount
-        // finalCardItem = deepAssign({}, finalCardItem, { amount: myCards[i].amount })
-        // return finalCardItem
-      }
-    }
+  return allCards.map((finalCardItem) => {
+    let newFinalCardItem = deepAssign({}, finalCardItem)
+    let newArray = myCards.find(val => val.cardId === finalCardItem.id)
+    return newArray ? deepAssign({}, finalCardItem, { amount: newArray.amount }) :
+      newFinalCardItem
   })
-  return finalCards
 }
-/* eslint-enable no-param-reassign */
+
 
 export function ePreventDefault(e) {
   e.preventDefault()

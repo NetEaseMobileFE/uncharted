@@ -38,7 +38,7 @@ export default class MyCollection extends Component {
         </div>
         <ul className={classNameLs}>
         {
-          data[0].cards.map((item, index) => {
+          finalCards.map((item, index) => {
             const bgStyle = {
               background: `url(${item.smallImage}) no-repeat center`,
               backgroundSize: '100% 100%'
@@ -52,7 +52,7 @@ export default class MyCollection extends Component {
                 <li className={classNameLi} key={index}>
                   <div style={bgStyle} className="coll-cardsbg"></div>
                   {!item.amount && <div className="card-shade"></div>}
-                  {!!item.amount && <span className="card-desc">{cardText}</span>}
+                  {item.amount && <span className="card-desc">{cardText}</span>}
                 </li>
               )
             } else {
