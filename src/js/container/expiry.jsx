@@ -16,18 +16,20 @@ class Expiry extends Component {
     this.state = {
       warnDisplay: false,
       displayInfo: false,
+    }
+    this.userInfo = {
       username: '',
       tele: '',
       address: '',
-      device: ''
+      device: '',
+      udid: ''
     }
     this.params = null
-    this.udid = null
   }
 
   componentDidMount() {
     NEWSAPPAPI.device((rs) => {
-      this.udid = rs.u
+      this.userInfo.udid = rs.u
     })
     this.params = erilizeUrl(window.location.href)
     this.tele.addEventListener('blur', () => {
@@ -50,10 +52,12 @@ class Expiry extends Component {
     }
     this.setState({
       warnDisplay: true,
+    })
+    this.userInfo = {
       username: this.username.value,
       tele: this.tele.value,
       address: this.address.value
-    })
+    }
   }
 
   cancel() {
@@ -64,11 +68,12 @@ class Expiry extends Component {
 
   // 发送兑奖信息
   submit() {
+    const { username, tele, address, udid } = this.userInfo
     const userInfo = {
-      address: this.state.address,
-      username: this.state.username,
-      tele: this.state.tele,
-      udid: this.udid
+      address,
+      username,
+      tele,
+      udid
     }
     const xhr = new XMLHttpRequest()
     let webState = null

@@ -72,10 +72,16 @@ export default class MyWinning extends Component {
         <ul className="winn-recordls">
           {
             data.lotteryPrizes.map((record, index) => {
-              const countDown = (record.cycleInfo.endTime + 7 * 24 * 60 * 60 * 1000 - time.getTime()) / (24 * 60 * 60 * 1000);
+              const countDown = (record.cycleInfo.endTime + 7 * 24 * 60 * 60 * 1000 - time.getTime()) / (24 * 60 * 60 * 1000)
               let finalClass = ''
               let finalBtnText = ''
               let finalWarnText = ''
+              let finalClick = null
+              if (record.lotteryInfo.status === 0) {
+                finalClick = () => { this.handleShare(record.prize.id, record.lotteryInfo.id, record.cycleInfo.id) }
+              } else if (record.lotteryInfo.status === 1) {
+                finalClick = () => { this.getPrize(record.prize.id, record.lotteryInfo.id, record.cycleInfo.id) }
+              }
               let cardBg = {
                 background: `url(${record.prize.image}) no-repeat center`,
                 backgroundSize: '1.08rem 1.05rem'
@@ -134,13 +140,7 @@ export default class MyWinning extends Component {
                   </div>
                   <div 
                     className={finalClass} 
-                    onClick={
-                      record.lotteryInfo.status === 0 ? 
-                      () => { this.handleShare(record.prize.id, record.lotteryInfo.id, record.cycleInfo.id) } :
-                      record.lotteryInfo.status === 1 ? 
-                      () => { this.getPrize(record.prize.id, record.lotteryInfo.id, record.cycleInfo.id) } :
-                      ''
-                    }
+                    onClick={finalClick}
                   >
                     {finalBtnText}
                   </div>

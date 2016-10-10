@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux'
 import { fetchShareInfo } from '../actions/ShareItem'
 import '../../css/Share.scss'
 import { secondShareInit } from '../utils/secondShare'
-import { erilizeUrl, changeUrl, erilizeText, writeObj } from '../utils/util'
+import { erilizeUrl, changeUrl, erilizeText } from '../utils/util'
 
-import CurrentActivity from '../components/CurrentActivity'
+import CurrentActivity from '../components/CurrentActivity/index'
 import ShareBanner from '../components/ShareBanner'
 
 // 获奖分享页面, 未获取分享页面 ,晒卡页面
@@ -16,7 +16,7 @@ class Share extends Component {
     isNotDisplay: true,
     MarqClass: 'r-prize-another',
     prizeTitle: '头条集卡得大奖',
-    address: '11111',
+    address: '',
     cardName: '',
     prizeName: '',
     cardImg: ''
@@ -111,7 +111,7 @@ class Share extends Component {
       <div>
         <ShareBanner />
         {
-          this.state.winnStatus === '100' ?
+          this.state.winnStatus === '100' &&
             <div className="share oneBg">
               <header className="header mb1">
                 <div>
@@ -142,57 +142,62 @@ class Share extends Component {
                 }
                 <div className="share-btn btn-margin12" onClick={this.handleClick}>我要参与</div>
               </footer>
-            </div> : 
-            this.state.winnStatus === '200' ? 
-              <div className="share oneBg">
-                <header className="header mb2">
-                  <div className="info">
-                    <div className="userinfo">{erilizeText(`我参加了网易新闻集卡活动,获得了${prizeArray.name}, 人品大爆发啊~`, 36)}</div>
-                    <div className="introduce"></div>
-                  </div>
-                  <div className="winnlogo"></div>
-                </header>
-                <CurrentActivity data={data} isNotHomePage={this.props.isNotDisplay} MarqClass={this.props.MarqClass} />
-                <footer className="footer">
-                  <div className="info2">
-                    <div className="prize-title">
-                      {this.props.prizeTitle}
-                    </div>
-                    <div className="address">
-                      {cycleTheme}
-                    </div>
-                  </div>
-                  <div className="share-btn btn-margin12" onClick={this.handleClick}>我要参与</div>
-                </footer>
-              </div> : 
-              <div className="share anotherBg">
-                <header className="header mb3">
-                  <div className="header-inner">
-                    <div className="title">{this.props.prizeTitle}</div>
-                    <div className="text">{cycleTheme}</div>
-                  </div>
-                </header>
-                <div className="shareCard-img">
-                  <div className="sharecard-bg" style={bgImg}></div>
+            </div>
+        }
+        {
+          this.state.winnStatus === '200' &&
+            <div className="share oneBg">
+              <header className="header mb2">
+                <div className="info">
+                  <div className="userinfo">{erilizeText(`我参加了网易新闻集卡活动,获得了${prizeArray.name}, 人品大爆发啊~`, 36)}</div>
+                  <div className="introduce"></div>
                 </div>
-                <footer className="footer">
-                  <div className="info3">
-                    <div className="info3-img">
-                      <div className="info3prize-bg" style={prizeImg}></div>
-                    </div>
-                    <div className="info3-text">
-                      <div className="info3-card">
-                        {
-                          lackCards > 0 ?
-                            `我得到了${this.cardName}，集齐可得${prizeArray.name}，一般人我不告诉TA` :
-                            `我得到了${this.cardName}，得到了${prizeArray.name},一般人我不告诉TA`
-                        }
-                      </div>
+                <div className="winnlogo"></div>
+              </header>
+              <CurrentActivity data={data} isNotHomePage={this.props.isNotDisplay} MarqClass={this.props.MarqClass} />
+              <footer className="footer">
+                <div className="info2">
+                  <div className="prize-title">
+                    {this.props.prizeTitle}
+                  </div>
+                  <div className="address">
+                    {cycleTheme}
+                  </div>
+                </div>
+                <div className="share-btn btn-margin12" onClick={this.handleClick}>我要参与</div>
+              </footer>
+            </div>
+        }
+        {
+          this.state.winnStatus === '300' &&
+            <div className="share anotherBg">
+              <header className="header mb3">
+                <div className="header-inner">
+                  <div className="title">{this.props.prizeTitle}</div>
+                  <div className="text">{cycleTheme}</div>
+                </div>
+              </header>
+              <div className="shareCard-img">
+                <div className="sharecard-bg" style={bgImg}></div>
+              </div>
+              <footer className="footer">
+                <div className="info3">
+                  <div className="info3-img">
+                    <div className="info3prize-bg" style={prizeImg}></div>
+                  </div>
+                  <div className="info3-text">
+                    <div className="info3-card">
+                      {
+                        lackCards > 0 ?
+                          `我得到了${this.cardName}，集齐可得${prizeArray.name}，一般人我不告诉TA` :
+                          `我得到了${this.cardName}，得到了${prizeArray.name},一般人我不告诉TA`
+                      }
                     </div>
                   </div>
-                  <div className="share-btn btn-margin3" onClick={this.handleClick}>我要参与</div>
-                </footer>
-              </div>
+                </div>
+                <div className="share-btn btn-margin3" onClick={this.handleClick}>我要参与</div>
+              </footer>
+            </div>
         }
       </div>
     )

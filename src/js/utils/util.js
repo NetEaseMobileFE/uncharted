@@ -1,4 +1,4 @@
-
+import deepAssign from 'deep-assign'
 
 export const isAndroid = navigator.userAgent.match(/android/ig)
 export const isIos = navigator.userAgent.match(/iphone|ipod|ipad/ig)
@@ -103,4 +103,30 @@ export function limitTime(begin, end) {
   const endTime = new Date(end - 1000 * 60 * 60 * 24)
   const limit = `${beginTime.getMonth() + 1}.${beginTime.getDate()} - ${endTime.getMonth() + 1}.${endTime.getDate()}`
   return limit
+}
+
+
+/* eslint-disable no-param-reassign */
+export function compareCards(allCards, myCards) {
+  let finalCards = allCards
+  finalCards.forEach((finalCardItem) => {
+    for (let i = 0, len = myCards.length; i < len; i++) {
+      if (finalCardItem.id === myCards[i].cardId) {
+        finalCardItem.amount = myCards[i].amount
+        // finalCardItem = deepAssign({}, finalCardItem, { amount: myCards[i].amount })
+        // return finalCardItem
+      }
+    }
+  })
+  return finalCards
+}
+/* eslint-enable no-param-reassign */
+
+export function ePreventDefault(e) {
+  e.preventDefault()
+}
+
+export function sessionStorageHeight(name) {
+  let getScrollTop = document.documentElement.scrollTop || document.body.scrollTop // 获取页面卷去的高度
+  sessionStorage.setItem(name, getScrollTop)
 }

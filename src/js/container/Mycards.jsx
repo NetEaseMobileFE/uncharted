@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions/MyCards'
 import ScrollLoadBtn from '../components/ScrollLoadBtn'
-import { erilizeText } from '../utils/util.js'
+import { erilizeText, compareCards, sessionStorageHeight } from '../utils/util.js'
 import NEWSAPPAPI from 'newsapp'
 
 import '../../css/MyCards.scss'
@@ -11,7 +11,7 @@ import '../../css/ScrollLoadBtn.scss'
 class Mycards extends Component {
   constructor(props) {
     super(props)
-    this.compareCards = this.compareCards.bind(this)
+    // this.compareCards = this.compareCards.bind(this)
   }
 
   state = {
@@ -19,24 +19,17 @@ class Mycards extends Component {
     scrollBtn: false
   }
 
-  compareCards(allCards, myCards) {
-    allCards.map((card) => {
-      myCards.map((myCard) => {
-        if (card.id === myCard.cardId) {
-          card.amount = myCard.amount
-        }
-        return true
-      })
-      return true
-    })
-  }
   componentDidMount() {
+    window.scrollTo(0, +(sessionStorage.myCardsHeight))
+    sessionStorage.removeItem('myCardsHeight')
     NEWSAPPAPI.ui.title('我的集卡')
-    this.props.fetchMycardsInfo()
+    if (!this.props.data.mycards) {
+      this.props.fetchMycardsInfo()
+    }
   }
 
   componentWillUnmount() {
-    this.props.clearStore() // 该方法是为了防止重复渲染相同数据
+    sessionStorageHeight('myCardsHeight')
   }
 
   render() {
@@ -51,12 +44,12 @@ class Mycards extends Component {
       dataType: 1,
       whichPage: mycards,
       getData: this.props.fetchMycardsInfo,
-      addData: mycards.noMoreData
+      addData: mycards.noMoreData,
+      parentComponent: 'myCards'
     }
     mycards.lotteryCards.map((item) => {
-      return this.compareCards(item.cards, item.myCards)
+      return compareCards(item.cards, item.myCards)
     })
-    
     return (
       <div className="mycards-container">
         <ul className="mycards-ls">

@@ -15,8 +15,6 @@ export default function record(state = INIT_STATE, action) {
       return deepAssign({}, state, {
         record: deepAssign({}, state.record, action.data)
       })
-    case 'CLEAR_RECORD_INFO':
-      state.record = null
     default: 
       return state
   }

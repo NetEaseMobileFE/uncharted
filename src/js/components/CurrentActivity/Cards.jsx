@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
 import CardDialog from '../CardDialog'
+import { compareCards } from '../../utils/util.js'
 
 export default class Cards extends Component {
   constructor(props) {
     super(props)
-    this.compareCards = this.compareCards.bind(this) // 比较未登录信息里面的卡片和我已经收集的卡片id,得到一些卡片的信息
     this.introCards = this.introCards.bind(this) // 为卡片弹窗加载数据
     this.changeCardStatus = this.changeCardStatus.bind(this) // 更改卡片状态
     this.state = {
       boolCardDialog: false,
+      sendCardDom: false
+    }
+    this.cardParams = {
       cardAmount: 0,
       cardImg: null,
-      cardText: null,
+      cardMark: null,
       cardName: null,
       cardId: null,
-      sendCardDom: false
     }
   }
 
@@ -23,62 +25,55 @@ export default class Cards extends Component {
       boolCardDialog: cardDialogstatus,
     })
   }
-  /* eslint-disable */
-  compareCards(allCards, myCards) {
-    let finalCards = allCards
-    finalCards.map((card) => {
-      myCards.map((myCard) => {
-        if (card.id === myCard.cardId) {
-          card.amount = myCard.amount
-        }
-        return null
-      })
-      return null
-    })
-    return finalCards
-  }
 
   introCards(amount, image, mark, cname, cId, target, endTime) {
     this.setState({
       boolCardDialog: true,
+      sendCardDom: true
+    })
+    this.cardParams = {
       cardAmount: amount,
       cardImg: image,
       cardMark: mark,
       cardName: cname,
       cardId: cId,
-      sendCardDom: true,
-      cardDom: target,
-      endTime
-    })
+    }
   }
 
 
   render() {
     const { allCards, now, myCards, prizeName, changeCardsNum, cycleId, sendCard, sendCardInfo, isNotHomePage, loginStatus, onOpenSD, endTime } = this.props.data
     let cardLen = allCards.length % 3
+    let bottomShadeCN = ''
+    if (cardLen === 1) {
+      bottomShadeCN = 'morediv1'
+    } else if (cardLen === 2) {
+      bottomShadeCN = 'morediv2'
+    }
     let finalCards
     if (!!myCards) {
-      finalCards = this.compareCards(allCards, myCards)
+      finalCards = compareCards(allCards, myCards)
     }
     let cardDialogParams = null
     if (this.state.boolCardDialog) {
+      const { cardId, cardAmount, cardImg, cardName, cardMark } = this.cardParams
       cardDialogParams = {
-        cardType: myCards.length,
-        cardAmount: this.state.cardAmount,
-        cardId: this.state.cardId,
-        cardLen: allCards.length,
-        cardImg: this.state.cardImg,
-        prizeName: prizeName,
-        cardName: this.state.cardName,
-        cardMark: this.state.cardMark,
-        changeCardStatus: this.changeCardStatus,
+        cardAmount,
+        cardId,
+        cardLen,
+        cardImg,
+        cardName,
+        cardMark,
+        prizeName,
         endTime,
         now,
         changeCardsNum,
         cycleId,
         sendCard,
         sendCardInfo,
-        onOpenSD
+        onOpenSD,
+        cardType: myCards.length,
+        changeCardStatus: this.changeCardStatus
       }
     }
 
@@ -119,24 +114,26 @@ export default class Cards extends Component {
                   {!!card.amount && <span className="card-logo" style={{ display: card.amount > 1 ? '' : 'none' }}>送</span>}
                 </div>
                 {
-                  intAmount === 2 ? 
+                  intAmount === 2 &&
                     <div className="img-shade-container">
-                      <div className="img-shade1" style={bgStyle}></div> 
+                      <div className="img-shade1" style={bgStyle}></div>
                     </div>
-                  : intAmount > 2 ? 
+                }
+                {
+                  intAmount > 2 &&
                     <div className="img-shade-container">
                       <div className="img-shade1" style={bgStyle}></div>
                       <div className="img-shade2" style={bgStyle}></div>
                     </div>
-                  : ''
                 }
               </li> 
             )
           })
         }
         {
+
           cardLen === 1 || cardLen === 2 &&
-            <div className={cardLen === 1 ? 'morediv2' : cardLen === 2 ? 'morediv1' : ''}></div>
+            <div className={bottomShadeCN}></div>
         }
       </ul>
     )

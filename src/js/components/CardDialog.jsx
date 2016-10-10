@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NEWSAPPAPI from 'newsapp'
-import { changeUrl, erilizeText } from '../utils/util'
+import { changeUrl, erilizeText, ePreventDefault } from '../utils/util'
 export default class CardDialog extends Component {
   constructor(props) {
     super(props)
@@ -13,12 +13,13 @@ export default class CardDialog extends Component {
   componentDidMount() {
     // 显示浮层时候禁止滑动
     this.cardDialog.addEventListener('touchmove', (event) => {
-      event.preventDefault()
+      ePreventDefault(event)
     }, false)
   }
 
   componentWillUnmount() {
     this.cardDialog.removeEventListener('touchmove', (event) => {
+      ePreventDefault(event)
     }, false)
   }
 

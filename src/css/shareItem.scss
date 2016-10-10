@@ -9,16 +9,16 @@
 
     .title{
       display: flex;
-      align-items: center;
-      justify-content: center;
       width: 6.8rem;
       height: 1.62rem;
       margin: 0 auto;
+      align-items: center;
+      justify-content: center;
       color: white;
       @include px2px(font-size, 18);
       text-align: center;
 
-      .user,.remind{
+      .user, .remind{
         width: 100%;
         line-height: .5rem;
       }
@@ -46,10 +46,10 @@
           z-index: 1;
           width: 4.36rem;
           height: 5.9rem;
+          margin: 0 auto;
+          border-radius: .1rem;
           background: white url(./../img/cardBg.png) no-repeat center;
           background-size: 2rem 2rem;
-          border-radius: .1rem; 
-          margin: 0 auto;
 
           .img-bg{
             position: absolute;
@@ -70,12 +70,12 @@
           width: 5.25rem;
           height: .8rem;
           margin: .27rem auto 0;
-          background: #ffbf40;
           border-radius: .05rem;
           text-align: center;
           line-height: .8rem;
           color: white;
           @include px2px(font-size, 15);
+          background: #ffbf40;
         }
       }
 

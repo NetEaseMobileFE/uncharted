@@ -13,13 +13,12 @@ export default function home(state = INIT_STATE, action) {
         notlogin: deepAssign({}, state.notlogin, action.data)
       })
     case 'CHANGE_CARDS_NUM':
-      newState.basic.myCards.map((item, index) => {
+      newState.basic.myCards.forEach((item, index) => {
         if (action.data.cardId === 0) {
           newState.basic.myCards.splice(index, 1)
         } else if (item.cardId === action.data.cardId) {
           item.amount = action.data.amount
         }
-        return true
       })
       return newState
     case 'CHANGE_LOTTERY_STATUS':
@@ -29,6 +28,7 @@ export default function home(state = INIT_STATE, action) {
         }
         return true
       })
+      break
     case 'FETCH_LOTTERY_ID':
       return deepAssign({}, state, {
         sendLotteryId: deepAssign({}, state.sendLotteryId, action.data)

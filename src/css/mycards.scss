@@ -42,12 +42,10 @@
         width: 1.06rem;
         height: 1.43rem;
         margin: 0 .12rem .1rem 0;
-        background: white url(./../img/cardBg.png) no-repeat center;
-        background-size: .4rem .4rem;
-        //@include border(border, 1px, solid, #cecece);
-        //border: 1px solid #cecece;
         border-radius: 3px;
         list-style: none;
+        background: white url(./../img/cardBg.png) no-repeat center;
+        background-size: .4rem .4rem;
 
         .card-bg{
           position: absolute;

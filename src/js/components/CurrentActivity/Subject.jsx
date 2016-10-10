@@ -5,8 +5,8 @@ export default class Subject extends Component {
   constructor(props) {
     super(props)
     this.countDown = this.countDown.bind(this)
-    this.intervals = []
-    this.setInterval = this.setInterval.bind(this)
+    // this.intervals = []
+    // this.setInterval = this.setInterval.bind(this)
     this.openTime = this.openTime.bind(this)
     this.state = {
       timeStyle: false,
@@ -19,16 +19,8 @@ export default class Subject extends Component {
   }
 
   componentWillUnmount() {
-    // 清除当前组件的所有定时器
-    this.intervals.map((timer) => {
-      clearInterval(timer)
-      return null
-    })
-  }
-  /* eslint-disable */
-  // 将当前组件的定时器token推进数组
-  setInterval() {
-    this.intervals.push(setInterval.apply(null, arguments))
+    // 清除定时器
+    clearInterval(this.handleInterval)
   }
 
   // 倒计时函数
@@ -63,13 +55,14 @@ export default class Subject extends Component {
     this.setState({
       cdTime: this.countDown(this.props.subject.endTime)
     })
-    this.setInterval(() => {
+    this.handleInterval = setInterval(() => {
       this.setState({
         cdTime: this.countDown(this.props.subject.endTime)
       })
     }, 60 * 1000)
   }
-  
+
+
   render() {
     const subject = this.props.subject
     return (

@@ -15,8 +15,6 @@ export default function mycards(state = INIT_STATE, action) {
       return deepAssign({}, state, {
         mycards: deepAssign({}, state.mycards, action.data)
       })
-    case 'CLEAR_MYCARDS_INFO':
-      state.mycards = null
     default: 
       return state
   }

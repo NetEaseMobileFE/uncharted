@@ -1,20 +1,19 @@
 :global {
   .share-banner{
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height: 1.15rem;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     background: #f7f7f7;
-    text-decoration:none;
 
     .banner-inner{
       display: flex;
-      justify-content: space-between;
-      align-items: center;
       width: 6.82rem;
       height: .61rem;
-      
+      justify-content: space-between;
+      align-items: center;
 
       .banner-l{
         width: 4.2rem;

@@ -13,26 +13,24 @@
   .share{
     position: relative;
     width: 7.5rem;
-    //height: 100%;
     overflow: hidden;
 
     .header{
       display: flex;
-      align-items: center;
-      justify-content: center;
       width: 6.8rem;
       height: 1.7rem;
       margin-left: .35rem;
-      color:white;
-      //text-align: center;
+      align-items: center;
+      justify-content: center;
+      color: white;
 
       .title{
         width: 100%;
         height: .57rem;
+        margin-bottom: .1rem;
         font-weight: bold;
         @include px2px(font-size, 20);
         line-height: .8rem;
-        margin-bottom: .1rem;
       }
 
       .text{
@@ -43,8 +41,8 @@
         text-align: center;
       }
       .info{
-        width:100%;
-        height:.8rem;
+        width: 100%;
+        height: .8rem;
       }
       .userinfo,.introduce{
         width: 80%;
@@ -104,8 +102,8 @@
       }
       .prize-title{
         width: 100%;
-        @include px2px(font-size, 18);
         margin: .35rem 0 .1rem;
+        @include px2px(font-size, 18);
       }
 
       .address{
@@ -124,8 +122,6 @@
           width: 1.36rem;
           height: 1.27rem;
           background-color: white;
-          //background: white url(./../img/cardBg.png) no-repeat center;
-          //background-size: .6rem .6rem;
           
           .info3prize-bg{
             position: absolute;
@@ -140,6 +136,7 @@
           width: 5.1rem;
           height: 1.27rem;
           text-align: start;
+
           .info3-prize{
             text-align: start
           }
@@ -156,8 +153,8 @@
         height: .8rem;
         text-align: center;
         line-height: .8rem;
-        background-color: #ffbf40;
         border-radius: .05rem;
+        background-color: #ffbf40;
       }
     }
   }

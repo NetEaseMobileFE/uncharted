@@ -3,20 +3,24 @@ import { connect } from 'react-redux'
 import * as actions from '../actions/Record'
 import ScrollLoadBtn from '../components/ScrollLoadBtn'
 import '../../css/Record.scss'
-import { erilizeText, limitTime } from '../utils/util.js'
+import { erilizeText, limitTime, sessionStorageHeight } from '../utils/util.js'
 
 import NEWSAPPAPI from 'newsapp'
 class Record extends Component {
   
   componentDidMount() {
+    window.scrollTo(0, +(sessionStorage.recordHeight))
+    sessionStorage.removeItem('recordHeight')
     NEWSAPPAPI.ui.title('历史获奖记录')
-    this.props.fetchRecordInfo()
+    if (!this.props.data.record) {
+      this.props.fetchRecordInfo()
+    }
   }
 
   componentWillUnmount() {
-    this.props.clearStore() // 该方法是为了防止重复渲染相同数据
+    sessionStorageHeight('recordHeight')
   }
-
+  
   render() {
     const { data } = this.props
     const record = data.record
@@ -29,7 +33,8 @@ class Record extends Component {
       dataType: 1,
       whichCards: record,
       getData: this.props.fetchRecordInfo,
-      addData: record.noMoreData
+      addData: record.noMoreData,
+      parentComponent: 'record'
     }
     return (
       <div className="record-page">

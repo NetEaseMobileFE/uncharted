@@ -116,7 +116,8 @@ class ShareItem extends Component {
             <div className="text">{erilizeText(cardText, 32)}</div>
             <div className="btn" onClick={this.state.alreadyGet || this.state.timeOut ? this.goCollect : () => { this.handleClick(giftId, this.state.cardId) }}>{this.state.alreadyGet || this.state.timeOut ? '自己去收集' : '领取'}</div>
           </div>
-          {this.state.alreadyGet ? <div className="get-logo get-alreadylogo"></div> : this.state.timeOut ? <div className="get-logo get-timeOutlogo"></div> : ''}
+          {this.state.alreadyGet && <div className="get-logo get-alreadylogo"></div>}
+          {!this.state.alreadyGet && this.state.timeOut ? <div className="get-logo get-timeOutlogo"></div> : ''}
         </div>
         <div className="warn-update">如果领卡失败，请升级到最新版网易新闻</div>
       </div>

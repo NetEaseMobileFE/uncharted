@@ -3,7 +3,7 @@
 
   .h-main-container{
     position: relative;
-    width:100%;
+    width: 100%;
     margin: 0 auto;
     background-color: #f21745;
 
@@ -30,12 +30,12 @@
       }
 
       .cd{
+        left: 0.24rem;
+        top: 0.17rem;
         display: flex;
         justify-content: center;
         align-items: center;
         position: absolute;
-        left: 0.24rem;
-        top: 0.17rem;
         box-sizing: border-box;
         height: .73rem;
         @include border(border, 1px, solid, #653634);
@@ -46,10 +46,10 @@
           height: .59rem;
           @include border(border, 1px, dotted, #fff21a);
           .cd-l,.cd-r{
-            height:0.53rem;
+            height: 0.53rem;
             text-align: center;
             line-height: 0.53rem;
-            color:white;
+            color: white;
           }
 
           .cd-l{
@@ -92,7 +92,7 @@
       width: 100%;
       height: 0.4rem;
       margin: .3rem 0 .2rem 0;
-      color:white;
+      color: white;
       line-height: 0.5rem;
       text-align: center;
       font-size: .24rem;
@@ -100,7 +100,7 @@
 
       .carouselbox1, .carouselbox2{
         width: 100%;
-        margin:0 auto;
+        margin: 0 auto;
       }
       .awardInfo{
         width: 100%;
@@ -116,33 +116,31 @@
 
   .winn-li{
     position: relative;
-    width:100%;
-    height:1.85rem;
-    padding-left: 0.2rem;
     display: flex;
+    width: 100%;
+    height: 1.85rem;
+    padding-left: 0.2rem;
     align-items: center;
-    color:white;
+    color: white;
 
 
     .winn-li-l{
       display: flex;
+      width: 1.5rem;
+      height: 1.27rem;
+      margin-right: 0.39rem;
       justify-content: center;
       align-items: center;
-      width:1.5rem;
-      height:1.27rem;
       background-color: white;
-      //background: white url(./../img/cardBg.png) no-repeat center;
-      //background-size: .65rem .65rem;
-      margin-right: 0.39rem;
 
       .prize-img{
-        width:1.08rem;
-        height:1.05rem;
+        width: 1.08rem;
+        height: 1.05rem;
       }      
     }
 
     .winn-li-cen{
-      width:3rem;
+      width: 3rem;
       margin-right: 0.2rem;
 
       .prize-name,.prize-date{
@@ -158,13 +156,12 @@
       }
     }
     .winn-li-r{
-      width:2.04rem;
-      height:0.64rem;
-      background:#ffbf40;
+      width: 2.04rem;
+      height: 0.64rem;
       border-radius: 3px;
       text-align: center;
       line-height: 0.64rem;
-
+      background: #ffbf40;
     }
 
     .btn-style-0{
@@ -193,27 +190,28 @@
 
   .pari-record{
     width:100%;
+
     .pari-recordls{
 
       .pari-li{
         display: flex;
         align-items: center;
-        width:100%;
-        height:1.85rem;
+        width: 100%;
+        height: 1.85rem;
         padding-left: 0.27rem;
 
         .pari-li-l{
           display: flex;
-          width:5.8rem;
-          height:0.6rem;
+          width: 5.8rem;
+          height: 0.6rem;
           margin-right: 0.1rem;
-          color:white;
+          color: white;
         }
 
         .pari-logo{
           position: relative;
-          width:0.6rem;
-          height:0.6rem;
+          width: 0.6rem;
+          height: 0.6rem;
           margin-right: 0.17rem;
           border-radius: 0.6rem;
           background: url(./../img/circleLogo.png) no-repeat center center;
@@ -228,22 +226,22 @@
         }
 
         .pari-prize{
-          width:100%;
-          height:0.4rem;
+          width: 100%;
+          height: 0.4rem;
           font-size: 14px;
         }
 
         .pari-user{
-          width:100%;
-          height:0.3rem;
+          width: 100%;
+          height: 0.3rem;
           font-size: 12px;
           line-height: 0.4rem;
         }
 
         .pari-li-r{
           //z-index: 1;
-          width:1.08rem;
-          height:1.05rem;
+          width: 1.08rem;
+          height: 1.05rem;
           background-color: white;
           //background: white url(./../img/cardBg.png) no-repeat center;
           //background-size: .5rem .5rem;
@@ -259,22 +257,22 @@
 
 
       .pari-li:nth-child(2n){
-        background-color:#e50833;
+        background-color: #e50833;
       }  
     }
   }
 
   .record-title{
-    width:100%;
-    height:0.81rem;
+    display: flex;
+    width: 100%;
+    height: 0.81rem;
+    justify-content: space-between;
+    color: white;
     background: url(../img/RecordTitle.png) no-repeat top right;
     background-size: 7.37rem 0.81rem;
-    color:white;
-    display: flex;
-    justify-content: space-between;
 
     .record-title-text,.record-title-info{
-      height:0.81rem;
+      height: 0.81rem;
       line-height: 0.7rem;
     }
 
@@ -283,20 +281,19 @@
     }
 
     .record-title-info{
-      color: white;
-      text-decoration:none;
       margin-right: 0.12rem;
+      color: white;
+      text-decoration: none;
     }
-
   }
 
   .collect-cards{
-    width:7.15rem;
-    height:1.37rem;
-    margin:0 auto;
-    display:flex;
+    display: flex;
+    width: 7.15rem;
+    height: 1.37rem;
+    margin: 0 auto;
     justify-content: space-between;
-    color:white;
+    color: white;
     line-height: 1.37rem;
   }
 
@@ -311,37 +308,33 @@
     justify-content: space-between;
   }
   .coll-cardsli{
-    //z-index: 1;
     position: relative;
-    width:1.06rem;
-    height:1.43rem;
+    width: 1.06rem;
+    height: 1.43rem;
     margin-right: .25rem;
-    background: white url(./../img/cardBg.png) no-repeat center;
-    background-size: .4rem .4rem; 
     list-style: none;
     border-radius: 3px;
+    background: white url(./../img/cardBg.png) no-repeat center;
+    background-size: .4rem .4rem;
 
     .coll-cardsbg{
-      //z-index: 10;
       position: absolute;
-      width:1.06rem;
-      height:1.43rem;
+      width: 1.06rem;
+      height: 1.43rem;
       border-radius: 3px;
     }
     .shade-img{
-      //z-index: 11;
       background: rgba(255,255,255,.75);
     }
 
     .card-shade{
-      //z-index: 11;
       position: absolute;
       top: 0;
       left: 0;
       bottom: 0;
       right: 0;
-      background: rgba(255,255,255,.75);
       border-radius: .05rem;
+      background: rgba(255,255,255,.75);
     }
 
     .card-desc{
@@ -369,7 +362,7 @@
   .homeAboutRule>ul{
     margin: .43rem .25rem 0 .25rem;
     padding-bottom: 0.5rem;
-    color:white;
+    color: white;
     list-style: none;
   }
   .homeAboutRule>ul>li{
@@ -392,10 +385,10 @@
   .h-card-dialog{
     z-index: 100;
     position: fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     overflow: hidden;
     background-color: rgba(0,0,0,.8);
 
@@ -412,10 +405,8 @@
 
       .cover{
         position: relative;
-        width:4.36rem;
-        height:5.89rem;
-        //background: white url(./../img/cardBg.png) no-repeat center;
-        //background-size: 2rem 2rem;
+        width: 4.36rem;
+        height: 5.89rem;
         margin: 0 auto;
         border-radius: 10px;
 
@@ -425,8 +416,8 @@
           left: 0;
           bottom: 0;
           right: 0;
-          width:4.36rem;
-          height:5.89rem;
+          width: 4.36rem;
+          height: 5.89rem;
           border-radius: 10px;
         }
 
@@ -436,11 +427,11 @@
           right: .23rem;
           width: .9rem;
           height: .4rem;
-          background-color: #df3031;
           border-radius: .05rem;
-          color:white;
+          color: white;
           text-align: center;
           line-height: .4rem;
+          background-color: #df3031;
         }
       }
 
@@ -466,16 +457,14 @@
         
         .btn{
           display: flex;
-          
           width: 100%;
           height: .65rem;
 
           .close,.present{
             width: 2.35rem;
             height: .65rem;
-            
             border-radius: .05rem;
-            color:white;
+            color: white;
             text-align: center;
             line-height: .65rem;
           }

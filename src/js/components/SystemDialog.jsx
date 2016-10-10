@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import '../../css/SystemDialog.scss'
+import { ePreventDefault } from '../utils/util'
 
 export default class SystemDialog extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     this.systemDialog.addEventListener('touchmove', (e) => {
-      e.preventDefault()
+      ePreventDefault(e)
     }, false)
   }
+
   componentWillUnmount() {
-    this.systemDialog.removeEventListener('touchmove', () => {
+    this.systemDialog.removeEventListener('touchmove', (e) => {
+      ePreventDefault(e)
     }, false)
   }
   

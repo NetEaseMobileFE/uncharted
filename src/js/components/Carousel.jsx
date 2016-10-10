@@ -6,7 +6,7 @@ export default class Carousel extends Component {
     super(props)
     this.intervals = []
     this.handleClick = this.handleClick.bind(this)
-    this.setInterval = this.setInterval.bind(this)
+    // this.setInterval = this.setInterval.bind(this)
     this.scrollUp = this.scrollUp.bind(this)
   }
 
@@ -14,26 +14,21 @@ export default class Carousel extends Component {
     const area = this.refs.area
     const box1 = this.refs.box1
     const cliHeight = this.refs.cli1.clientHeight
-    this.setInterval(() => {
+    this.intervalToken = setInterval(() => {
       this.scrollUp(area, box1, cliHeight)
     }, 50)
   }
 
   componentWillUnmount() {
-    this.intervals.map((timer) => {
-      clearInterval(timer)
-      return true
-    })
-  }
-  /* eslint-disable */
-  setInterval() {
-    this.intervals.push(setInterval.apply(null, arguments))
+    clearInterval(this.intervalToken)
+    return true
   }
 
   handleClick() {
     window.location = 'newsapp://subject/SJ07092985555724594961'
   }
-
+  
+  /* eslint-disable no-param-reassign */
   scrollUp(area, con1, cliHeight) {
     if (area.scrollTop >= con1.scrollHeight) {
       area.scrollTop = 0
@@ -49,6 +44,7 @@ export default class Carousel extends Component {
       area.scrollTop = area.scrollTop + this.speed
     }
   }
+  /* eslint-enable no-param-reassign */
 
   render() {
     const data = this.props.data

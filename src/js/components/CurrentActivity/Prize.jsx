@@ -13,15 +13,6 @@ export default class Prize extends Component {
 
   componentDidMount() {
     const { nowAmount, sumAmount } = this.props.data
-    if (!!nowAmount && nowAmount === sumAmount) {
-      this.setState({
-        winnStatus: 200
-      })
-    } else {
-      this.setState({
-        winnStatus: 100
-      })
-    }
     setTimeout(() => {
       const { data, cycleId } = this.props.data
       let wxTitle = `我还差${sumAmount - nowAmount}张卡,集齐可得${data.name}，私聊我,咱俩互换吧！`
@@ -53,7 +44,7 @@ export default class Prize extends Component {
       wbPhoto: `${data.image}`,
       wxText: '网易新闻,集卡赢大奖啦',
       wxTitle: `我参加网易新闻集卡活动，获得了${data.name}。人品大爆发啊~`,
-      wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=${this.state.winnStatus}&cardAmount=${nowAmount}&cycleId=${cycleId}`, 2),
+      wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=200&cardAmount=${nowAmount}&cycleId=${cycleId}`, 2),
       wxPhoto: `${data.image}`
     }
 
@@ -105,7 +96,7 @@ export default class Prize extends Component {
   }
 
   render() {
-    const { data, collCardStatus, curPrizeStatus, nowAmount, sumAmount, push, isNotDisplay } = this.props.data
+    const { data, collCardStatus, curPrizeStatus, nowAmount, sumAmount, isNotDisplay } = this.props.data
     // 这个按钮,有8种状态 以后用数组判断
     let finalFunc = ''
     let finalBtnText = ''

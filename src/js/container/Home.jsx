@@ -17,7 +17,7 @@ import CardDialog from '../components/CardDialog'
 import NoCardToGet from '../components/NoCardToGet'
 import SystemDialog from '../components/SystemDialog'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeUrl } from './../utils/util'
+import { erilizeUrl, sessionStorageHeight } from './../utils/util'
 
 
 class Home extends Component {
@@ -48,6 +48,8 @@ class Home extends Component {
 
   componentDidMount() {
     // 更改title
+    window.scrollTo(0, +(sessionStorage.homeHeight) || 0)
+    sessionStorage.removeItem('homeHeight')
     NEWSAPPAPI.ui.title('头条集卡兑大奖')
     // 判断是否是登陆状态
     NEWSAPPAPI.login(true, (rs) => {
@@ -93,6 +95,10 @@ class Home extends Component {
       // }
       window.history.replaceState([], '', 'index.html?visit=1&')
     }, 500)
+  }
+
+  componentWillUnmount() {
+    sessionStorageHeight('homeHeight')
   }
 
   // 是否显示卡片详情页
