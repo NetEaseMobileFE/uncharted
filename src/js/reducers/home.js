@@ -13,13 +13,15 @@ export default function home(state = INIT_STATE, action) {
         notlogin: deepAssign({}, state.notlogin, action.data)
       })
     case 'CHANGE_LOTTERY_STATUS':
-      return newState.basic.lotteryPrizes.map((item) => {
+      // 更改
+      newState.basic.lotteryPrizes.map((item) => {
         if (item.lotteryInfo.id === action.data.lotteryId) {
           return deepAssign({}, item, { lotteryInfo: { status: action.data.status } })
         } else {
           return item
         }
       })
+      return newState
     case 'FETCH_LOTTERY_ID':
       return deepAssign({}, state, {
         sendLotteryId: deepAssign({}, state.sendLotteryId, action.data)
