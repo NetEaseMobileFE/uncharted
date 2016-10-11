@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Cards from './Cards'
 import Prize from './Prize'
 import Subject from './Subject'
@@ -38,7 +38,7 @@ export default function CurrentActivity(props) {
     const { data, push, loginStatus } = props.data
     const basic = data.basic
     const notlogin = data.notlogin
-    const { fetchBasicInfo, collCardStatus, curPrizeStatus, changeLotteryStatus, lotteryId, sendCard, sendCardInfo, sendLotteryId, sendLotteryIdErrCode, onOpenSD, changeCardsNum } = props.data
+    const { fetchBasicInfo, collCardStatus, curPrizeStatus, changeLotteryStatus, lotteryId, sendCard, sendCardInfo, sendLotteryId, sendLotteryIdErrCode, onOpenSD } = props.data
     const prizeParams = {
       fetchBasicInfo,
       push,
@@ -59,7 +59,6 @@ export default function CurrentActivity(props) {
     const cardsParams = {
       isNotHomePage,
       loginStatus,
-      changeCardsNum,
       sendCard,
       sendCardInfo,
       onOpenSD,
@@ -86,5 +85,3 @@ export default function CurrentActivity(props) {
     )
   }
 }
-
-

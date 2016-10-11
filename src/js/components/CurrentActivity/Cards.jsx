@@ -26,7 +26,7 @@ export default class Cards extends Component {
     })
   }
 
-  introCards(amount, image, mark, cname, cId, target, endTime) {
+  introCards(amount, image, mark, cname, cId) {
     this.setState({
       boolCardDialog: true,
       sendCardDom: true
@@ -42,7 +42,7 @@ export default class Cards extends Component {
 
 
   render() {
-    const { allCards, now, myCards, prizeName, changeCardsNum, cycleId, sendCard, sendCardInfo, isNotHomePage, loginStatus, onOpenSD, endTime } = this.props.data
+    const { allCards, now, myCards, prizeName, cycleId, sendCard, sendCardInfo, isNotHomePage, loginStatus, onOpenSD, endTime } = this.props.data
     let cardLen = allCards.length % 3
     let bottomShadeCN = ''
     if (cardLen === 1) {
@@ -67,7 +67,6 @@ export default class Cards extends Component {
         prizeName,
         endTime,
         now,
-        changeCardsNum,
         cycleId,
         sendCard,
         sendCardInfo,
@@ -103,7 +102,7 @@ export default class Cards extends Component {
                 key={index} 
                 onClick={ 
                   isNotHomePage ? '' :
-                  (event) => { this.introCards(card.amount, card.image, card.mark, card.name, card.id, event.target, this.props.endTime) }
+                  () => { this.introCards(card.amount, card.image, card.mark, card.name, card.id) }
                 }
               >
 

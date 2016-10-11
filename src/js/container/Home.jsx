@@ -90,9 +90,6 @@ class Home extends Component {
 
     // 两个作用,一个是防止从领卡页面跳转的url导致重复领卡.另外是为了判断是否是第一次访问该url
     setTimeout(() => {
-      // if (!!this.params.getCard) {
-      //   window.history.replaceState([], '', 'index.html?visit=1&')
-      // }
       window.history.replaceState([], '', 'index.html?visit=1&')
     }, 500)
   }
@@ -224,7 +221,6 @@ class Home extends Component {
       cardName: this.cardName,
       cardMark: this.cardMark,
       changeCardStatus: this.getCardStatus,
-      changeCardsNum: this.props.actions.changeCardsNum,
       cycleId: notlogin.cycleInfo.id,
       endTime: notlogin.cycleInfo.endTime,
       sendCard: this.props.actions.sendCard,
@@ -239,7 +235,6 @@ class Home extends Component {
       isNotHomePage: this.state.isNotHomePage,
       loginStatus: this.state.loginStatus,
       push: history.push,
-      changeCardsNum: this.props.actions.changeCardsNum,
       collCardStatus: this.state.collCardStatus,
       sendLotteryId: this.props.actions.sendLotteryId,
       lotteryId: basic.lotteryPrizes.length !== 0 ? basic.lotteryPrizes[0].lotteryInfo.id : null,

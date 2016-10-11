@@ -44,19 +44,6 @@ export function fetchNotloginInfo() {
 }
 
 /** ************************
- * 更改卡片数量
- ***************************/
-
-export function changeCardsNum(cardNumInfo) {
-  return (dispatch) => {
-    return dispatch({
-      type: 'CHANGE_CARDS_NUM',
-      data: cardNumInfo
-    })
-  }
-}
-
-/** ************************
  * 更卡获奖状态
  ***************************/
 

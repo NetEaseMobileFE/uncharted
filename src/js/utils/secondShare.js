@@ -1,4 +1,3 @@
-import { writeObj } from './util'
 export function secondShareInit(data) {
   let shareData = {}
   let imgurl = data.img

@@ -31,7 +31,6 @@ export default class CardDialog extends Component {
   // 送卡片
   present() {
     const { cardId, cycleId, cardLen, cardName, prizeName, cardImg, prizeId, changeCardStatus, sendCard, onOpenSD, now, endTime } = this.props.data
-    console.log('now: ', now,'endTime: ', endTime)
     if (now > endTime) {
       onOpenSD('本期活动已结束')
       return null

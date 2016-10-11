@@ -17,13 +17,6 @@ class Expiry extends Component {
       warnDisplay: false,
       displayInfo: false,
     }
-    this.userInfo = {
-      username: '',
-      tele: '',
-      address: '',
-      device: '',
-      udid: ''
-    }
     this.params = null
   }
 

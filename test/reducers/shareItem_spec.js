@@ -12,6 +12,6 @@ describe('Test reducer shareItem', () => {
       type: 'FETCH_SHAREITEM_INFO',
       data: { a: 'aa' }
     }
-    expect(shareItem(anotherState, action2).notlogin).to.eql({ a: 'aa', b: 'b'})
+    expect(shareItem(anotherState, action2).notlogin).to.eql({ a: 'aa', b: 'b' })
   })
 })
