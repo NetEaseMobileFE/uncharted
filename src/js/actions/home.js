@@ -13,12 +13,10 @@ export function fetchBasicInfo() {
       credentials: 'same-origin'
     }).then(res => res.json())
       .then((json) => {
-        if (json.errcode === 0) {
-          dispatch({
-            type: 'FETCH_BASIC_INFO',
-            data: json.data
-          })
-        }
+        dispatch({
+          type: 'FETCH_BASIC_INFO',
+          data: json.data
+        })
       })
   }
 }
