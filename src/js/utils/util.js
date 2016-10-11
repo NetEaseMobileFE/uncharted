@@ -12,16 +12,16 @@ export const isIos = navigator.userAgent.match(/iphone|ipod|ipad/ig)
 
 export function changeUrl(url, type) {
   let finalUrl = url
-  const onLineBool = window.location.href.match(/t.c.m/i)
+  const onLineBool = window.location.href.match(/t\.c\.m/i)
   if (!onLineBool) {
     if (type === 1) {
-      finalUrl = url.replace(/t.c.m/, 'c.m')
+      finalUrl = url.replace(/t\.c\.m/, 'c.m')
     } else {
-      finalUrl = url.replace(/t.c.m.163.com/, 'c.m.163.com/nc/qa')
+      finalUrl = url.replace(/t\.c\.m\.163\.com/, 'c.m.163.com/nc/qa')
     }
   }
-  if (window.location.href.match(/c.3g/i)) {
-    finalUrl = finalUrl.replace(/c.m/i, 'c.3g')
+  if (window.location.href.match(/c\.3g/i)) {
+    finalUrl = finalUrl.replace(/c\.m/i, 'c.3g')
   }
   return finalUrl
 }

@@ -19,7 +19,7 @@ export function secondShareInit(data) {
         desc: shareData.summary,
         title: shareData.title
       }, () => {
-        // window.neteaseTracker && window.neteaseTracker(false, shareData.shareCallbackUrl + '&spsf=wx', '', 'sps')
+        window.neteaseTracker && window.neteaseTracker(false, shareData.shareCallbackUrl + '&spsf=wx', '', 'sps')
       })
     })
 
@@ -32,7 +32,7 @@ export function secondShareInit(data) {
         desc: shareData.summary,
         title: shareData.title
       }, () => {
-        // window.neteaseTracker && window.neteaseTracker(false, shareData.shareCallbackUrl + '&spsf=wx', '', 'sps')
+        window.neteaseTracker && window.neteaseTracker(false, shareData.shareCallbackUrl + '&spsf=wx', '', 'sps')
       })
     })
   })
@@ -44,7 +44,7 @@ export function secondShareInit(data) {
         desc: shareData.summary,
         title: shareData.title
       }, () => {
-        // window.neteaseTracker && window.neteaseTracker(false, shareData.shareCallbackUrl + '&spsf=yx', '', 'sps')
+        window.neteaseTracker && window.neteaseTracker(false, shareData.shareCallbackUrl + '&spsf=yx', '', 'sps')
       })
     })
 
@@ -57,7 +57,7 @@ export function secondShareInit(data) {
         desc: shareData.summary,
         title: shareData.title
       }, () => {
-        // window.neteaseTracker && window.neteaseTracker(false, shareData.shareCallbackUrl + '&spsf=yx', '', 'sps')
+        window.neteaseTracker && window.neteaseTracker(false, shareData.shareCallbackUrl + '&spsf=yx', '', 'sps')
       })
     })
   })

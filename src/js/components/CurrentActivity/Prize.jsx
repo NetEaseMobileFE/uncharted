@@ -23,7 +23,7 @@ export default class Prize extends Component {
       }
       NEWSAPPAPI.ui.button('分享', () => {
         const shareData = {
-          wbText: '网易新闻,集卡赢大奖啦' + changeUrl(` http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=100&cycleId=${cycleId}&nowAmount=${nowAmount}&cardLen=${sumAmount}`, 2),
+          wbText: '网易新闻,集卡赢大奖啦' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=100&cycleId=${cycleId}&nowAmount=${nowAmount}&cardLen=${sumAmount}`, 2),
           wbPhoto: `${data.image}`,
           wxText: '网易新闻,集卡赢大奖啦',
           wxTitle,

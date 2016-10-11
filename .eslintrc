@@ -5,7 +5,7 @@
     "modules": true
   },
   "env": {
-    "node": false,
+    "node": true,
     "browser": true
   },
   "parser": "babel-eslint",
@@ -15,7 +15,7 @@
     "no-alert": 0,
     "prefer-template": 0,
     "no-trailing-spaces": 0,
-    "react/prop-types": 1,
+    "react/prop-types": 0,
     "react/jsx-no-bind": 0,
     "comma-dangle": 0,
     "new-cap": 1,
