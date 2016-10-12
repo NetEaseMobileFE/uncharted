@@ -1,0 +1,81 @@
+:global {
+  @import "Common";
+  .record-page{
+    width:100%;
+    .ls{
+
+      .li{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 1.85rem;
+        padding-left: 0.27rem;
+
+        .li-l{
+          display: flex;
+          align-items: center;
+          width: 5rem;
+          height: 1.85rem;
+          margin-right: 0.58rem;
+          color: white;
+
+          .logo{
+            position: relative;
+            width: .6rem;
+            height: .6rem;
+            margin-right: 0.17rem;
+            border-radius: 0.6rem;
+            background: url(../img/circleLogo.png) no-repeat center center;
+            background-size: 0.6rem 0.6rem;
+
+            .logo-head{
+              position: absolute;
+              width: 6rem;
+              height: 6rem;
+              border-radius: 0.6rem;
+            }
+          }
+
+          .li-l-r{
+            width: 4.5rem;
+            margin-top: .2rem;
+            .prize{
+              width: 100%;
+              font-size: 14px;
+              color: #595656;
+            }
+
+            .user{
+              width: 100%;
+              font-size: 12px;
+              line-height: 0.4rem;
+              color: #797676;
+            }
+          }
+        }
+
+        .li-r{
+          z-index: 1;
+          width: 1.51rem;
+          height: 1.27rem;
+          background-color: white;
+          
+          .prize-bg{
+            z-index: 10;
+            width: 1.51rem;
+            height: 1.27rem;
+          }
+        }
+
+      }
+
+      .li:nth-child(2n+1){
+        background-color: #f7f7f7;
+      }
+
+      .li:nth-child(2n){
+        background-color: #eaeaea;
+      }  
+    }
+  }
+}
