@@ -131,90 +131,90 @@ class Expiry extends Component {
     return (
       <div className="expiry-container">
         { // 兑奖信息填写页面
-          !this.state.displayInfo && 
-            <div className="expiry">
-              <header className="exp-header">
-                <div className="dot"></div>
-                <div className="info">为了让客服及时联系您，请填写个人信息</div>
-              </header>
-              <section className="exp-section">
-                <article className="form-item">
-                  <div className="label">姓名：</div>
-                  <div className="input">
-                    <input type="text" ref={(ref) => { this.username = ref }} />
-                  </div>
-                </article>
-                <article className="form-item">
-                  <div className="label">手机：</div>
-                  <div className="input">
-                    <input type="tel" ref={(ref) => { this.tele = ref }} />
-                  </div>
-                </article>
-                <article className="form-item">
-                  <div className="label">住址：</div>
-                  <div className="input">
-                    <input type="text" ref={(ref) => { this.address = ref }} />
-                  </div>
-                </article>
-              </section>
-              <footer className="exp-footer">
-                <div className="btn" onClick={this.handleClick}>立即提交</div>
-              </footer>
-            </div>
+          !this.state.displayInfo &&
+          <div className="expiry">
+            <header className="exp-header">
+              <div className="dot"></div>
+              <div className="info">为了让客服及时联系您，请填写个人信息</div>
+            </header>
+            <section className="exp-section">
+              <article className="form-item">
+                <div className="label">姓名：</div>
+                <div className="input">
+                  <input type="text" ref={(ref) => { this.username = ref }} />
+                </div>
+              </article>
+              <article className="form-item">
+                <div className="label">手机：</div>
+                <div className="input">
+                  <input type="tel" ref={(ref) => { this.tele = ref }} />
+                </div>
+              </article>
+              <article className="form-item">
+                <div className="label">住址：</div>
+                <div className="input">
+                  <input type="text" ref={(ref) => { this.address = ref }} />
+                </div>
+              </article>
+            </section>
+            <footer className="exp-footer">
+              <div className="btn" onClick={this.handleClick}>立即提交</div>
+            </footer>
+          </div>
         }
         { // 信息确认页面
           this.state.warnDisplay &&
-            <div className="exp-warnInfo">
-              <div className="inner">
-                <header className="header">确认信息</header>
-                <section className="content">
-                  <div className="item-info">
-                    <span>姓名：</span>
-                    <span>{this.state.username}</span>
-                  </div>
-                  <div className="item-info">
-                    <span>手机：</span>
-                    <span>{this.state.tele}</span>
-                  </div>
-                  <div className="item-info">
-                    <span>住址：</span>
-                    <span>{this.state.address}</span>
-                  </div>
-                </section>
-                <footer className="footer">
-                  <div className="cancel" onClick={this.cancel}>取消</div>
-                  <div className="submit" onClick={this.submit}>确认</div>
-                </footer>
-              </div>
-            </div>
-        }
-        { // 兑奖详情信息展示页面
-          this.state.displayInfo &&
-            <div className="exp-displayInfo">
-              <header className="header">
-                <div className="img"></div>
-              </header>
-              <section className="center">
-                <div className="li">
-                  <span className="tag">姓名：</span>
-                  <span className="info">{this.state.username}</span>
+          <div className="exp-warnInfo">
+            <div className="inner">
+              <header className="header">确认信息</header>
+              <section className="content">
+                <div className="item-info">
+                  <span>姓名：</span>
+                  <span>{this.state.username}</span>
                 </div>
-                <div className="li">
-                  <span className="tag">电话：</span>
-                  <span className="info">{this.state.tele}</span>
+                <div className="item-info">
+                  <span>手机：</span>
+                  <span>{this.state.tele}</span>
                 </div>
-                <div className="li">
-                  <span className="tag">地址：</span>
-                  <span className="info">{this.state.address}</span>
+                <div className="item-info">
+                  <span>住址：</span>
+                  <span>{this.state.address}</span>
                 </div>
               </section>
               <footer className="footer">
-                <div className="useforuser">
-                  <div className="logo"></div>
-                  <div className="prompt">我们将在每期活动结束后的7个工作日内为您寄出奖品，有问题请发邮件至vivojika2016@163.com</div>
-                </div>
+                <div className="cancel" onClick={this.cancel}>取消</div>
+                <div className="submit" onClick={this.submit}>确认</div>
               </footer>
             </div>
+          </div>
+        }
+        { // 兑奖详情信息展示页面
+          this.state.displayInfo &&
+          <div className="exp-displayInfo">
+            <header className="header">
+              <div className="img"></div>
+            </header>
+            <section className="center">
+              <div className="li">
+                <span className="tag">姓名：</span>
+                <span className="info">{this.state.username}</span>
+              </div>
+              <div className="li">
+                <span className="tag">电话：</span>
+                <span className="info">{this.state.tele}</span>
+              </div>
+              <div className="li">
+                <span className="tag">地址：</span>
+                <span className="info">{this.state.address}</span>
+              </div>
+            </section>
+            <footer className="footer">
+              <div className="useforuser">
+                <div className="logo"></div>
+                <div className="prompt">我们将在每期活动结束后的7个工作日内为您寄出奖品，有问题请发邮件至vivojika2016@163.com</div>
+              </div>
+            </footer>
+          </div>
         }
       </div>
     )
