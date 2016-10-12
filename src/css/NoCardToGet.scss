@@ -1,0 +1,60 @@
+:global {
+  @import "Common";
+  .no-card-container {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .7);
+
+    .n-c-inner {
+      position: relative;
+      width: 3.93rem;
+      height: 3.08rem;
+      margin: 3.95rem auto 0;
+      background-color: #fff;
+      border-radius: 3px;
+
+      .top {
+        .logo {
+          box-sizing: content-box;
+          width: 2rem;
+          height: 1.3rem;
+          margin: 0 auto;
+          padding: .35rem 0 .2rem;
+          background: url(./../img/nocard-logo.png) no-repeat center center;
+          background-size: 2rem 1.3rem;
+        }
+        .close {
+          position: absolute;
+          top: .1rem;
+          right: .1rem;
+          width: .6rem;
+          height: .6rem;
+          border-radius: .6rem;
+          @include border(border, 1px, solid, #e2e2e2);
+          background: url('./../img/cg-close.png') no-repeat center center;
+          background-size: .22rem .22rem;
+        }
+      }
+      .bottom {
+        margin: 0 auto;
+        text-align: center;
+
+        .warn {
+          margin-bottom: .1rem;
+          color: #000;
+          @include px2px(font-size, 23)
+
+        }
+        .desc {
+          color: #c8c8c8;
+          @include px2px(font-size, 13)
+        }
+      }
+    }
+  }
+}
+
