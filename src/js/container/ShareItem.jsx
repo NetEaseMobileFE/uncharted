@@ -21,11 +21,16 @@ class ShareItem extends Component {
       alreadyGet: false,
       timeOut: false
     }
+    this.giftId = null
   }
   
   componentDidMount() {
     this.props.fetchShareInfo(this.params.cycleId)
-    this.props.fetchQueryCard(this.params.giftId, this.params.cardId)
+    this.giftId = this.params.giftId
+    while (this.giftId.match(/%/i)) {
+      this.giftId = decodeURIComponent(this.giftId)
+    }
+    this.props.fetchQueryCard(this.giftId, this.params.cardId)
       .then((json) => {
         const { share } = this.props.data
         if (!share || !json) {
@@ -46,7 +51,7 @@ class ShareItem extends Component {
   }
 
   handleClick() {
-    window.location.href = `http://m.163.com/newsapp/applinks.html?url=${encodeURIComponent(changeUrl('http://t.c.m.163.com/uncharted/index.html?getCard=1&cardId=', 2) + this.params.cardId + '&giftId=' + this.params.giftId + '&')}`
+    window.location.href = `http://m.163.com/newsapp/applinks.html?url=${encodeURIComponent(changeUrl('http://t.c.m.163.com/uncharted/index.html?getCard=1&cardId=', 2) + this.params.cardId + '&giftId=' + encodeURIComponent(this.giftId) + '&')}`
   }
 
   compareTimeOut(endTime) {

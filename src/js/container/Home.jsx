@@ -58,13 +58,18 @@ class Home extends Component {
         // 判断跳转的url中是否存在getCard参数,存在说明是从领卡页面进行跳转,需弹出卡片
         if (!!this.params.getCard) {
           // 验证卡片是否满足可领取状态
-          this.props.fetchQueryCard(this.params.giftId, this.params.cardId).then((json) => {
+          let giftId = decodeURIComponent(this.params.giftId)
+          while (giftId.match(/%/i)) {
+            giftId = decodeURIComponent(giftId)
+            alert(giftId)
+          }
+          this.props.fetchQueryCard(giftId, this.params.cardId).then((json) => {
             if (!!json.data && !!json.data.valid) {
               this.setState({
                 cardStatus: !!this.params.getCard
               })
               // 领取卡片
-              this.props.actions.receiveCardId(this.params.giftId, this.params.cardId).then(() => {
+              this.props.actions.receiveCardId(giftId, this.params.cardId).then(() => {
                 this.getData()
               })
             } else {

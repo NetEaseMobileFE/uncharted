@@ -41,11 +41,11 @@ export default class CardDialog extends Component {
       .then((json) => {
         this.giftId = json.data.giftId
         shareData = {
-          wbText: '网易新闻，集卡赢大奖' + changeUrl('http://t.c.m.163.com/uncharted/index.html#/shareCard?cycleId=' + cycleId + '&cardId=' + cardId + '&cardLen=' + cardLen + '&prizeId=' + prizeId + '&giftId=' + encodeURI(this.giftId) + '&', 2),
+          wbText: '网易新闻，集卡赢大奖' + changeUrl('http://t.c.m.163.com/uncharted/index.html#/shareCard?cycleId=' + cycleId + '&cardId=' + cardId + '&cardLen=' + cardLen + '&giftId=' + encodeURIComponent(this.giftId) + '&', 2),
           wbPhoto: cardImg,
           wxText: '网易新闻，集卡赢大奖',
           wxTitle: `${cardName}送给你，集齐可领取${prizeName}，不用谢我，我只是个传说。`,
-          wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/shareCard?cycleId=${cycleId}&cardId=${cardId}&cardLen=${cardLen}&prizeId=${prizeId}&giftId=${encodeURI(this.giftId)}&`, 2),
+          wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/shareCard?cycleId=${cycleId}&cardId=${cardId}&cardLen=${cardLen}&giftId=${encodeURIComponent(this.giftId)}&`, 2),
           wxPhoto: cardImg
         }
         NEWSAPPAPI.share.invoke(shareData, () => {
