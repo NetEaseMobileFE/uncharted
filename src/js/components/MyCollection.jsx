@@ -29,7 +29,7 @@ export default class MyCollection extends Component {
       <div className="coll-cards-container">
         <UniversalTitle
           text="我的集卡记录" 
-          showMore={data.length > 1 ? '查看全部 >' : ''} 
+          showMore={data.length > 1 ? '查看全部 >' : ''}
           link={data.length > 1 ? '/mycards?' : ''}
         />
         <div className="collect-cards">

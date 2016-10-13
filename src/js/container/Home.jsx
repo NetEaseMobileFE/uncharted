@@ -257,8 +257,7 @@ class Home extends Component {
       sendLotteryId: this.props.actions.sendLotteryId,
       sendLotteryIdErrCode: this.props.data.sendLotteryId ? this.props.data.sendLotteryId.errcode : null
     }
-
-
+    
     return (
       <div className="h-main-container">
         {this.state.openSystemDialog && <SystemDialog data={systemDialogParams} />}

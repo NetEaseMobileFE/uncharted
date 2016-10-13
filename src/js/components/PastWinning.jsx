@@ -7,7 +7,10 @@ export default class PastWinning extends Component {
     const { data } = this.props
     return (
       <div className="pari-record">
-        <UniversalTitle text={'往期获奖用户'} showMore={'查看全部>'} link={'/record'} />
+        {
+          data.lotteryPrizes.length > 2 ? <UniversalTitle text={'往期获奖用户'} showMore={'查看全部>'} link={'/record'} /> :
+            <UniversalTitle text={'往期获奖用户'} />
+        }
         <ul className="pari-recordls">
         {
           data.lotteryPrizes.map((record, index) => {
