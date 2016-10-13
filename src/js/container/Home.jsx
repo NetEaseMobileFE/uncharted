@@ -61,7 +61,6 @@ class Home extends Component {
           let giftId = decodeURIComponent(this.params.giftId)
           while (giftId.match(/%/i)) {
             giftId = decodeURIComponent(giftId)
-            alert(giftId)
           }
           this.props.fetchQueryCard(giftId, this.params.cardId).then((json) => {
             if (!!json.data && !!json.data.valid) {
