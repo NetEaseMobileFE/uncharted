@@ -23,8 +23,7 @@ export default class PastWinning extends Component {
             }
             const headBg = {
               background: `url(${record.lotteryInfo.head}) no-repeat center`,
-              backgroundSize: '100% 100%',
-              zIndex: 10
+              backgroundSize: '100% 100%'
             }
             return (
               <li className="pari-li" key={index}>
