@@ -17,12 +17,13 @@ class Expiry extends Component {
       warnDisplay: false,
       displayInfo: false,
     }
+    this.udid = null
     this.params = null
   }
 
   componentDidMount() {
     NEWSAPPAPI.device((rs) => {
-      this.userInfo.udid = rs.u
+      this.udid = rs.u
     })
     this.params = erilizeUrl(window.location.href)
     this.tele.addEventListener('blur', () => {
@@ -43,14 +44,17 @@ class Expiry extends Component {
       alert('请输入完整的个人信息!')
       return
     }
-    this.setState({
-      warnDisplay: true,
-    })
+
     this.userInfo = {
       username: this.username.value,
       tele: this.tele.value,
       address: this.address.value
     }
+
+    this.setState({
+      warnDisplay: true,
+    })
+
   }
 
   cancel() {
@@ -61,12 +65,12 @@ class Expiry extends Component {
 
   // 发送兑奖信息
   submit() {
-    const { username, tele, address, udid } = this.userInfo
+    const { username, tele, address } = this.userInfo
     const userInfo = {
       address,
       username,
       tele,
-      udid
+      udid: this.udid
     }
     const xhr = new XMLHttpRequest()
     let webState = null
@@ -170,15 +174,15 @@ class Expiry extends Component {
               <section className="content">
                 <div className="item-info">
                   <span>姓名：</span>
-                  <span>{this.state.username}</span>
+                  <span>{this.userInfo.username}</span>
                 </div>
                 <div className="item-info">
                   <span>手机：</span>
-                  <span>{this.state.tele}</span>
+                  <span>{this.userInfo.tele}</span>
                 </div>
                 <div className="item-info">
                   <span>住址：</span>
-                  <span>{this.state.address}</span>
+                  <span>{this.userInfo.address}</span>
                 </div>
               </section>
               <footer className="footer">
@@ -197,15 +201,15 @@ class Expiry extends Component {
             <section className="center">
               <div className="li">
                 <span className="tag">姓名：</span>
-                <span className="info">{this.state.username}</span>
+                <span className="info">{this.userInfo.username}</span>
               </div>
               <div className="li">
                 <span className="tag">电话：</span>
-                <span className="info">{this.state.tele}</span>
+                <span className="info">{this.userInfo.tele}</span>
               </div>
               <div className="li">
                 <span className="tag">地址：</span>
-                <span className="info">{this.state.address}</span>
+                <span className="info">{this.userInfo.address}</span>
               </div>
             </section>
             <footer className="footer">
