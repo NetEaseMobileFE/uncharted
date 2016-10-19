@@ -38,7 +38,7 @@ export default class Prize extends Component {
   }
 
   handleShare() {
-    const { push, cycleId, prizeId, lotteryId, data, nowAmount, sendLotteryId, sendLotteryIdErrCode } = this.props.data
+    const { push, cycleId, prizeId, lotteryId, data, nowAmount, sendLotteryId } = this.props.data
     const shareData = {
       wbText: '网易新闻,集卡赢大奖啦' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=200&cardAmount=${nowAmount}&cycleId=${cycleId}`, 2),
       wbPhoto: `${data.image}`,
@@ -49,8 +49,8 @@ export default class Prize extends Component {
     }
     NEWSAPPAPI.share.invoke(shareData, () => {
       sendLotteryId(lotteryId)
-        .then(() => {
-          let errcode = parseInt(sendLotteryIdErrCode, 10)
+        .then((json) => {
+          let errcode = parseInt(json.errcode, 10)
           if (errcode === 0) {
             push(`/expiry?prizeId=${prizeId}&cycleId=${cycleId}&lotteryId=${lotteryId}`)
           } else if (errcode === 400) {
