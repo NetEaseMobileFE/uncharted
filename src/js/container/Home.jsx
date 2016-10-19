@@ -164,7 +164,6 @@ class Home extends Component {
   render() {
     const { data, history } = this.props
     const { basic, notlogin } = data
-
     // 判断是否获取到未登录数据
     if (!notlogin) {
       return null

@@ -40,14 +40,13 @@ export default class Prize extends Component {
   handleShare() {
     const { push, cycleId, prizeId, lotteryId, data, nowAmount, sendLotteryId, sendLotteryIdErrCode } = this.props.data
     const shareData = {
-      wbText: '网易新闻,集卡赢大奖啦' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=${this.state.winnStatus}&cardAmount=${nowAmount}&cycleId=${cycleId}`, 2),
+      wbText: '网易新闻,集卡赢大奖啦' + changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=200&cardAmount=${nowAmount}&cycleId=${cycleId}`, 2),
       wbPhoto: `${data.image}`,
       wxText: '网易新闻,集卡赢大奖啦',
       wxTitle: `我参加网易新闻集卡活动，获得了${data.name}。人品大爆发啊~`,
       wxUrl: changeUrl(`http://t.c.m.163.com/uncharted/index.html#/share?winnStatus=200&cardAmount=${nowAmount}&cycleId=${cycleId}`, 2),
       wxPhoto: `${data.image}`
     }
-
     NEWSAPPAPI.share.invoke(shareData, () => {
       sendLotteryId(lotteryId)
         .then(() => {
@@ -62,8 +61,6 @@ export default class Prize extends Component {
           } else if (errcode === 1) {
             alert('服务器繁忙')
             console.log('服务器内部错误')
-          } else {
-            alert('服务器繁忙')
           }
         })
     })
@@ -103,7 +100,7 @@ export default class Prize extends Component {
     let finalClass = 'prize-btn'
     let finalLabelText = ''
 
-    if (!collCardStatus) {
+    if (false && !collCardStatus) {
       // 未开启集卡功能
       // 或者
       // 当前版本过低
@@ -126,7 +123,7 @@ export default class Prize extends Component {
       finalBtnText = '点击领取'
       finalClass += ' btn-bgc2'
     } else if (curPrizeStatus === 0) {
-      // 未领取
+      // 未分享领取
       finalFunc = this.handleShare
       finalBtnText = `分享后领取(${nowAmount}/${sumAmount})`
       finalClass += ' btn-bgc2'

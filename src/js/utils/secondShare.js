@@ -10,7 +10,6 @@ export function secondShareInit(data) {
     summary,
     title
   }
-
   document.addEventListener('WeixinJSBridgeReady', () => {
     window.WeixinJSBridge.on('menu:share:appmessage', () => {
       window.WeixinJSBridge.invoke('sendAppMessage', {

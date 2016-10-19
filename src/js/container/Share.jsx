@@ -74,8 +74,9 @@ class Share extends Component {
         secondShareOption.img = cardImg
         break
       default:
-        return
+        break
     }
+    // writeObj(secondShareOption)
     secondShareInit(secondShareOption)
   }
 
@@ -97,6 +98,7 @@ class Share extends Component {
       }
       return true
     })
+    console.log(params.nowAmount)
     this.secondShare(params.cardLen, lackCards, this.cardName, this.cardImg, prizeArray.name, prizeArray.image)
 
     const bgImg = {

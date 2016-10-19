@@ -31,6 +31,7 @@ class Record extends Component {
       page: 1,
       pageSize: 10,
       dataType: 1,
+      dataLen: record.lotteryPrizes.length,
       whichCards: record,
       getData: this.props.fetchRecordInfo,
       addData: record.noMoreData,

@@ -11,24 +11,10 @@ export default class ScrollLoadBtn extends Component {
   }
 
   componentDidMount() {
-    const parentComponent = this.props.data.parentComponent
-    if (parentComponent === 'record') {
-      this.page = +(sessionStorage.record) || 1
-      sessionStorage.removeItem('record')
-    } else if (parentComponent === 'myCards') {
-      this.page = +(sessionStorage.myCards) || 1
-      sessionStorage.removeItem('myCards')
-    }
     document.addEventListener('scroll', this.handleScroll, false)
   }
 
   componentWillUnmount() {
-    const parentComponent = this.props.data.parentComponent
-    if (parentComponent === 'record') {
-      sessionStorage.setItem('record', this.page)
-    } else if (parentComponent === 'myCards') {
-      sessionStorage.setItem('myCards', this.page)
-    }
     document.removeEventListener('scroll', this.handleScroll, false)
   }
 
@@ -41,7 +27,11 @@ export default class ScrollLoadBtn extends Component {
       this.setState({
         scrollBtn: true
       })
-      this.page++
+      const dataLen = this.props.data.dataLen
+      this.page = Math.ceil(dataLen / 10)
+      if (dataLen % 10 === 0) {
+        this.page++
+      }
       data.getData(this.page, 10)
     } else if (getScrollTop + bodyHeight + 100 < pageHeight) {
       this.setState({
