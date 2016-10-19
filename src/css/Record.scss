@@ -14,7 +14,7 @@
         .li-l{
           display: flex;
           align-items: center;
-          width: 5rem;
+          width: 67%;
           height: 1.85rem;
           margin-right: 0.58rem;
           color: white;
@@ -56,13 +56,13 @@
 
         .li-r{
           z-index: 1;
-          width: 1.51rem;
+          width: 20.1%;
           height: 1.27rem;
           background-color: white;
           
           .prize-bg{
             z-index: 10;
-            width: 1.51rem;
+            width: 100%;
             height: 1.27rem;
           }
         }

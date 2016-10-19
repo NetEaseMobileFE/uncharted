@@ -19,7 +19,7 @@ export default class PastWinning extends Component {
             }
             const bgStyle = {
               background: `url(${record.prize.image}) no-repeat center`,
-              backgroundSize: '1.08rem 1.05rem'
+              backgroundSize: '100% 100%'
             }
             const headBg = {
               background: `url(${record.lotteryInfo.head}) no-repeat center`,

@@ -27,7 +27,7 @@ export default class Subject extends Component {
   countDown(endTime) {
     let currentTime = new Date(this.props.now).getTime()
     if (currentTime > endTime) {
-      return '00:00'
+      return '已结束'
     }
     let djs = endTime / 1000
     let startTime = Math.round(currentTime / 1000)

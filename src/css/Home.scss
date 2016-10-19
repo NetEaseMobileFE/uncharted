@@ -10,10 +10,10 @@
     .title-img{
       position: relative;
       box-sizing: border-box;
-      width: 7.5rem;
+      width: 100%;
       height: 4.65rem;
       background: url(./../img/mainBanner.png) no-repeat center;
-      background-size: 7.5rem 4.65rem;
+      background-size: 100% 4.65rem;
 
       .title-text{
         position: absolute;
@@ -126,9 +126,9 @@
 
     .winn-li-l{
       display: flex;
-      width: 1.5rem;
+      width: 20%; // 1.5
       height: 1.27rem;
-      margin-right: 0.39rem;
+      margin-right: 5.2%;
       justify-content: center;
       align-items: center;
       background-color: white;
@@ -140,13 +140,13 @@
     }
 
     .winn-li-cen{
-      width: 3rem;
+      width: 43%; // 3
       margin-right: 0.2rem;
 
       .prize-name,.prize-date{
         width: auto;
         height: .35rem;
-        font-size: 0.28rem;
+        @include px2px(font-size, 14);
       }
 
       .prize-limit{
@@ -156,7 +156,7 @@
       }
     }
     .winn-li-r{
-      width: 2.04rem;
+      width: 27.2%;
       height: 0.64rem;
       border-radius: 3px;
       text-align: center;
@@ -202,7 +202,7 @@
 
         .pari-li-l{
           display: flex;
-          width: 5.8rem;
+          width: 77.3%; // 5.8
           height: 0.6rem;
           margin-right: 0.1rem;
           color: white;
@@ -240,7 +240,7 @@
 
         .pari-li-r{
           //z-index: 1;
-          width: 1.08rem;
+          width: 14.4%; // 1.08
           height: 1.05rem;
           background-color: white;
           //background: white url(./../img/cardBg.png) no-repeat center;
@@ -248,8 +248,8 @@
 
           .past-prizebg{
             //z-index: 10;
-            width: 1.08rem;
-            height: 1.05rem;
+            width: 100%;
+            height: 100%;
           }
         }
 
@@ -269,7 +269,7 @@
     justify-content: space-between;
     color: white;
     background: url(../img/RecordTitle.png) no-repeat top right;
-    background-size: 7.37rem 0.81rem;
+    background-size: 98.26% 0.81rem;
 
     .record-title-text,.record-title-info{
       height: 0.81rem;
@@ -289,7 +289,7 @@
 
   .collect-cards{
     display: flex;
-    width: 7.15rem;
+    width: 95.3%; // 7.15
     height: 1.37rem;
     margin: 0 auto;
     justify-content: space-between;
@@ -309,7 +309,7 @@
   }
   .coll-cardsli{
     position: relative;
-    width: 1.06rem;
+    width: 14.7%; // 1.06
     height: 1.43rem;
     margin-right: .25rem;
     list-style: none;
@@ -319,7 +319,7 @@
 
     .coll-cardsbg{
       position: absolute;
-      width: 1.06rem;
+      width: 100%;
       height: 1.43rem;
       border-radius: 3px;
     }
@@ -396,8 +396,8 @@
     .dialog-inner{
       z-index: 101;
       box-sizing: border-box;
-      width: 5.46rem;
-      height: 9.02rem;
+      width: 72.8%; // 5.46
+      height: 75.16%; // 9.02
       background: url(./../img/dialogBg.png) no-repeat center center;
       margin: .87rem auto 0;
       padding-top: .45rem;
@@ -405,8 +405,8 @@
 
       .cover{
         position: relative;
-        width: 4.36rem;
-        height: 5.89rem;
+        width: 82.8%; // 4.36
+        height: 70%; // 5.89
         margin: 0 auto;
         border-radius: 10px;
 
@@ -416,8 +416,8 @@
           left: 0;
           bottom: 0;
           right: 0;
-          width: 4.36rem;
-          height: 5.89rem;
+          width: 100%;
+          height: 100%;
           border-radius: 10px;
         }
 
@@ -436,7 +436,7 @@
       }
 
       .footer{
-        width: 4.86rem;
+        width: 89%; // 4.86
         height: 2rem;
         margin: 0 auto;
 
@@ -461,7 +461,7 @@
           height: .65rem;
 
           .close,.present{
-            width: 2.35rem;
+            width: 48.35%; // 2.35rem
             height: .65rem;
             border-radius: .05rem;
             color: white;
