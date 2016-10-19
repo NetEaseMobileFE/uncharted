@@ -13,11 +13,10 @@ export default class MyCollection extends Component {
     const { data } = this.props
     let count = 0
     let finalCards = compareCards(this.props.data[0].cards, this.props.data[0].myCards)
-    finalCards.map((item) => {
+    finalCards.forEach((item) => {
       if (!!item.amount) {
-        count = count + item.amount
+        count = count + +(item.amount)
       }
-      return true
     })
     let classNameLs = 'coll-cardsls'
     let classNameLi = 'coll-cardsli'
