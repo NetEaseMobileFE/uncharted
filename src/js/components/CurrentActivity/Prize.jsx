@@ -100,7 +100,7 @@ export default class Prize extends Component {
     let finalClass = 'prize-btn'
     let finalLabelText = ''
 
-    if (false && !collCardStatus) {
+    if (!collCardStatus) {
       // 未开启集卡功能
       // 或者
       // 当前版本过低

@@ -38,7 +38,6 @@ class Mycards extends Component {
     if (!mycards) {
       return null
     }// 初始化的时候没有定义，如果不判断可能会报错
-    console.log(mycards)
     const pageParams = {
       page: 1,
       pageSize: 10,
