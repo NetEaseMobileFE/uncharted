@@ -256,14 +256,20 @@ class Home extends Component {
       sendLotteryId: this.props.actions.sendLotteryId,
       sendLotteryIdErrCode: this.props.data.sendLotteryId ? this.props.data.sendLotteryId.errcode : null
     }
-    
+
+    const timeOut = notlogin.cycleInfo.endTime < notlogin.now ? true : false
+    const curouselParams = {
+      carousel: notlogin.carousel,
+      timeOut
+    }
+
     return (
       <div className="h-main-container">
         {this.state.openSystemDialog && <SystemDialog data={systemDialogParams} />}
         {!!this.state.cardStatus && <CardDialog data={cardDialogParams} />}
         {this.state.noCard && <NoCardToGet noCardToGet={this.noCardToGet} />}
         <CurrentActivity data={currentActivityParams} />
-        <Carousel data={notlogin.carousel} />
+        <Carousel data={curouselParams} />
         <div className="list-change-style">
           {!!basic.lotteryPrizes && basic.lotteryPrizes.length !== 0 && <MyWinning data={myWinningParams} />}
           {!!notlogin && notlogin.lotteryPrizes.length !== 0 && <PastWinning data={notlogin} />}

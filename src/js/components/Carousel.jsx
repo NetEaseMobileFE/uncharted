@@ -11,12 +11,15 @@ export default class Carousel extends Component {
   }
 
   componentDidMount() {
-    const area = this.refs.area
-    const box1 = this.refs.box1
-    const cliHeight = this.refs.cli1.clientHeight
-    this.intervalToken = setInterval(() => {
-      this.scrollUp(area, box1, cliHeight)
-    }, 50)
+    const timeOut = this.props.data.timeOut
+    if (!timeOut) {
+      const area = this.refs.area
+      const box1 = this.refs.box1
+      const cliHeight = this.refs.cli1.clientHeight
+      this.intervalToken = setInterval(() => {
+        this.scrollUp(area, box1, cliHeight)
+      }, 50)
+    }
   }
 
   componentWillUnmount() {
@@ -48,27 +51,32 @@ export default class Carousel extends Component {
 
   render() {
     const data = this.props.data
-    return (
-      <div className="h-carousel" ref="area">
-        <div className="carouselbox1" onClick={this.handleClick} ref="box1">
-        {
-          data.map((item, index) => {
-            return (
-              <div className="awardInfo" key={index} ref={`cli${index}`}>{erilizeText(`${item.passport}刚刚得到一张${item.name}`, 40)}</div>
-            )
-          })
-        }
+    const timeOut = data.timeOut
+    if (timeOut) {
+      return <div className='h-carousel' onClick={this.handleClick}>#晒一晒我的集卡#</div>
+    } else {
+      return (
+        <div className="h-carousel" ref="area">
+          <div className="carouselbox1" onClick={this.handleClick} ref="box1">
+            {
+              data.carousel.map((item, index) => {
+                return (
+                  <div className="awardInfo" key={index} ref={`cli${index}`}>{erilizeText(`${item.passport}刚刚得到一张${item.name}`, 40)}</div>
+                )
+              })
+            }
+          </div>
+          <div className="carouselbox2" ref="box2">
+            {
+              data.carousel.map((item, index) => {
+                return (
+                  <div className="awardInfo" key={index}>{`${item.passport}刚刚得到一张${item.name}`}</div>
+                )
+              })
+            }
+          </div>
         </div>
-        <div className="carouselbox2" ref="box2">
-        {
-          data.map((item, index) => {
-            return (
-              <div className="awardInfo" key={index}>{`${item.passport}刚刚得到一张${item.name}`}</div>
-            )
-          })
-        }
-        </div>
-      </div>
-    )
+      )
+    }
   }
 }

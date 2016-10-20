@@ -50,12 +50,14 @@ export default function CurrentActivity(props) {
       sendLotteryIdErrCode,
       data: notlogin.prize,
       IsNotDisplay: isNotHomePage,
-      nowAmount: loginStatus ? basic.myCards.length : '',
+      // nowAmount: loginStatus ? basic.myCards.length : 0,
+      nowAmount: basic.myCards.length,
       sumAmount: notlogin.cards.length,
       cycleId: notlogin.cycleInfo.id,
       prizeId: notlogin.prize.id,
       shareYet: changeLotteryStatus
     }
+    
     const cardsParams = {
       isNotHomePage,
       loginStatus,
@@ -69,7 +71,6 @@ export default function CurrentActivity(props) {
       endTime: notlogin.cycleInfo.endTime,
       cycleId: notlogin.cycleInfo.id,
       prizeId: notlogin.prize.id
-
     }
 
     return (

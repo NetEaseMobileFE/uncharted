@@ -14,6 +14,7 @@ webpackStream = require('webpack-stream');
 htmlreplace = require('gulp-html-replace');
 projectName = JSON.parse(fs.readFileSync('package.json', 'utf-8')).name;
 profile = JSON.parse(fs.readFileSync('.profile', 'utf-8'));
+// 判断gulp指令
 if (gutil.env._.indexOf('test') >= 0) {
   webpackConfig = require('./webpack.config.test');
 }
