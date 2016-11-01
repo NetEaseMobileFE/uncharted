@@ -15,7 +15,6 @@ import Share from './container/Share'
 import expiry from './container/Expiry'
 import ShareItem from './container/ShareItem'
 import '../css/Main.scss'
-import NEWSAPPAPI from 'newsapp'
 
 const store = compose(
   applyMiddleware(thunk), 

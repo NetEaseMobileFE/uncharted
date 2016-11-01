@@ -30,7 +30,6 @@ class Record extends Component {
     const pageParams = {
       page: 1,
       pageSize: 10,
-      dataType: 1,
       dataLen: record.lotteryPrizes.length,
       whichCards: record,
       getData: this.props.fetchRecordInfo,

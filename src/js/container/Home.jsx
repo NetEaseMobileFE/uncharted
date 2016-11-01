@@ -23,7 +23,6 @@ import { erilizeUrl, sessionStorageHeight } from './../utils/util'
 class Home extends Component {
   constructor(props) {
     super(props)
-    this.intervals = []
     this.judgeHlcStatus = this.judgeHlcStatus.bind(this)
     this.judgeEdition = this.judgeEdition.bind(this)
     this.getCardStatus = this.getCardStatus.bind(this)
@@ -38,7 +37,7 @@ class Home extends Component {
     this.state = {
       loginStatus: false,
       isNotHomePage: false,
-      collCardStatus: false,
+      collCardStatus: true,
       needToUpdate: false,
       cardStatus: false,
       noCard: false,
@@ -164,10 +163,12 @@ class Home extends Component {
   render() {
     const { data, history } = this.props
     const { basic, notlogin } = data
+    
     // 判断是否获取到未登录数据
     if (!notlogin) {
       return null
     }
+    
     // 领卡时获取卡片的具体信息
     if (this.params.getCard) {
       notlogin.cards.map((item) => {
@@ -179,10 +180,12 @@ class Home extends Component {
         return null
       })
     }
+    
     // 判断是否获取到登陆接口的数据
     if (!basic) {
       return null
     }
+    
     // 判断客户端是否注入cookie失败
     if (!!basic && !basic.lotteryCards) {
       this.props.actions.fetchBasicInfo()

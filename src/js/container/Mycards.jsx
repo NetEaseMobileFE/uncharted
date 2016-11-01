@@ -41,7 +41,6 @@ class Mycards extends Component {
     const pageParams = {
       page: 1,
       pageSize: 10,
-      dataType: 1,
       dataLen: mycards.lotteryCards.length,
       whichPage: mycards,
       getData: this.props.fetchMycardsInfo,
