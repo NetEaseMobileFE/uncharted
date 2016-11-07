@@ -5,10 +5,8 @@ import { erilizeText, compareCards } from '../utils/util.js'
 export default class MyCollection extends Component {
   constructor(props) {
     super(props)
-    this.finalCards = null
   }
-
-
+  
   render() {
     const { data } = this.props
     let count = 0

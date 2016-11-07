@@ -12,15 +12,11 @@ export default class CardDialog extends Component {
 
   componentDidMount() {
     // 显示浮层时候禁止滑动
-    this.cardDialog.addEventListener('touchmove', (event) => {
-      ePreventDefault(event)
-    }, false)
+    this.cardDialog.addEventListener('touchmove', ePreventDefault(event), false)
   }
 
   componentWillUnmount() {
-    this.cardDialog.removeEventListener('touchmove', (event) => {
-      ePreventDefault(event)
-    }, false)
+    this.cardDialog.removeEventListener('touchmove', ePreventDefault(event), false)
   }
 
   close() {

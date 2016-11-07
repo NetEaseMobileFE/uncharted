@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/Record'
+import * as actions from '../actions/record'
 import ScrollLoadBtn from '../components/ScrollLoadBtn'
 import '../../css/Record.scss'
 import { erilizeText, limitTime, sessionStorageHeight } from '../utils/util.js'
@@ -49,17 +49,17 @@ class Record extends Component {
             const cycleTheme = item.cycleInfo.theme
             const cyclePrize = item.prize.name
             const cycleDesc = cycleTime + cycleTheme + cyclePrize
-            const headBg = {
-              background: `url(${item.lotteryInfo.head}) no-repeat center`,
-              backgroundSize: '100% 100%',
-              zIndex: 10
+            let headBg
+            if (!!item.lotteryInfo.head) {
+              headBg = {
+                background: `url(${item.lotteryInfo.head}) no-repeat center`,
+                backgroundSize: '100% 100%'
+              }
             }
             return (
               <li className="li" key={index}>
                 <div className="li-l">
-                  <div className="logo">
-                    <div className="logo-head" style={headBg}></div>
-                  </div>
+                  <div className="logo" style={headBg}></div>
                   <div className="li-l-r">
                     <div className="prize">{erilizeText(cycleDesc, 32)}</div>
                     <div className="user">{item.lotteryInfo.passport}</div>

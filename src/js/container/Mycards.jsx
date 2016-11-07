@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/MyCards'
+import * as actions from '../actions/myCards'
 import ScrollLoadBtn from '../components/ScrollLoadBtn'
 import { erilizeText, compareCards, sessionStorageHeight } from '../utils/util.js'
 import NEWSAPPAPI from 'newsapp'
@@ -11,11 +11,9 @@ import '../../css/ScrollLoadBtn.scss'
 class Mycards extends Component {
   constructor(props) {
     super(props)
-    // this.compareCards = this.compareCards.bind(this)
   }
 
   state = {
-    page: 1,
     scrollBtn: false
   }
 

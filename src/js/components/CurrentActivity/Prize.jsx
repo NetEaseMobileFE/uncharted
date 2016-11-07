@@ -149,7 +149,7 @@ export default class Prize extends Component {
     return (
       <div className="cur-prize">
         <div className="cur-prize-img">
-          <div className="prizeImgBg" style={bgImgStyle}></div>
+          <div className="prize-img-bg" style={bgImgStyle}></div>
         </div>
         <div className="r-prize">
           <label className="prize-label-text">本期奖品</label>

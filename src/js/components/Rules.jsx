@@ -3,7 +3,7 @@ import UniversalTitle from './UniversalTitle'
 
 export default function AboutRule() {
   return (
-    <div className="homeAboutRule">
+    <div className="home-about-rule">
       <UniversalTitle text={'详细规则'} />
       <div className="rules-qa">
         <div>Q：怎样才能获取到卡片？</div>

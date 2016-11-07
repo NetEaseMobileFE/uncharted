@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/Expiry'
-import { fetchBasicInfo } from '../actions/Home'
+import * as actions from '../actions/expiry'
+import { fetchBasicInfo } from '../actions/home'
 import { erilizeUrl } from '../utils/util'
 import NEWSAPPAPI from 'newsapp'
 

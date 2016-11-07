@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/ShareItem'
+import * as actions from '../actions/shareItem'
 import { secondShareInit } from './../utils/secondShare'
 import { erilizeUrl, erilizeText, changeUrl } from '../utils/util'
 
@@ -109,9 +109,7 @@ class ShareItem extends Component {
       <div className="sharecard">
         <ShareBanner />
         <div className="title">
-          <div>
-            <div className="user">{erilizeText(`${cardName}送给你,集齐可得${share.prize.name},不用谢我，我只是个传说`, 36)}</div>
-          </div>
+          <div><div className="user">{erilizeText(`${cardName}送给你,集齐可得${share.prize.name},不用谢我，我只是个传说`, 36)}</div></div>
         </div>
         <div className="info-outer">
           <div className="inner">

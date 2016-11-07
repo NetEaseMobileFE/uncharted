@@ -13,9 +13,9 @@ export default class Carousel extends Component {
   componentDidMount() {
     const timeOut = this.props.data.timeOut
     if (!timeOut) {
-      const area = this.refs.area
-      const box1 = this.refs.box1
-      const cliHeight = this.refs.cli1.clientHeight
+      const area = this.area
+      const box1 = this.box1
+      const cliHeight = this.cli1.clientHeight
       this.intervalToken = setInterval(() => {
         this.scrollUp(area, box1, cliHeight)
       }, 50)
@@ -56,17 +56,17 @@ export default class Carousel extends Component {
       return <div className='h-carousel' onClick={this.handleClick}>#晒一晒我的集卡#</div>
     } else {
       return (
-        <div className="h-carousel" ref="area">
-          <div className="carouselbox1" onClick={this.handleClick} ref="box1">
+        <div className="h-carousel" ref={ (e) => { this.area = e } }>
+          <div className="carouselbox1" onClick={this.handleClick} ref={ (e) => { this.box1 = e } }>
             {
               data.carousel.map((item, index) => {
                 return (
-                  <div className="awardInfo" key={index} ref={`cli${index}`}>{erilizeText(`${item.passport}刚刚得到一张${item.name}`, 40)}</div>
+                  <div className="awardInfo" key={index} ref={ (e) => { this[`cli${index}`] = e } }>{erilizeText(`${item.passport}刚刚得到一张${item.name}`, 40)}</div>
                 )
               })
             }
           </div>
-          <div className="carouselbox2" ref="box2">
+          <div className="carouselbox2" ref={ (e) => { this.box2 = e } }>
             {
               data.carousel.map((item, index) => {
                 return (

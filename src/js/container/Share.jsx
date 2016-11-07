@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchShareInfo } from '../actions/ShareItem'
+import { fetchShareInfo } from '../actions/shareItem'
 import '../../css/Share.scss'
 import { secondShareInit } from '../utils/secondShare'
 import { erilizeUrl, changeUrl, erilizeText } from '../utils/util'
@@ -29,10 +29,10 @@ class Share extends Component {
     const params = erilizeUrl(window.location.href)
     this.state = {
       winnStatus: params.winnStatus,
-      cardId: params.cardId || 'not find the cardId!',
-      cardAmount: params.cardAmount,
-      cycleId: params.cycleId,
-      cardLen: params.cardLen
+      // cardId: params.cardId || 'not find the cardId!',
+      // cardAmount: params.cardAmount,
+      // cycleId: params.cycleId,
+      // cardLen: params.cardLen
     }
     this.cardImg = ''
     this.cardName = ''
@@ -76,7 +76,6 @@ class Share extends Component {
       default:
         break
     }
-    // writeObj(secondShareOption)
     secondShareInit(secondShareOption)
   }
 
@@ -87,18 +86,18 @@ class Share extends Component {
       return null
     }
     const params = erilizeUrl(window.location.href)
+    const { cardId, cardLen, nowAmount } = params
     const prizeArray = share.prize
-    let lackCards = (parseInt(params.cardLen, 10) - parseInt(params.nowAmount, 10))
+    let lackCards = (parseInt(cardLen, 10) - parseInt(nowAmount, 10))
     lackCards = lackCards <= 0 ? 0 : lackCards
     const cycleTheme = share.cycleInfo.theme
     share.cards.map((card) => {
-      if (parseInt(card.id, 10) === parseInt(this.state.cardId, 10)) {
+      if (parseInt(card.id, 10) === parseInt(cardId, 10)) {
         this.cardImg = card.image
         this.cardName = card.name
       }
       return true
     })
-    console.log(params.nowAmount)
     this.secondShare(params.cardLen, lackCards, this.cardName, this.cardImg, prizeArray.name, prizeArray.image)
 
     const bgImg = {
@@ -128,10 +127,10 @@ class Share extends Component {
                     <div className="info1">
                       <div className="card-No">
                         {
-                          parseInt(params.nowAmount, 10) === 0 ?
+                          parseInt(nowAmount, 10) === 0 ?
                             erilizeText(`我还差${lackCards}张卡,集齐可得${prizeArray.name}。私聊我，咱们互换吧~`, 30)
                             :
-                            erilizeText(`我发现了个好玩的活动,集齐${parseInt(params.cardLen, 10)}张可得${prizeArray.name},一般人我不告诉TA`, 35)
+                            erilizeText(`我发现了个好玩的活动,集齐${parseInt(cardLen, 10)}张可得${prizeArray.name},一般人我不告诉TA`, 35)
                         }
                       </div>
                     </div>

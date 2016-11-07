@@ -20,20 +20,12 @@
           color: white;
 
           .logo{
-            position: relative;
             width: .6rem;
             height: .6rem;
             margin-right: 0.17rem;
             border-radius: 0.6rem;
             background: url(../img/circleLogo.png) no-repeat center center;
             background-size: 0.6rem 0.6rem;
-
-            .logo-head{
-              position: absolute;
-              width: .6rem;
-              height: .6rem;
-              border-radius: 0.6rem;
-            }
           }
 
           .li-l-r{
@@ -41,14 +33,14 @@
             margin-top: .2rem;
             .prize{
               width: 100%;
-              font-size: 14px;
+              @include px2px(font-size, 14);
               color: #595656;
             }
 
             .user{
               width: 100%;
-              font-size: 12px;
-              line-height: 0.4rem;
+              @include px2px(font-size, 12);
+              padding: .02rem 0;
               color: #797676;
             }
           }

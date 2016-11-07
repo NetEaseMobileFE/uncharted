@@ -8,8 +8,7 @@ export default class Cards extends Component {
     this.introCards = this.introCards.bind(this) // 为卡片弹窗加载数据
     this.changeCardStatus = this.changeCardStatus.bind(this) // 更改卡片状态
     this.state = {
-      boolCardDialog: false,
-      sendCardDom: false
+      boolCardDialog: false
     }
     this.cardParams = {
       cardAmount: 0,
@@ -28,8 +27,7 @@ export default class Cards extends Component {
 
   introCards(amount, image, mark, cname, cId) {
     this.setState({
-      boolCardDialog: true,
-      sendCardDom: true
+      boolCardDialog: true
     })
     this.cardParams = {
       cardAmount: amount,
