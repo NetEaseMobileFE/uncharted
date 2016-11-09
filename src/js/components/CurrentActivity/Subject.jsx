@@ -5,8 +5,6 @@ export default class Subject extends Component {
   constructor(props) {
     super(props)
     this.countDown = this.countDown.bind(this)
-    // this.intervals = []
-    // this.setInterval = this.setInterval.bind(this)
     this.openTime = this.openTime.bind(this)
     this.state = {
       timeStyle: false,

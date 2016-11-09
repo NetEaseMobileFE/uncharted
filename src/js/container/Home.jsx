@@ -147,6 +147,7 @@ class Home extends Component {
     })
   }
 
+ // 打开系统弹窗
   openSD(desc) {
     this.setState({
       openSystemDialog: true,
@@ -154,6 +155,7 @@ class Home extends Component {
     })
   }
 
+  // 关闭系统弹窗
   closeSD() {
     this.setState({
       openSystemDialog: false
@@ -218,52 +220,48 @@ class Home extends Component {
 
       // 从领卡回流页跳转回主页的弹窗组件参数
     const cardDialogParams = {
-      cardType: basic.myCards.length,
-      cardAmount: cardDialogLen,
-      cardId: this.params.cardId,
-      cardLen: notlogin.cards.length,
-      cardImg: this.cardImg,
-      prizeName: notlogin.prize.name,
-      cardName: this.cardName,
-      cardMark: this.cardMark,
-      changeCardStatus: this.getCardStatus,
-      cycleId: notlogin.cycleInfo.id,
-      endTime: notlogin.cycleInfo.endTime,
-      sendCard: this.props.actions.sendCard,
-      sendCardInfo: data.sendCardInfo,
-      onOpenSD: this.openSD
+      cardType: basic.myCards.length, // 拥有卡片的类型数目
+      cardAmount: cardDialogLen, // 该卡片的数目
+      cardId: this.params.cardId, // 该卡片的id
+      cardLen: notlogin.cards.length, // 兑奖需要集齐多少张卡
+      cardImg: this.cardImg, // 卡片图
+      prizeName: notlogin.prize.name, // 该期的奖品名称
+      cardName: this.cardName, // 卡片名称
+      cardMark: this.cardMark, // 卡片标注
+      changeCardStatus: this.getCardStatus, // 控制该卡片弹窗是否显示的func
+      cycleId: notlogin.cycleInfo.id, // 期信息
+      endTime: notlogin.cycleInfo.endTime, // 期结束时间
+      sendCard: this.props.actions.sendCard, // 送卡函数
+      onOpenSD: this.openSD // 系统弹窗控制函数
     }
 
     // CurrentActivity组件参数
     const currentActivityParams = {
       data,
-      curPrizeStatus,
-      isNotHomePage: this.state.isNotHomePage,
-      loginStatus: this.state.loginStatus,
-      push: history.push,
-      collCardStatus: this.state.collCardStatus,
-      sendLotteryId: this.props.actions.sendLotteryId,
-      lotteryId: basic.lotteryPrizes.length !== 0 ? basic.lotteryPrizes[0].lotteryInfo.id : null,
-      sendLotteryIdErrCode: this.props.data.sendLotteryId ? this.props.data.sendLotteryId.errcode : null,
-      sendCard: this.props.actions.sendCard,
-      sendCardInfo: data.sendCardInfo,
-      onOpenSD: this.openSD
+      curPrizeStatus, // 当前奖品状态
+      isNotHomePage: this.state.isNotHomePage, // 判断是主页还是回流页
+      loginStatus: this.state.loginStatus, // 登陆状态
+      push: history.push, // 路由跳转func
+      collCardStatus: this.state.collCardStatus, // 判断是否是低版本或者为开启集卡功能
+      sendLotteryId: this.props.actions.sendLotteryId, // 兑奖func
+      lotteryId: basic.lotteryPrizes.length !== 0 ? basic.lotteryPrizes[0].lotteryInfo.id : null, // 中奖id
+      sendCard: this.props.actions.sendCard, // 赠送卡片
+      onOpenSD: this.openSD // 系统弹窗控制func
     }
-
+    
     // 我的获奖记录组件参数
     const myWinningParams = {
-      data: basic,
-      push: history.push,
-      changeLotteryStatus: this.props.actions.changeLotteryStatus,
-      cycleId: notlogin.cycleInfo.id,
-      sendLotteryId: this.props.actions.sendLotteryId,
-      sendLotteryIdErrCode: this.props.data.sendLotteryId ? this.props.data.sendLotteryId.errcode : null
+      data: basic, // 登陆数据
+      push: history.push, // 路由跳转func
+      changeLotteryStatus: this.props.actions.changeLotteryStatus, // 分享之后需要改变一下中奖状态func
+      cycleId: notlogin.cycleInfo.id, // 期信息
+      sendLotteryId: this.props.actions.sendLotteryId, // 兑奖func
     }
 
     const timeOut = notlogin.cycleInfo.endTime < notlogin.now ? true : false
     const curouselParams = {
-      carousel: notlogin.carousel,
-      timeOut
+      carousel: notlogin.carousel, // 轮播信息
+      timeOut // 是否过期
     }
 
     return (

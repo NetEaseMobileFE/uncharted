@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NEWSAPPAPI from 'newsapp'
-import { erilizeText, changeUrl } from '../../utils/util'
+import { erilizeText, changeUrl, validator } from '../../utils/util'
 
 export default class Prize extends Component {
   constructor(props) {
@@ -94,51 +94,72 @@ export default class Prize extends Component {
 
   render() {
     const { data, collCardStatus, curPrizeStatus, nowAmount, sumAmount, isNotDisplay } = this.props.data
-    // 这个按钮,有8种状态 以后用数组判断
-    let finalFunc = ''
-    let finalBtnText = ''
-    let finalClass = 'prize-btn'
-    let finalLabelText = ''
+    // 奖品详情信息
+    let prizeInfo = {
+      finalFunc: '',
+      finalBtnText: '',
+      finalClass: 'prize-btn',
+      finalLabelText: ''
+    }
 
     if (!collCardStatus) {
       // 未开启集卡功能
       // 或者
       // 当前版本过低
-      finalFunc = this.handleParticipate
-      finalBtnText = '立即参与'
-      finalClass += ' btn-bgc3'
-      finalLabelText = '您已关闭此功能'
+      prizeInfo = {
+        finalFunc: this.handleParticipate,
+        finalBtnText: '立即参与',
+        finalClass: 'prize-btn btn-bgc3',
+        finalLabelText: '您已关闭此功能'
+      }
       const ua = navigator.userAgent
       if (Math.floor(+(ua.split('NewsApp/', 3)[1])) < 16) {
-        finalLabelText = '当前版本过低'
+        prizeInfo.finalLabelText = '当前版本过低'
       }
-    } else if (curPrizeStatus === 2) {
-      // 已经领取
-      finalFunc = null
-      finalBtnText = '已领取'
-      finalClass += ' btn-bgc3'
-    } else if (curPrizeStatus === 1) {
-      // 已经分享未领取
-      finalFunc = this.handleToGetPrize
-      finalBtnText = '点击领取'
-      finalClass += ' btn-bgc2'
-    } else if (curPrizeStatus === 0) {
-      // 未分享领取
-      finalFunc = this.handleShare
-      finalBtnText = `分享后领取(${nowAmount}/${sumAmount})`
-      finalClass += ' btn-bgc2'
-    } else if (curPrizeStatus === -1) {
-      // 已失效
-      finalFunc = null
-      finalBtnText = '已失效'
-      finalClass += ' btn-bgc1'
+    } else if (curPrizeStatus !== undefined && curPrizeStatus !== null) {
+      // 已经中奖
+      switch (curPrizeStatus) {
+        case -1:
+          prizeInfo = {
+            finalFunc: null,
+            finalBtnText: '已失效',
+            finalClass: 'prize-btn btn-bgc1',
+            finalLabelText: ''
+          }
+          break
+        case 0:
+          prizeInfo = {
+            finalFunc: this.handleShare,
+            finalBtnText: `分享后领取(${nowAmount}/${sumAmount})`,
+            finalClass: 'prize-btn btn-bgc2',
+            finalLabelText: ''
+          }
+          break
+        case 1:
+          prizeInfo = {
+            finalFunc: this.handleToGetPrize,
+            finalBtnText: '点击领取',
+            finalClass: 'prize-btn btn-bgc2',
+            finalLabelText: ''
+          }
+          break
+        case 2:
+          prizeInfo = {
+            finalFunc: null,
+            finalBtnText: '已领取',
+            finalClass: 'prize-btn btn-bgc3',
+            finalLabelText: ''
+          }
+          break
+      }
     } else if (nowAmount !== sumAmount) {
-      finalFunc = null
-      finalBtnText = `集齐可领取(${nowAmount}/${sumAmount})`
-      finalClass += ' btn-bgc1'
-    } else {
-      finalFunc = null
-      finalBtnText = '未知状态'
+      // 未中奖
+      prizeInfo = {
+        finalFunc: this.handleShare,
+        finalBtnText: `集齐可领取(${nowAmount}/${sumAmount})`,
+        finalClass: 'prize-btn btn-bgc1',
+        finalLabelText: ''
+      }
     }
 
     let imgBg = data.image
@@ -156,11 +177,11 @@ export default class Prize extends Component {
           <span className="prize-info">{erilizeText(data.name, 7)}</span>
           {
             !isNotDisplay &&
-              <span className="prize-status">{finalLabelText}</span>
+              <span className="prize-status">{prizeInfo.finalLabelText}</span>
           }
           {
             !isNotDisplay &&
-              <div className={finalClass} onClick={finalFunc}>{finalBtnText}</div>
+              <div className={prizeInfo.finalClass} onClick={prizeInfo.finalFunc}>{prizeInfo.finalBtnText}</div>
           }
         </div>
       </div>

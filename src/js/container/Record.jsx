@@ -27,15 +27,15 @@ class Record extends Component {
     if (!record) {
       return null
     }
+    // 滚动加载组件参数
     const pageParams = {
-      page: 1,
-      pageSize: 10,
       dataLen: record.lotteryPrizes.length,
       whichCards: record,
       getData: this.props.fetchRecordInfo,
       addData: record.noMoreData,
       parentComponent: 'record'
     }
+    
     return (
       <div className="record-page">
         <ul className="ls">

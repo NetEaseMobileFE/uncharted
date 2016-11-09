@@ -91,6 +91,8 @@ class ShareItem extends Component {
     let cardText = ''
     let cardImg = ''
     let cardName = ''
+
+    // 得到卡片详情信息
     cards.map((card) => {
       if (parseInt(card.id, 10) === parseInt(this.params.cardId, 10)) {
         cardText = card.mark

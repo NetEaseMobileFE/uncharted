@@ -12,11 +12,11 @@ export default class CardDialog extends Component {
 
   componentDidMount() {
     // 显示浮层时候禁止滑动
-    this.cardDialog.addEventListener('touchmove', ePreventDefault(event), false)
+    this.cardDialog.addEventListener('touchmove', () => {ePreventDefault()})
   }
 
   componentWillUnmount() {
-    this.cardDialog.removeEventListener('touchmove', ePreventDefault(event), false)
+    this.cardDialog.removeEventListener('touchmove', () => {})
   }
 
   close() {
@@ -26,7 +26,7 @@ export default class CardDialog extends Component {
 
   // 送卡片
   present() {
-    const { cardId, cycleId, cardLen, cardName, prizeName, cardImg, prizeId, changeCardStatus, sendCard, onOpenSD, now, endTime } = this.props.data
+    const { cardId, cycleId, cardLen, cardName, prizeName, cardImg, changeCardStatus, sendCard, onOpenSD, now, endTime } = this.props.data
     if (now > endTime) {
       onOpenSD('本期活动已结束')
       return null

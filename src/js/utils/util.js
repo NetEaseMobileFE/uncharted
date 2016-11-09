@@ -122,10 +122,51 @@ export function compareCards(allCards, myCards) {
 
 
 export function ePreventDefault(e) {
+  e = e || window.event
   e.preventDefault()
 }
 
 export function sessionStorageHeight(name) {
   let getScrollTop = document.documentElement.scrollTop || document.body.scrollTop // 获取页面卷去的高度
   sessionStorage.setItem(name, getScrollTop)
+}
+
+export const validator = {
+  types: {},
+  messages: [],
+  config: {},
+  validate: function(data) {
+    let i
+    let msg
+    let type
+    let checker
+    let result_ok
+    this.messages = []
+    for (i in data) {
+      if (data.hasOwnProperty(i)) {
+        type = this.config[i]
+        checker = this.types[type]
+        console.log(type)
+        if (!type) {
+          continue
+        }
+        if (!checker) {
+          throw {
+            name: 'ValidationError',
+            message: 'No handler to validate type' + type
+          }
+        }
+        result_ok = checker.validate(data[i])
+        if (!result_ok) {
+          msg = `Invalidate value for *${i}*, ${checker.instructions}`
+          this.messages.push(msg)
+        }
+      }
+    }
+    return this.hasErrors()
+  },
+
+  hasErrors: function () {
+    return this.messages.length !== 0
+  }
 }

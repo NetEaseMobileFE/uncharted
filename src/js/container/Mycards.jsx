@@ -11,10 +11,10 @@ import '../../css/ScrollLoadBtn.scss'
 class Mycards extends Component {
   constructor(props) {
     super(props)
-  }
 
-  state = {
-    scrollBtn: false
+    this.state = {
+      scrollBtn: false
+    }
   }
 
   componentDidMount() {
@@ -37,8 +37,6 @@ class Mycards extends Component {
       return null
     }// 初始化的时候没有定义，如果不判断可能会报错
     const pageParams = {
-      page: 1,
-      pageSize: 10,
       dataLen: mycards.lotteryCards.length,
       whichPage: mycards,
       getData: this.props.fetchMycardsInfo,

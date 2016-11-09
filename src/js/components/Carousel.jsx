@@ -4,9 +4,7 @@ import { erilizeText } from '../utils/util.js'
 export default class Carousel extends Component {
   constructor(props) {
     super(props)
-    this.intervals = []
     this.handleClick = this.handleClick.bind(this)
-    // this.setInterval = this.setInterval.bind(this)
     this.scrollUp = this.scrollUp.bind(this)
   }
 
@@ -57,20 +55,20 @@ export default class Carousel extends Component {
     } else {
       return (
         <div className="h-carousel" ref={ (e) => { this.area = e } }>
-          <div className="carouselbox1" onClick={this.handleClick} ref={ (e) => { this.box1 = e } }>
+          <div className="carousel-box1" onClick={this.handleClick} ref={ (e) => { this.box1 = e } }>
             {
               data.carousel.map((item, index) => {
                 return (
-                  <div className="awardInfo" key={index} ref={ (e) => { this[`cli${index}`] = e } }>{erilizeText(`${item.passport}刚刚得到一张${item.name}`, 40)}</div>
+                  <div className="award-info" key={index} ref={ (e) => { this[`cli${index}`] = e } }>{erilizeText(`${item.passport}刚刚得到一张${item.name}`, 40)}</div>
                 )
               })
             }
           </div>
-          <div className="carouselbox2" ref={ (e) => { this.box2 = e } }>
+          <div className="carousel-box2" ref={ (e) => { this.box2 = e } }>
             {
               data.carousel.map((item, index) => {
                 return (
-                  <div className="awardInfo" key={index}>{`${item.passport}刚刚得到一张${item.name}`}</div>
+                  <div className="award-info" key={index}>{`${item.passport}刚刚得到一张${item.name}`}</div>
                 )
               })
             }

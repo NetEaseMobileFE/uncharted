@@ -5,15 +5,11 @@ import { ePreventDefault } from '../utils/util'
 export default class SystemDialog extends Component {
 
   componentDidMount() {
-    this.systemDialog.addEventListener('touchmove', (e) => {
-      ePreventDefault(e)
-    }, false)
+    this.systemDialog.addEventListener('touchmove', ePreventDefault(e), false)
   }
 
   componentWillUnmount() {
-    this.systemDialog.removeEventListener('touchmove', (e) => {
-      ePreventDefault(e)
-    }, false)
+    this.systemDialog.removeEventListener('touchmove', ePreventDefault(e), false)
   }
   
   render() {

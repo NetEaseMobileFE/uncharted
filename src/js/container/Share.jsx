@@ -29,20 +29,22 @@ class Share extends Component {
     const params = erilizeUrl(window.location.href)
     this.state = {
       winnStatus: params.winnStatus,
-      // cardId: params.cardId || 'not find the cardId!',
-      // cardAmount: params.cardAmount,
-      // cycleId: params.cycleId,
-      // cardLen: params.cardLen
     }
     this.cardImg = ''
     this.cardName = ''
     this.props.fetchShareInfo(params.cycleId)
   }
 
+  // 点击回流
   handleClick() {
     window.location.href = changeUrl('http://m.163.com/newsapp/applinks.html?url=http://t.c.m.163.com/uncharted/index.html', 2)
   }
 
+  /** *******************
+   * desc:二次分享数据设定
+   * params: cardAmount: 当前收集到的几种卡片 lackCards: 还差几张集齐 cardName: 卡片名称 cardImg: 卡片图片 prizeName: 奖品名称 prizeImg: 奖品图片
+   * return
+   **********************/
   secondShare(cardAmount, lackCards, cardName, cardImg, prizeName, prizeImg) {
     let secondShareOption = {
       title: '',
@@ -90,20 +92,27 @@ class Share extends Component {
     const prizeArray = share.prize
     let lackCards = (parseInt(cardLen, 10) - parseInt(nowAmount, 10))
     lackCards = lackCards <= 0 ? 0 : lackCards
-    const cycleTheme = share.cycleInfo.theme
-    share.cards.map((card) => {
+
+    const cycleTheme = share.cycleInfo.theme // 当期主题
+
+    // 得到当前分享的卡片的数据
+    share.cards.forEach((card) => {
       if (parseInt(card.id, 10) === parseInt(cardId, 10)) {
         this.cardImg = card.image
         this.cardName = card.name
       }
-      return true
     })
+
+    // 调用二次分享
     this.secondShare(params.cardLen, lackCards, this.cardName, this.cardImg, prizeArray.name, prizeArray.image)
 
+    // 卡片背景
     const bgImg = {
       background: `url(${this.cardImg}) no-repeat center`,
       backgroundSize: 'cover'
     }
+
+    // 奖品背景
     const prizeImg = {
       background: `url(${prizeArray.image}) no-repeat center`,
       backgroundSize: 'cover'
@@ -111,7 +120,7 @@ class Share extends Component {
     return (
       <div>
         <ShareBanner />
-        {
+        { // 分享集卡活动
           this.state.winnStatus === '100' &&
             <div className="share oneBg">
               <header className="header mb1">
@@ -145,7 +154,7 @@ class Share extends Component {
               </footer>
             </div>
         }
-        {
+        { // 已经中奖
           this.state.winnStatus === '200' &&
             <div className="share oneBg">
               <header className="header mb2">
@@ -169,7 +178,7 @@ class Share extends Component {
               </footer>
             </div>
         }
-        {
+        { // 晒卡
           this.state.winnStatus === '300' &&
             <div className="share anotherBg">
               <header className="header mb3">

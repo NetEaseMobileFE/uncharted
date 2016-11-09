@@ -34,11 +34,7 @@ class Expiry extends Component {
       }
     }, false)
   }
-
-  componentWillUnmount() {
-    // fetchBasicInfo()
-  }
-
+  
   handleClick() {
     if (this.username.value.length === 0 || this.tele.value.length === 0 || this.address.value.length === 0) {
       alert('请输入完整的个人信息!')
