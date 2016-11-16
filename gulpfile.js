@@ -24,6 +24,8 @@ if (gutil.env._.indexOf('deploy') >= 0) {
 }
 webpackStats = null;
 process.env.NODE_ENV = 'production';
+
+// 删除dist中的文件
 gulp.task('clean', function(cb) {
   rimraf('dist', function(err) {
     if (err) {
@@ -33,6 +35,7 @@ gulp.task('clean', function(cb) {
   });
 });
 
+// 
 gulp.task('assets', ['clean'], function() {
   return gulp.src('src/js/index.js').pipe(webpackStream(webpackConfig, null, function(err, stats) {
     webpackStats = stats.toJson({
