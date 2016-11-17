@@ -130,3 +130,16 @@ export function sendCard(cardId) {
       })
   }
 }
+
+/** ************************
+ * 更改登陆状态
+ ***************************/
+
+export function loginNewsApp() {
+  return (dispatch) => {
+    return dispatch({
+      type: 'LOGIN_NEWS_APP',
+      data: true
+    })
+  }
+}

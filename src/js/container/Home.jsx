@@ -35,7 +35,7 @@ class Home extends Component {
     this.cardName = null
     this.cardMark = null
     this.state = {
-      loginStatus: false,
+      // loginStatus: false,
       isNotHomePage: false,
       collCardStatus: true,
       needToUpdate: false,
@@ -112,9 +112,10 @@ class Home extends Component {
   getData() {
     this.props.actions.fetchNotloginInfo()
     this.props.actions.fetchBasicInfo()
-    this.setState({
-      loginStatus: true
-    })
+    // this.setState({
+    //   loginStatus: true
+    // })
+    this.props.actions.loginNewsApp()
   }
 
   // 判断客户端版本是否低于16.0
@@ -164,13 +165,11 @@ class Home extends Component {
 
   render() {
     const { data, history } = this.props
-    const { basic, notlogin } = data
-    
+    const { basic, notlogin, loginStatus } = data
     // 判断是否获取到未登录数据
     if (!notlogin) {
       return null
     }
-    
     // 领卡时获取卡片的具体信息
     if (this.params.getCard) {
       notlogin.cards.map((item) => {
@@ -182,7 +181,6 @@ class Home extends Component {
         return null
       })
     }
-    
     // 判断是否获取到登陆接口的数据
     if (!basic) {
       return null
@@ -240,7 +238,7 @@ class Home extends Component {
       data,
       curPrizeStatus, // 当前奖品状态
       isNotHomePage: this.state.isNotHomePage, // 判断是主页还是回流页
-      loginStatus: this.state.loginStatus, // 登陆状态
+      loginStatus,
       push: history.push, // 路由跳转func
       collCardStatus: this.state.collCardStatus, // 判断是否是低版本或者为开启集卡功能
       sendLotteryId: this.props.actions.sendLotteryId, // 兑奖func

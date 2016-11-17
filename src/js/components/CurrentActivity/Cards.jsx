@@ -93,7 +93,6 @@ export default class Cards extends Component {
               background: `url(${card.smallImage}) no-repeat center`,
               backgroundSize: '100% 100%'
             }
-
             return (
               <li 
                 className="card-li"

@@ -30,6 +30,8 @@ export default function home(state = INIT_STATE, action) {
       return deepAssign({}, state, {
         shareCard: deepAssign({}, state.shareCard, action.data)
       })
+    case 'LOGIN_NEWS_APP':
+      return deepAssign({}, state, {loginStatus: action.data})
     default: 
       return state
   }

@@ -4,10 +4,10 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
-	devtool: 'eval-source-map',
+	devtool: 'eval-source-map', // 可以使我们调试的时候定位到具体代码
 	entry: [
 		'eventsource-polyfill', // necessary for hot reloading with IE
-		'webpack-hot-middleware/client',
+		'webpack-hot-middleware/client?reload=true',
 		'./src/js/index'
 	],
 	output: {
@@ -16,6 +16,13 @@ module.exports = {
 		chunkFilename: 'js/[id].bundle.js',
 		publicPath: '/static/',
 		pathinfo: true
+	},
+	devServer: {
+		contentBase: '',  //静态资源的目录 相对路径,相对于当前路径 默认为当前config所在的目录
+		devtool: 'eval',
+		hot: true,        //自动刷新
+		inline: true,
+		port: 3005
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
@@ -62,9 +69,9 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['', '.js', '.jsx'],
+		extensions: ['', '.js', '.jsx'], // 自动扩展文件后缀名,引用的时候不需要加后缀了
 		alias: {
-			js: path.join(__dirname, "src/js")
+			js: path.join(__dirname, "src/js") // 别名定义
 		}
 	},
 	postcss: function() {
