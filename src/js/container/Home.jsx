@@ -34,6 +34,7 @@ class Home extends Component {
     this.cardImg = null
     this.cardName = null
     this.cardMark = null
+    this.fetchUserInfoCount = 0
     this.state = {
       // loginStatus: false,
       isNotHomePage: false,
@@ -187,11 +188,17 @@ class Home extends Component {
     }
     
     // 判断客户端是否注入cookie失败
+    let token
     if (!!basic && !basic.lotteryCards) {
-      this.props.actions.fetchBasicInfo()
+      if (this.fetchUserInfoCount === 0) {
+        this.fetchUserInfoCount++
+        token = setInterval(() => {
+          this.props.actions.fetchBasicInfo()
+        }, 1000)
+      }
       return null
     }
-
+    clearInterval(token)
     let cycleId = notlogin.cycleInfo.id
     let curPrizeStatus
     for (let index = 0; index < basic.lotteryPrizes.length; index++) {
@@ -215,7 +222,7 @@ class Home extends Component {
       onCloseSD: this.closeSD,
       desc: this.state.systemDialogDesc
     }
-
+    
       // 从领卡回流页跳转回主页的弹窗组件参数
     const cardDialogParams = {
       cardType: basic.myCards.length, // 拥有卡片的类型数目
@@ -237,8 +244,8 @@ class Home extends Component {
     const currentActivityParams = {
       data,
       curPrizeStatus, // 当前奖品状态
-      isNotHomePage: this.state.isNotHomePage, // 判断是主页还是回流页
       loginStatus,
+      isNotHomePage: this.state.isNotHomePage, // 判断是主页还是回流页
       push: history.push, // 路由跳转func
       collCardStatus: this.state.collCardStatus, // 判断是否是低版本或者为开启集卡功能
       sendLotteryId: this.props.actions.sendLotteryId, // 兑奖func
