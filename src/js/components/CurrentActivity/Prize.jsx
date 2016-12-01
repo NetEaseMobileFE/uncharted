@@ -155,7 +155,7 @@ export default class Prize extends Component {
     } else if (nowAmount !== sumAmount) {
       // 未中奖
       prizeInfo = {
-        finalFunc: this.handleShare,
+        finalFunc: null,
         finalBtnText: `集齐可领取(${nowAmount}/${sumAmount})`,
         finalClass: 'prize-btn btn-bgc1',
         finalLabelText: ''
