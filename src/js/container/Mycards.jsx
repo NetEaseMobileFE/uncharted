@@ -4,7 +4,6 @@ import * as actions from '../actions/myCards'
 import ScrollLoadBtn from '../components/ScrollLoadBtn'
 import { erilizeText, compareCards, sessionStorageHeight } from '../utils/util.js'
 import NEWSAPPAPI from 'newsapp'
-
 import '../../css/MyCards.scss'
 import '../../css/ScrollLoadBtn.scss'
 
@@ -36,6 +35,7 @@ class Mycards extends Component {
     if (!mycards) {
       return null
     }// 初始化的时候没有定义，如果不判断可能会报错
+
     const pageParams = {
       dataLen: mycards.lotteryCards.length,
       whichPage: mycards,
@@ -43,9 +43,7 @@ class Mycards extends Component {
       addData: mycards.noMoreData,
       parentComponent: 'myCards'
     }
-    mycards.lotteryCards.map((item) => {
-      return compareCards(item.cards, item.myCards)
-    })
+
     return (
       <div className="mycards-container">
         <ul className="mycards-ls">
@@ -55,9 +53,9 @@ class Mycards extends Component {
             if (item.cards.length === 0) {
               return null
             }
-            item.cards.map((card) => {
-              if (!!card.amount) {
-                cardNum = cardNum + parseInt(card.amount, 10)
+            item.cards.map((card, index) => {
+              if (!!item.myCards[index]) {
+                cardNum = cardNum + parseInt(item.myCards[index].amount, 10)
               }
               return cardNum
             })
@@ -76,15 +74,15 @@ class Mycards extends Component {
                           backgroundSize: '100% 100%'
                         }
                         let cardText
-                        if (!!card.amount) {
-                          cardText = `X${card.amount}`
+                        if (!!item.myCards[count]) {
+                          cardText = `X${item.myCards[count].amount}`
                         }
-                        if (card.amount > 99) {
+                        if (!!item.myCards[count] && item.myCards[count].amount > 99) {
                           cardText = '99+'
                         }
                         return (
                           <li className="li" key={count}>
-                            {!card.amount && <div className="card-bg shade-img"></div>}
+                            {!item.myCards[count] && <div className="card-bg shade-img"></div>}
                             <div style={bgStyle} className="card-bg"></div>
                             {
                               !!cardText && <div className="number">{cardText}</div>
