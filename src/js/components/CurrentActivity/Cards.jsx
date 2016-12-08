@@ -104,7 +104,7 @@ export default class Cards extends Component {
               >
 
                 <div className="li-img">
-                  <div className="img-bg" style={bgStyle}></div>
+                  <img className="img-bg" src={card.smallImage} />
                   {(loginStatus === true && !card.amount === true) && <div className="card-shade"></div>}
                   {!!card.amount && <span className="card-sum">{'X' + curAmount}</span>}
                   {!!card.amount && <span className="card-logo" style={{ display: card.amount > 1 ? '' : 'none' }}>送</span>}

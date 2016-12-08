@@ -43,7 +43,7 @@ class Record extends Component {
           data.record.lotteryPrizes.map((item, index) => {
             const bgStyle = {
               background: `url(${item.prize.image}) no-repeat center`,
-              backgroundSize: '1.08rem 1.05rem'
+              backgroundSize: '100% 100%'
             }
             const cycleTime = limitTime(item.cycleInfo.beginTime, item.cycleInfo.endTime)
             const cycleTheme = item.cycleInfo.theme

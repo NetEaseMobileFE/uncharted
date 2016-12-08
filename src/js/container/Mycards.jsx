@@ -4,6 +4,7 @@ import * as actions from '../actions/myCards'
 import ScrollLoadBtn from '../components/ScrollLoadBtn'
 import { erilizeText, compareCards, sessionStorageHeight } from '../utils/util.js'
 import NEWSAPPAPI from 'newsapp'
+import deepAssign from 'deep-assign'
 import '../../css/MyCards.scss'
 import '../../css/ScrollLoadBtn.scss'
 
@@ -36,6 +37,11 @@ class Mycards extends Component {
       return null
     }// 初始化的时候没有定义，如果不判断可能会报错
 
+    let finalcards = deepAssign({},mycards)
+    finalcards.lotteryCards.forEach((item) => {
+      item.cards = compareCards(item.cards, item.myCards)
+    })
+    console.log(finalcards)
     const pageParams = {
       dataLen: mycards.lotteryCards.length,
       whichPage: mycards,
@@ -48,7 +54,7 @@ class Mycards extends Component {
       <div className="mycards-container">
         <ul className="mycards-ls">
         {
-          mycards.lotteryCards.map((item, index) => {
+          finalcards.lotteryCards.map((item, index) => {
             let cardNum = 0
             if (item.cards.length === 0) {
               return null
@@ -74,15 +80,16 @@ class Mycards extends Component {
                           backgroundSize: '100% 100%'
                         }
                         let cardText
-                        if (!!item.myCards[count]) {
-                          cardText = `X${item.myCards[count].amount}`
+                        if (!!card.amount) {
+                          cardText = `X${card.amount}`
                         }
-                        if (!!item.myCards[count] && item.myCards[count].amount > 99) {
+                        // console.log(count, item.myCards[count].cardId)
+                        if (!!card.amount > 99) {
                           cardText = '99+'
                         }
                         return (
                           <li className="li" key={count}>
-                            {!item.myCards[count] && <div className="card-bg shade-img"></div>}
+                            {!card.amount && <div className="card-bg shade-img"></div>}
                             <div style={bgStyle} className="card-bg"></div>
                             {
                               !!cardText && <div className="number">{cardText}</div>
