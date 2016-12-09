@@ -41,7 +41,6 @@ class Mycards extends Component {
     finalcards.lotteryCards.forEach((item) => {
       item.cards = compareCards(item.cards, item.myCards)
     })
-    console.log(finalcards)
     const pageParams = {
       dataLen: mycards.lotteryCards.length,
       whichPage: mycards,
@@ -82,10 +81,9 @@ class Mycards extends Component {
                         let cardText
                         if (!!card.amount) {
                           cardText = `X${card.amount}`
-                        }
-                        // console.log(count, item.myCards[count].cardId)
-                        if (!!card.amount > 99) {
-                          cardText = '99+'
+                          if (card.amount > 99) {
+                            cardText = '99+'
+                          }
                         }
                         return (
                           <li className="li" key={count}>
