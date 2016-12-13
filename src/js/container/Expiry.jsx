@@ -6,6 +6,7 @@ import { erilizeUrl } from '../utils/util'
 import NEWSAPPAPI from 'newsapp'
 
 import '../../css/Expiry.scss'
+import { changeUrl } from './../utils/util'
 
 class Expiry extends Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class Expiry extends Component {
     }
     const xhr = new XMLHttpRequest()
     let webState = null
-    xhr.open('post', 'http://t.c.m.163.com/uc/activity/card/prize/exchange', true)
+    xhr.open('post', changeUrl('//c.m.163.com/uc/activity/card/prize/exchange', 1), true)
     xhr.send(null)
     xhr.onreadystatechange = () => {
       if (+(xhr.readyState) === 4) {

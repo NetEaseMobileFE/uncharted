@@ -33,17 +33,17 @@
         left: 0.24rem;
         top: 0.17rem;
         display: flex;
+        padding: .05rem;
         justify-content: center;
         align-items: center;
         position: absolute;
         box-sizing: border-box;
-        height: .73rem;
         @include border(border, 1px, solid, #653634);
 
         .cd-in{
           display: flex;
           box-sizing: border-box;
-          height: .59rem;
+          padding: .03rem;
           align-items: center;
           @include border(border, 1px, dotted, #fff21a);
           .cd-l,.cd-r{
@@ -54,7 +54,6 @@
           .cd-l{
             box-sizing: border-box;
             padding: .01rem .05rem;
-            line-height: .58rem;
             @include border(border-right, 1px, dotted, #fff21a);
             @include px2px(font-size, 9)
           }
@@ -64,30 +63,8 @@
           .cd-unit{
             @include px2px(font-size, 9)
           }
-          .cd-r-daystyle-in{
-            //width: .65rem;
-          }
-          .cd-r-hourstyle-in{
-            //width: 1.18rem;
-          }
         }
-
-        .cd-daystyle-in{
-          width: 1.4rem;
-        }
-        .cd-hourstyle-in{
-          width: 1.92rem;
-        }
-
       }
-
-      .cd-daystyle{
-        width: 1.57rem;
-      }
-      .cd-hourstyle{
-        width: 2.1rem;
-      }
-
     }
     .h-carousel{
       width: 100%;
