@@ -43,7 +43,6 @@
         .cd-in{
           display: flex;
           box-sizing: border-box;
-          padding: .03rem;
           align-items: center;
           @include border(border, 1px, dotted, #fff21a);
           .cd-l,.cd-r{
@@ -53,12 +52,13 @@
 
           .cd-l{
             box-sizing: border-box;
-            padding: .01rem .05rem;
+            padding: .1rem;
             @include border(border-right, 1px, dotted, #fff21a);
             @include px2px(font-size, 9)
           }
           .cd-r {
             flex: 1;
+            padding: .1rem;
           }
           .cd-unit{
             @include px2px(font-size, 9)

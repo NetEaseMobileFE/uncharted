@@ -3,7 +3,7 @@ import '../../css/ShareBanner.scss'
 import { changeUrl } from '../utils/util'
 
 export default function ShareBanner() {
-  const url = `http://m.163.com/newsapp/applinks.html?url=${changeUrl('http://t.c.m.163.com/uncharted/index.html', 2)}`
+  const url = `http://m.163.com/newsapp/applinks.html?url=${changeUrl('//t.c.m.163.com/uncharted/index.html', 2)}`
   return (
     <a className="share-banner" href={url}>
       <div className="banner-inner">

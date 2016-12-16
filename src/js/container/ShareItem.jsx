@@ -51,7 +51,7 @@ class ShareItem extends Component {
   }
 
   handleClick() {
-    window.location.href = `http://m.163.com/newsapp/applinks.html?url=${encodeURIComponent(changeUrl('http://t.c.m.163.com/uncharted/index.html?getCard=1&cardId=', 2) + this.params.cardId + '&giftId=' + encodeURIComponent(this.giftId) + '&')}`
+    window.location.href = `http://m.163.com/newsapp/applinks.html?url=${encodeURIComponent(changeUrl('//t.c.m.163.com/uncharted/index.html?getCard=1&cardId=', 2) + this.params.cardId + '&giftId=' + encodeURIComponent(this.giftId) + '&')}`
   }
 
   compareTimeOut(endTime) {
@@ -69,7 +69,7 @@ class ShareItem extends Component {
   }
 
   goCollect() {
-    window.location.href = 'http://m.163.com/newsapp/applinks.html?url=' + changeUrl('http://t.c.m.163.com/uncharted/index.html', 2)
+    window.location.href = 'http://m.163.com/newsapp/applinks.html?url=' + changeUrl('//t.c.m.163.com/uncharted/index.html', 2)
   }
 
   secondShare(cardName, cardImg, prizeName) {

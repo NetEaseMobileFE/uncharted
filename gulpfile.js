@@ -97,7 +97,7 @@ gulp.task('deploy', ['ftp'], function(cb) {
       jsFile = item;
     }
   })
-  apr = "http://img6.cache.netease.com/utf8/apps/" + projectName + "/";
+  apr = "//img6.cache.netease.com/utf8/apps/" + projectName + "/";
   return gulp.src('src/*.html').pipe(htmlreplace({
     'css': apr + cssFile,
     'bundle': apr + jsFile,
