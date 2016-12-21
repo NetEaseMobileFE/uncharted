@@ -37,7 +37,7 @@ class Share extends Component {
 
   // 点击回流
   handleClick() {
-    window.location.href = changeUrl('http://m.163.com/newsapp/applinks.html?url=//t.c.m.163.com/uncharted/index.html', 2)
+    window.location.href = changeUrl('http://m.163.com/newsapp/applinks.html?url=https://t.c.m.163.com/uncharted/index.html', 2)
   }
 
   /** *******************
